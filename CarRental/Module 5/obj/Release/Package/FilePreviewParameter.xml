@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Module5API" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\wattar\\Downloads\\rabbitmq-by-example\\7-rabbitmq-by-example-m7-exercise-files\\Module\ 5\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\wattar\\Downloads\\rabbitmq-by-example\\7-rabbitmq-by-example-m7-exercise-files\\Module\ 5\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+</parameters>

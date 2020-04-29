@@ -1,0 +1,12 @@
+C:\Users\wattar\Downloads\rabbitmq-by-example\7-rabbitmq-by-example-m7-exercise-files\PurchaseOrderConsumer\bin\Debug\PurchaseOrderConsumer.exe.config
+C:\Users\wattar\Downloads\rabbitmq-by-example\7-rabbitmq-by-example-m7-exercise-files\PurchaseOrderConsumer\bin\Debug\PurchaseOrderConsumer.exe
+C:\Users\wattar\Downloads\rabbitmq-by-example\7-rabbitmq-by-example-m7-exercise-files\PurchaseOrderConsumer\bin\Debug\PurchaseOrderConsumer.pdb
+C:\Users\wattar\Downloads\rabbitmq-by-example\7-rabbitmq-by-example-m7-exercise-files\PurchaseOrderConsumer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\wattar\Downloads\rabbitmq-by-example\7-rabbitmq-by-example-m7-exercise-files\PurchaseOrderConsumer\bin\Debug\RabbitMQ.Client.dll
+C:\Users\wattar\Downloads\rabbitmq-by-example\7-rabbitmq-by-example-m7-exercise-files\PurchaseOrderConsumer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\wattar\Downloads\rabbitmq-by-example\7-rabbitmq-by-example-m7-exercise-files\PurchaseOrderConsumer\bin\Debug\RabbitMQ.Client.xml
+C:\Users\wattar\Downloads\rabbitmq-by-example\7-rabbitmq-by-example-m7-exercise-files\PurchaseOrderConsumer\obj\Debug\PurchaseOrderConsumer.csprojAssemblyReference.cache
+C:\Users\wattar\Downloads\rabbitmq-by-example\7-rabbitmq-by-example-m7-exercise-files\PurchaseOrderConsumer\obj\Debug\PurchaseOrderConsumer.csproj.CoreCompileInputs.cache
+C:\Users\wattar\Downloads\rabbitmq-by-example\7-rabbitmq-by-example-m7-exercise-files\PurchaseOrderConsumer\obj\Debug\PurchaseOrderConsumer.csproj.CopyComplete
+C:\Users\wattar\Downloads\rabbitmq-by-example\7-rabbitmq-by-example-m7-exercise-files\PurchaseOrderConsumer\obj\Debug\PurchaseOrderConsumer.exe
+C:\Users\wattar\Downloads\rabbitmq-by-example\7-rabbitmq-by-example-m7-exercise-files\PurchaseOrderConsumer\obj\Debug\PurchaseOrderConsumer.pdb
