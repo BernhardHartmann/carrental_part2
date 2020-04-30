@@ -6,7 +6,7 @@ Install RabittMQ Server (see [link](https://www.rabbitmq.com/install-windows.htm
 
 ## Step two
 
-Add NuGet package "RabbitMQ.Client" to the "recv" and "send" -projects if not already included.
+In Visual Studio, add NuGet package "RabbitMQ.Client" to the "recv" and "send" -projects if not already included.
 
 ## Step three
 
@@ -16,11 +16,11 @@ Start message broker:
 
 ## Step four
 
-Start the receiver by right-clicking the "recv" project then -> debug/start new instance
+In Visual Studio, start the receiver by right-clicking the "recv" project then -> debug/start new instance
 
 ## Step five
 
-Start the sender by right-clicking the "send" project then -> debug/start new instance
+In Visual Studio, start the sender by right-clicking the "send" project then -> debug/start new instance
 
 ## Result
 
