@@ -12,7 +12,7 @@ Add NuGet package "RabbitMQ.Client" to the "recv" and "send" -projects if not al
 
 Start message broker:
 - with docker you can use the docker-copose.yml in this directory (cmd: "docker-compose up")
-- without docker you can simple use the rabbitMQ START shortcut in the Windows start menu (created autmaticaly with installation; the service is possible already running)
+- without docker you can simply use the rabbitMQ START shortcut in the Windows start menu (created autmaticaly with installation; the service is possibly already running)
 
 ## Step four
 
