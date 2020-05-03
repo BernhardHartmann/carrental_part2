@@ -1,3 +1,22 @@
 
 *.cache
 *.exe
+CarRental/.vs/Module 7/v16/Server/sqlite3/storage.ide-wal
+CarRental/.vs/Module 7/v16/Server/sqlite3/storage.ide-shm
+CarRental/.vs/Module 7/v16/Server/sqlite3/storage.ide
+CarRental/.vs/Module 7/v16/Server/sqlite3/db.lock
+CarRental/.vs/Module 7/v16/.suo
+*.dll
+CarRental/UserManagement/bin/Antlr3.Runtime.pdb
+CarRental/UserManagement/bin/MongoDB.Bson.xml
+CarRental/UserManagement/bin/MongoDB.Driver.xml
+CarRental/UserManagement/bin/Newtonsoft.Json.xml
+CarRental/UserManagement/bin/System.Web.Helpers.xml
+CarRental/UserManagement/bin/System.Web.Mvc.xml
+CarRental/UserManagement/bin/System.Web.Optimization.xml
+CarRental/UserManagement/bin/System.Web.Razor.xml
+CarRental/UserManagement/bin/System.Web.WebPages.Deployment.xml
+CarRental/UserManagement/bin/System.Web.WebPages.Razor.xml
+CarRental/UserManagement/bin/System.Web.WebPages.xml
+CarRental/UserManagement/bin/UserManagement.dll.config
+CarRental/UserManagement/bin/UserManagement.pdb
