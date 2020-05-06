@@ -35,7 +35,7 @@ namespace UserManagement.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("userManagement4")]
+        [global::System.Configuration.DefaultSettingValueAttribute("userManagement6")]
         public string DatabaseName {
             get {
                 return ((string)(this["DatabaseName"]));

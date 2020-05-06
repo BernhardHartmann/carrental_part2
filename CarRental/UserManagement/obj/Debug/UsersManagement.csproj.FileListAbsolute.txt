@@ -147,7 +147,6 @@ C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\UserManagem
 C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\UserManagement\bin\System.Web.WebPages.Razor.xml
 C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\UserManagement\bin\Newtonsoft.Json.xml
 C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\UserManagement\bin\Antlr3.Runtime.pdb
-C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\UserManagement\obj\Debug\UsersManagement.csprojAssemblyReference.cache
 C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\UserManagement\obj\Debug\UsersManagement.csproj.CopyComplete
 C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\UserManagement\obj\Debug\UserManagement.dll
 C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\UserManagement\obj\Debug\UserManagement.pdb

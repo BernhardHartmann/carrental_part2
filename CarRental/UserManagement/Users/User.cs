@@ -19,18 +19,16 @@
 
 		public string Email { get; set; }
 
-		public string Telefon { get; set; }
+		//[BsonRepresentation(BsonType.DateTime)]
+		public DateTime registerationDate { get; set; }
 
+		public string Telefon { get; set; }
+		[BsonIgnore]
 		public string Description { get; set; }
 
 	
 		public List<string> Address = new List<string>();
 
-		[BsonRepresentation(BsonType.Double)]
-		
-		public string ImageId { get; set; }
-
-	
 		public User()
 		{
 		}
@@ -41,6 +39,7 @@
 			FirstName = postUser.FirstName;
 			LastName = postUser.LastName;
 			Email = postUser.Email;
+			registerationDate = postUser.registerationDate;
 			Telefon = postUser.Telefon;
 			Password = postUser.Password;
 			Address = (postUser.Address ?? string.Empty).Split('\n').ToList();
@@ -51,14 +50,10 @@
 			FirstName = postUser.FirstName;
 			LastName = postUser.LastName;
 			Email = postUser.Email;
+			//registerationDate = postUser.registerationDate;
 			Telefon = postUser.Telefon;
 			Password = postUser.Password;
 			Address = (postUser.Address ?? string.Empty).Split('\n').ToList();
-		}
-	
-		public bool HasImage()
-		{
-			return !String.IsNullOrWhiteSpace(ImageId);
 		}
 	}
 }

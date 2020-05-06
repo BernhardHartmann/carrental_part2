@@ -59,9 +59,11 @@
 			return RedirectToAction("Index");
 		}
 
-		public ActionResult EditUser()
+		public ActionResult EditUser(EditUser editUser)
 		{
-			return View();
+			var user = new User(editUser);
+			Context.Users.Save(user);
+			return RedirectToAction("Index");
 		}
 
 		[HttpPost]

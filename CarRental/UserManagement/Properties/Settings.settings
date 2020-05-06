@@ -10,7 +10,7 @@
       <Value Profile="(Default)">mongodb://localhost</Value>
     </Setting>
     <Setting Name="DatabaseName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">userManagement4</Value>
+      <Value Profile="(Default)">userManagement6</Value>
     </Setting>
   </Settings>
 </SettingsFile>

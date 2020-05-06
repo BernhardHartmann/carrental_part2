@@ -1,4 +1,8 @@
-﻿namespace UserManagement.Users
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+
+namespace UserManagement.Users
 {
 	public class PostUser
 	{
@@ -9,6 +13,9 @@
 		public string LastName { get; set; }
 
 		public string Email { get; set; }
+
+		[BsonIgnore]
+		public DateTime registerationDate { get; set; }
 
 		public string Telefon { get; set; }
 		public string Password { get; set; }
