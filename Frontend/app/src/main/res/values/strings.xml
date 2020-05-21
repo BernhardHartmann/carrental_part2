@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">SE Car Rental</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Bookings</string>
+    <string name="title_notifications">Profile</string>
+    <string name="first_name">Firstname</string>
+    <string name="last_name">Lastname</string>
+    <string name="email">E-Mail</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="driving_license_number">Driving License Number</string>
+    <string name="mobile">Telephone (mobile)</string>
+    <string name="state">State</string>
+    <string name="city">City</string>
+    <string name="country">Country</string>
+    <string name="zipcode">Zipcode</string>
+    <string name="telephone_number">Telephone</string>
+    <string name="currency">Currency</string>
+    <string name="registration_date">Registered since</string>
+    <string name="submit">Submit</string>
+    <string name="google_maps_key">AIzaSyBoolAIsI4AMU-1F9-dMGNqlTO-qQhbCFA</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="saved_high_score_key" />
+    <string name="isLoggedIn" />
+    <string name="comments">comments</string>
+    <string name="select_start">Please select start date</string>
+    <string name="select_end">Please select end date</string>
+    <string name="edit_date">Edit date</string>
+    <string name="select_loc">\t Locations near you</string>
+
+    <!--    Permissions    -->
+    <string name="permission_rationale_location">Access to the location service is required to demonstrate the \'my location\' feature, which shows your current location on the map.</string>
+    <string name="location_permission_denied">This sample requires location permission to enable the \'my location\' layer. Please try again and grant access to use the location.\nIf the permission has been permanently denied, it can be enabled from the System Settings &gt; Apps &gt; \'Google Maps API Demos\'.</string>
+    <string name="permission_required_toast">Location permission is required for this demo.</string>
+    <string name="booking_string">List of Current Bookings</string>
+    <string name="currencies">currencies</string>
+    <string name="locations">locations</string>
+    <string name="categories">categories</string>
+    <string name="car">car</string>
+    <string name="user">user</string>
+    <string name="logout">Logout</string>
+    <string name="changeData">Change Data</string>
+    <string name="key">key</string>
+    <string name="name">locationName</string>
+
+</resources>

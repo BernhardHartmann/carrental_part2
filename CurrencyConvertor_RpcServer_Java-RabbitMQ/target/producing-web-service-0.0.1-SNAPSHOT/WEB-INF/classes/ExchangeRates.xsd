@@ -1,0 +1,31 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xs:element name="getExchangeRateRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="fromCCY" type="xs:string"/>
+                <xs:element name="toCCY" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getExchangeRateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ExchangeRate" type="tns:ExchangeRate"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ExchangeRate">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="ExchangeRate" type="xs:double"/>
+            <xs:element name="fromCCY" type="xs:string"/>
+            <xs:element name="toCCY" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+</xs:schema>
