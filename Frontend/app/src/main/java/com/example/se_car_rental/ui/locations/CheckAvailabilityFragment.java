@@ -80,19 +80,15 @@ public class CheckAvailabilityFragment extends Fragment {
                 }
             };
 
-            // Get current year, month and day.
             Calendar now = Calendar.getInstance();
             int year = now.get(java.util.Calendar.YEAR);
             int month = now.get(java.util.Calendar.MONTH);
             int day = now.get(java.util.Calendar.DAY_OF_MONTH);
 
-            // Create the new DatePickerDialog instance.
             DatePickerDialog datePickerDialog = new DatePickerDialog(myContext, onDateSetListener, year, month, day);
 
-            // Set dialog icon and title.
             datePickerDialog.setTitle("Please select date.");
 
-            // Popup the dialog.
             datePickerDialog.show();
 
         }
@@ -105,15 +101,11 @@ public class CheckAvailabilityFragment extends Fragment {
 
         if (savedInstanceState != null) {
             mCurrentPosition = savedInstanceState.getInt(ARG_POSITION);
-            //testString = savedInstanceState.getString("test");
         }
 
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         String currency = sharedPref.getString(getString(R.string.currencies), null);
 
-        //getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.description_view, container, false);
     }
 
@@ -132,12 +124,9 @@ public class CheckAvailabilityFragment extends Fragment {
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         TextView description = (TextView) getActivity().findViewById(R.id.text_booking);
         args = getArguments();
-       // testString = args.getString("test");
         description.setText(testString);
         reservation = new Reservation(1);
         this.showDatePickerDialog();
-//        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab3);
-//        fab.setOnClickListener(new View.OnClickListener() {
         TextView button = (TextView) getActivity().findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
 
@@ -154,14 +143,7 @@ public class CheckAvailabilityFragment extends Fragment {
                     toast.setMargin(50,50);
                     toast.show();
                 }
-//                if(booking_msg != "") {
-//                    mCallback.onFabSelected(BOOK_FRAG, booking_msg);
-//                    booking_msg = "";
-//                }else{
-//                    Toast toast=Toast.makeText(getActivity(),"Please enter at least one date",Toast.LENGTH_LONG);
-//                    toast.setMargin(50,50);
-//                    toast.show();
-//                }
+
             }
         });
 
@@ -178,15 +160,12 @@ public class CheckAvailabilityFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        // Save the current article selection in case we need to recreate the fragment
         outState.putInt(ARG_POSITION, mCurrentPosition);
     }
 
-    // Create and show a DatePickerDialog when click button.
     private void showDatePickerDialog()
     {
 
-        // Get open DatePickerDialog button.
         TextView datePickerDialogButton = (TextView) getActivity().findViewById(R.id.datePickerDialogButton);
         TextView datePickerDialogButton2 = (TextView) getActivity().findViewById(R.id.datePickerDialogButton2);
         datePickerDialogButton.setOnClickListener(new CheckAvailabilityFragment.MyOnClickListener(getActivity(), datePickerDialogButton, START, this));
