@@ -33,14 +33,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 
-//public class HomeFragment extends Fragment {
+
 public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
-
     private HomeViewModel homeViewModel;
-    //private RecyclerView recyclerView;
-    //private RecyclerView.Adapter mAdapter;
-    //private RecyclerView.LayoutManager layoutManager;
     private static final int LOCATION_PERMISSION_REQUEST_CODE=100;
     private MapView mapView;
     private GoogleMap map;
@@ -76,17 +72,16 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         Gson gson = new Gson();
         locations = gson.fromJson(location, Locations[].class);
 
+        //MapView should be created even if locations cannot be loaded from the API.
+        mapView = (MapView) root.findViewById(R.id.mapView);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(this);
+
 
         if(location != null) {
             listView = (ListView) root.findViewById(R.id.recyclerview);
             mAdapter = new MyListAdapter(locations, getActivity());
             listView.setAdapter(mAdapter);
-
-
-            mapView = (MapView) root.findViewById(R.id.mapView);
-            mapView.onCreate(savedInstanceState);
-            mapView.getMapAsync(this);
-
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -95,7 +90,6 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                         int position, long id) {
 
                     mCallback.onItemSelected(position, locations[position]);
-
                 }
             });
         }
@@ -105,31 +99,19 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
-        // Add a marker in Sydney, Australia,
-        // and move the map's camera to the same location.
         map.getUiSettings().setZoomControlsEnabled(true);
         map.getUiSettings().setZoomGesturesEnabled(true);
         map.getUiSettings().setCompassEnabled(true);
 
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            if (map != null) {
-                map.setMyLocationEnabled(true);
-            }
-        } else {
-            // Permission to access the location is missing. Show rationale and request permission
-            PermissionUtils.requestPermission(getActivity(), LOCATION_PERMISSION_REQUEST_CODE,
-                    Manifest.permission.ACCESS_FINE_LOCATION, true);
-        }
-        LatLng branch0 = new LatLng(1,1);
+        LatLng branch0 = new LatLng(48.2082,16.3738);
+        if(locations != null ){
         for (int i=0; i<this.locations.length; i++)
         {
             branch0 = new LatLng(Double.parseDouble(this.locations[i].getLongitude()), Double.parseDouble(this.locations[i].getLatitude()));
             map.addMarker(new MarkerOptions().position(branch0).title(this.locations[i].getName()));
         }
+        }
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(branch0, 10));
-        //Showing Current Location Marker on Map
-        //LatLng latLng = new LatLng(42.20, 10.42); // new LatLng(location.getLatitude(), location.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(branch0);
         LocationManager locationManager = (LocationManager)
@@ -150,7 +132,9 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onResume() {
-        mapView.onResume();
+        if(mapView != null) {
+            mapView.onResume();
+        }
         super.onResume();
     }
 

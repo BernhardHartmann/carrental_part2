@@ -1,14 +1,17 @@
 package com.example.se_car_rental;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -18,6 +21,7 @@ import com.example.se_car_rental.entities.ApiUtil;
 import com.example.se_car_rental.entities.Locations;
 import com.example.se_car_rental.entities.User;
 import com.example.se_car_rental.ui.filter.FilterFragment;
+import com.example.se_car_rental.ui.helpers.PermissionUtils;
 import com.example.se_car_rental.ui.home.HomeFragment;
 import com.example.se_car_rental.ui.profile.LoginFragment;
 import com.example.se_car_rental.ui.profile.ProfileFragment;
@@ -57,9 +61,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         new LocationTask().execute("utilities/locations");
         new CurrencyTask().execute("utilities/currencies");
-//        String url = "useCase/getCategoriesToLocationID/" + 1;
-//        new CategoryTask().execute(url);
-
     }
 
     @Override
@@ -105,8 +106,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         @Override
         protected void onPostExecute(String s) {
-            //Gson gson = new Gson();
-            //Locations[] locations = gson.fromJson(s, Locations[].class);
             editor = sharedPref.edit();
             editor.putString(getString(R.string.locations), s);
             editor.commit();
@@ -166,8 +165,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         @Override
         protected void onPostExecute(String s) {
-            //Gson gson = new Gson();
-            //Locations[] locations = gson.fromJson(s, Locations[].class);
             editor = sharedPref.edit();
             editor.putString(getString(R.string.categories), s);
             editor.commit();
