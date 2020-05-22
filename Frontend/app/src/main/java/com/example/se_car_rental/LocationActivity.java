@@ -25,13 +25,8 @@ import com.google.gson.Gson;
 
 public class LocationActivity extends FragmentActivity implements Category_ListFragment.OnCategorySelectedListener, OnFabSelectedInterface {
     private static FragmentManager fragmentManager;
-   // private FloatingActionButton fab;
     private TextView button;
     private ImageView image;
-   // private ArrayList<Category> category_list = new ArrayList();
-   //TODO: Remove dummy data and add methed for retrieving data
-   //Category cat1 = new Category(1, "SUV", "All Terrain Vehical", "a_car", 25) ;
-    // Category cat2 = new Category(1, "Economy", "All Terrain Vehical", "a_car", 25) ;
     private Category[] category_list;
     int currentPosition = 1;
     int currentActivity = 0;
@@ -47,7 +42,7 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
         String myDepot = i.getStringExtra(getString(R.string.name));
         int loc_key = i.getIntExtra(getString(R.string.key), 0);
 
-        //sharedPref = getParent().getPreferences(Context.MODE_PRIVATE);
+        //Need to call SharedPreferences by name
         sharedPref = getSharedPreferences("Preference",MODE_PRIVATE);
         isLoggedIn = sharedPref.getBoolean(getString(R.string.isLoggedIn), false);
 
@@ -84,8 +79,6 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
         image.setVisibility(image.GONE);
 
 
-
-
         // the fragment_container FrameLayout. If so, we must add the first fragment
         if (findViewById(R.id.fragment_container) != null) {
 
@@ -94,9 +87,6 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
             }
             // Create an instance of ExampleFragment
             Category_ListFragment firstFragment = new Category_ListFragment();
-            // In case this activity was started with special instructions from an Intent,
-            // pass the Intent's extras to the fragment as arguments and set Categories from view
-          //  category_list = gson.fromJson(cat, Category[].class);
             firstFragment.setCategories(category_list);
 
             firstFragment.setArguments(getIntent().getExtras());
@@ -115,27 +105,18 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
         CheckAvailabilityFragment descFrag = (CheckAvailabilityFragment)
                 fragmentManager.findFragmentById(R.id.description_fragment);
         TextView category = (TextView) this.findViewById(R.id.txt_category);
-        //TextView description = (TextView) this.findViewById(R.id.txt_desc);
 
 
         if (descFrag != null) {
-            // If article frag is available, we're in two-pane layout...
-
-            //category.setText(category_list.get(position).getName());
-            //description.setText(category_list.get(position).getLabel());
             category.setText(category_list[position].getName());
             descFrag.setCategories(category_list[currentPosition].getCategory_id());
            // description.setText(category_list[position].getLabel());
-            // Call a method in the BookingFragment to update its content
             descFrag.updateBookingView(position);
 
         } else {
 
-            // Create fragment and give it an argument for the selected category
             CheckAvailabilityFragment newFragment = new CheckAvailabilityFragment();
             image.setVisibility(View.VISIBLE);
-            //category.setText(category_list.get(position).getName());
-            //description.setText(category_list.get(position).getLabel());
             category.setText(category_list[position].getName());
             newFragment.setCategories(category_list[currentPosition].getCategory_id());
            //description.setText(category_list[position].getLabel());
@@ -147,7 +128,6 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
 
             transaction.replace(R.id.fragment_container, newFragment);
             transaction.addToBackStack(null);
-            //fab.setVisibility(View.VISIBLE);
             button.setVisibility(View.VISIBLE);
             button.setText("Reserve Car from Category");
             currentActivity = 1;
@@ -221,8 +201,6 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
 
         @Override
         protected void onPostExecute(String s) {
-            //Gson gson = new Gson();
-            //Locations[] locations = gson.fromJson(s, Locations[].class);
             editor = sharedPref.edit();
             editor.putString(getString(R.string.categories), s);
             editor.commit();

@@ -1,5 +1,6 @@
 package com.example.se_car_rental;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -16,16 +18,16 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.se_car_rental.entities.ApiUtil;
 import com.example.se_car_rental.entities.Locations;
 import com.example.se_car_rental.entities.Reservation;
-import com.example.se_car_rental.ui.reservation.ReservationFragment;
 import com.example.se_car_rental.ui.home.HomeFragment;
 import com.example.se_car_rental.ui.profile.LoginFragment;
 import com.example.se_car_rental.ui.profile.ProfileFragment;
 import com.example.se_car_rental.ui.profile.RegisterFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeFragment.OnItemSelectedListener, ReservationFragment.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeFragment.OnItemSelectedListener {
 
     private BottomNavigationView navView;
     private ViewPager viewPager;
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         MainPagerAdapter pagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragmet(new HomeFragment());
-        pagerAdapter.addFragmet(new ReservationFragment());
+        pagerAdapter.addFragmet(new FilterFragment());
         pagerAdapter.addFragmet(new ProfileFragment());
         pagerAdapter.addFragmet(new LoginFragment());
         pagerAdapter.addFragmet(new RegisterFragment());
