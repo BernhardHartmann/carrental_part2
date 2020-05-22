@@ -47,3 +47,16 @@ C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManageme
 C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\obj\Debug\CarManagement.csproj.CopyComplete
 C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\obj\Debug\CarManagement.dll
 C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\obj\Debug\CarManagement.pdb
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\bin\Microsoft.Owin.dll
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\bin\Microsoft.Owin.Hosting.dll
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\bin\Microsoft.Owin.Testing.dll
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\bin\MyTested.WebApi.dll
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\bin\Owin.dll
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\bin\System.Net.Http.Formatting.dll
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\bin\System.Web.Http.dll
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\bin\Microsoft.Owin.xml
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\bin\Microsoft.Owin.Hosting.xml
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\bin\Microsoft.Owin.Testing.xml
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\bin\MyTested.WebApi.xml
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\bin\System.Net.Http.Formatting.xml
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\CarManagement\bin\System.Web.Http.xml
