@@ -1667,7 +1667,8 @@ id line3
 id linearLayout
 id listMode
 id list_item
-id listview
+id listview_home
+id listview_reservation
 id login
 id logout
 id mail
@@ -1737,7 +1738,6 @@ id pin
 id progress_circular
 id progress_horizontal
 id radio
-id recyclerview
 id register
 id repeat_password
 id res_comment
@@ -1934,12 +1934,13 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_description
-layout fragment_filter
 layout fragment_home
 layout fragment_login
 layout fragment_profile
 layout fragment_register
+layout fragment_reservation
 layout list_item
+layout list_item_reservation
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
