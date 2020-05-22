@@ -150,6 +150,7 @@ C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\UserManagem
 C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\UserManagement\obj\Debug\UsersManagement.csproj.CopyComplete
 C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\UserManagement\obj\Debug\UserManagement.dll
 C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\UserManagement\obj\Debug\UserManagement.pdb
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\UserManagement\obj\Debug\UsersManagement.csprojAssemblyReference.cache
 C:\Users\bernh\Source\Repos\carrental_part2\CarRental\UserManagement\bin\UserManagement.dll.config
 C:\Users\bernh\Source\Repos\carrental_part2\CarRental\UserManagement\bin\UserManagement.dll
 C:\Users\bernh\Source\Repos\carrental_part2\CarRental\UserManagement\bin\UserManagement.pdb
@@ -182,3 +183,4 @@ C:\Users\bernh\Source\Repos\carrental_part2\CarRental\UserManagement\obj\Debug\U
 C:\Users\bernh\Source\Repos\carrental_part2\CarRental\UserManagement\obj\Debug\UsersManagement.csproj.CopyComplete
 C:\Users\bernh\Source\Repos\carrental_part2\CarRental\UserManagement\obj\Debug\UserManagement.dll
 C:\Users\bernh\Source\Repos\carrental_part2\CarRental\UserManagement\obj\Debug\UserManagement.pdb
+
