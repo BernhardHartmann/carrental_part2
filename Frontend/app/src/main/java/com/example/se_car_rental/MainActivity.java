@@ -22,12 +22,13 @@ import com.example.se_car_rental.ui.home.HomeFragment;
 import com.example.se_car_rental.ui.profile.LoginFragment;
 import com.example.se_car_rental.ui.profile.ProfileFragment;
 import com.example.se_car_rental.ui.profile.RegisterFragment;
+import com.example.se_car_rental.ui.reservation.ReservationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeFragment.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeFragment.OnItemSelectedListener, ReservationFragment.OnItemSelectedListener {
 
     private BottomNavigationView navView;
     private ViewPager viewPager;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         MainPagerAdapter pagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragmet(new HomeFragment());
-        pagerAdapter.addFragmet(new FilterFragment());
+        pagerAdapter.addFragmet(new ReservationFragment());
         pagerAdapter.addFragmet(new ProfileFragment());
         pagerAdapter.addFragmet(new LoginFragment());
         pagerAdapter.addFragmet(new RegisterFragment());
@@ -94,7 +95,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         onStop();
     }
 
-    @Override
     public void onItemSelected(int position, Reservation reservation) {
 
     }
