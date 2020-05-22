@@ -10,7 +10,7 @@ namespace CarManagement.Controllers
 		public ActionResult Index()
 		{
 			Context.Database.GetStats();
-			return Json(Context.Database.Server.BuildInfo, JsonRequestBehavior.AllowGet);
+			return Json(true, JsonRequestBehavior.AllowGet);
 		}	
 	}
 }

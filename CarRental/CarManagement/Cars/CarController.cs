@@ -11,6 +11,7 @@
     using CarManagement.Categories;
     using CarManagement.Locations;
     using MongoDB.Bson;
+    using MongoDB.Driver;
     using MongoDB.Driver.Builders;
 	using MongoDB.Driver.GridFS;
 	using MongoDB.Driver.Linq;
@@ -51,12 +52,21 @@
 			return cars;
 		}
 
-		public IEnumerable<Location> getLocationList()
+		public IEnumerable<Location> getInterntLocationList()
 		{
 			IQueryable<Location> locations = Context.Location.AsQueryable()
 				.OrderBy(r => r.LocationId);
 
 			return locations;
+		}
+
+		[HttpGet]
+		public ActionResult getLocationList()
+		{
+			IQueryable<Location> locations = Context.Location.AsQueryable()
+				.OrderBy(r => r.LocationId);
+
+			return Json(locations.Count(), JsonRequestBehavior.AllowGet);
 		}
 
 		public IEnumerable<Category> getCategoryList()
@@ -77,7 +87,7 @@
 		{			
 			try
 			{
-				var locations = getLocationList();
+				var locations = getInterntLocationList();
 				var categories = getCategoryList();
 			
 				// check if Location & Category is already in DB
@@ -154,6 +164,7 @@
 		{
 			try
 			{
+								
 				var car = Context.Cars.FindOne(Query.EQ("CarId", id));
 				return Json(car, JsonRequestBehavior.AllowGet);
 			}
@@ -163,11 +174,11 @@
 			}
 		}
 
-		public ActionResult GetCarCountByCatID(int id)
+		public ActionResult GetCarCountByCatID(int cat_id)
 		{
 			try
 			{
-				var carCounter = Context.Cars.Find(Query.EQ("CatId", id)).Count();
+				var carCounter = Context.Cars.Find(Query.EQ("CatId", cat_id)).Count();
 				return Json(carCounter, JsonRequestBehavior.AllowGet);
 			}
 			catch (Exception ex)
