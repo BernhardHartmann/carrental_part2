@@ -1,0 +1,125 @@
+﻿using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+using RpcClientSample;
+using System;
+using System.Collections.Concurrent;
+using System.Net.Cache;
+using System.Text;
+using System.Text.Json.Serialization;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+
+namespace RpcClientCCY
+{
+    public class RpcClientCCY
+    {
+        private const string QUEUE_NAME = "rpc_queue";
+
+        private readonly IConnection connection;
+        private readonly IModel channel;
+        private readonly string replyQueueName;
+        private readonly EventingBasicConsumer consumer;
+        private readonly ConcurrentDictionary<string, TaskCompletionSource<string>> callbackMapper =
+                    new ConcurrentDictionary<string, TaskCompletionSource<string>>();
+
+        public RpcClientCCY()
+        {
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+
+            connection = factory.CreateConnection();
+            channel = connection.CreateModel();
+            replyQueueName = channel.QueueDeclare().QueueName;
+            consumer = new EventingBasicConsumer(channel);
+            consumer.Received += (model, ea) =>
+            {
+                if (!callbackMapper.TryRemove(ea.BasicProperties.CorrelationId, out TaskCompletionSource<string> tcs))
+                    return;
+                var body = ea.Body;
+                var response = Encoding.UTF8.GetString(body.ToArray());
+                tcs.TrySetResult(response);
+            };
+        }
+
+        public Task<string> CallAsync(string message, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            IBasicProperties props = channel.CreateBasicProperties();
+            var correlationId = Guid.NewGuid().ToString();
+            props.CorrelationId = correlationId;
+            props.ReplyTo = replyQueueName;
+            var messageBytes = Encoding.UTF8.GetBytes(message);
+            var tcs = new TaskCompletionSource<string>();
+            callbackMapper.TryAdd(correlationId, tcs);
+
+            channel.BasicPublish(
+                exchange: "",
+                routingKey: QUEUE_NAME,
+                basicProperties: props,
+                body: messageBytes);
+
+            channel.BasicConsume(
+                consumer: consumer,
+                queue: replyQueueName,
+                autoAck: true);
+
+            cancellationToken.Register(() => callbackMapper.TryRemove(correlationId, out var tmp));
+            return tcs.Task;
+        }
+
+        public void Close()
+        {
+            try
+            {
+                channel.Close();
+                connection.Close();
+            } catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+    }
+
+    public class Rpc
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("RPC Client");
+            string fromCCY = args.Length > 0 ?  args[0] : "USD";
+            string toCCY = args.Length > 0 ? args[0] : "EUR";
+            Console.WriteLine(fromCCY);
+            Console.WriteLine(toCCY);
+
+            RpcRequest request = new RpcRequest
+            {
+                fromCCY = fromCCY,
+                toCCY = toCCY
+            };
+
+            Task t = InvokeAsync(request);
+            t.Wait();
+            Task t2 = InvokeAsync(request);
+            t2.Wait();
+
+            Console.WriteLine(" Press [enter] to exit.");
+            Console.ReadLine();
+        }
+
+        private static async Task InvokeAsync(RpcRequest request)
+        {
+
+            string jsonRequest = JsonSerializer.Serialize(request);
+            
+             var rpcClient = new RpcClientCCY();
+
+             Console.WriteLine(" [x] Requesting '{0}'", jsonRequest);
+             var response = await rpcClient.CallAsync(jsonRequest);
+             Console.WriteLine(" [.] Got '{0}'", response);
+
+             rpcClient.Close();
+             Console.WriteLine("cc"); 
+             
+        }
+    }
+}

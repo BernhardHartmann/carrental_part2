@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.locations.CheckAvailabilityFragment">
+
+
+    <TextView
+        android:id="@+id/text_booking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/text_booking"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="30dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp">
+
+            <LinearLayout
+                android:id="@+id/layout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:hint="@string/select_start"/>
+
+
+                <TextView
+                    android:id="@+id/datePickerDialogButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/border"
+                    android:gravity="center_vertical"
+                    android:text="@string/edit_date"/>
+
+
+
+                <TextView
+                    android:id="@+id/text_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="4dp"
+                    android:hint="@string/select_end"
+                    />
+
+                <TextView
+                    android:id="@+id/datePickerDialogButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/border"
+                    android:text="@string/edit_date"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/comments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="8dp"
+                    android:hint="@string/comments">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="2dp"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+      />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

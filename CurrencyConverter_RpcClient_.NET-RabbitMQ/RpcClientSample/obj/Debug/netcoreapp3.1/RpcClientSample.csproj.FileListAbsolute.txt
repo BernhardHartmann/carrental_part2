@@ -1,0 +1,15 @@
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\bin\Debug\netcoreapp3.1\RpcClientSample.exe
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\obj\Debug\netcoreapp3.1\RpcClientSample.AssemblyInfoInputs.cache
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\obj\Debug\netcoreapp3.1\RpcClientSample.AssemblyInfo.cs
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\bin\Debug\netcoreapp3.1\RpcClientSample.deps.json
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\bin\Debug\netcoreapp3.1\RpcClientSample.runtimeconfig.json
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\bin\Debug\netcoreapp3.1\RpcClientSample.runtimeconfig.dev.json
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\bin\Debug\netcoreapp3.1\RpcClientSample.dll
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\bin\Debug\netcoreapp3.1\RpcClientSample.pdb
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\obj\Debug\netcoreapp3.1\RpcClientSample.csprojAssemblyReference.cache
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\obj\Debug\netcoreapp3.1\RpcClientSample.csproj.CoreCompileInputs.cache
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\obj\Debug\netcoreapp3.1\RpcClientSample.csproj.CopyComplete
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\obj\Debug\netcoreapp3.1\RpcClientSample.dll
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\obj\Debug\netcoreapp3.1\RpcClientSample.pdb
+C:\_MSc-SDE\SS20-SE\devProject2\DUMMY_GETTING_STARTED_.NET-RabbitMQ\RpcClientSample\obj\Debug\netcoreapp3.1\RpcClientSample.genruntimeconfig.cache
