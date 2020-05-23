@@ -42,15 +42,13 @@ public class LoginFragment extends Fragment {
 
         profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
 
-        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-
+        sharedPref = getActivity().getSharedPreferences("Preference", Context.MODE_PRIVATE);
 
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_login, container, false);
 
         final TextInputLayout email = root.findViewById(R.id.email);
         final TextInputLayout  password = root.findViewById(R.id.password);
-
 
 
         Button loginButton = root.findViewById(R.id.login);
@@ -112,13 +110,13 @@ public class LoginFragment extends Fragment {
         @Override
         protected void onPostExecute(String string) {
 
-            editor = sharedPref.edit();
-            editor.putString(getString(R.string.user), string);
-            editor.putBoolean(getString(R.string.isLoggedIn), true);
-            editor.commit();
-
 
             if(string != null){
+
+                editor = sharedPref.edit();
+                editor.putString(getString(R.string.user), string);
+                editor.putBoolean(getString(R.string.isLoggedIn), true);
+                editor.commit();
 
                 //Change menu to home
                 BottomNavigationView mBottomNavigationView = getActivity().findViewById(R.id.nav_view);

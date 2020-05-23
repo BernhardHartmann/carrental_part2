@@ -45,7 +45,7 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
                              Bundle savedInstanceState) {
         profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
 
-        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        sharedPref = getActivity().getSharedPreferences("Preference", Context.MODE_PRIVATE);
         String currency = sharedPref.getString(getString(R.string.currencies), null);
         Gson gson = new Gson();
         currencies = gson.fromJson(currency, Currency[].class);
