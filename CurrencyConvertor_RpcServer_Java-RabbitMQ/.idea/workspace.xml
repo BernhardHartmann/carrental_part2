@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89664776-cc19-4b56-ae25-a49093cbd459" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/request.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/request2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/request3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/examples/sample_dataRetrieverResponse.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/examples/sample_getExchangeRateRequest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/examples/sample_getExchangeRateResponse.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ws/WebServiceConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ExchangeRates.xsd" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ExchangeRates.xsd" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/JAXB/episode_xjc.xjb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
@@ -243,6 +240,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RPCServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="producing-web-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ws.RPCServer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.RPCServer" />
@@ -322,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590235964499</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Cleaned code: JAXB not needed, SOAP examples not relevant">
+      <created>1590236168465</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1590236168465</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,51 +345,52 @@
     <MESSAGE value="Service Consumer Authentication and faulty UnitTest removal&#10;&#10;SOAP Security Header is handled by the endpoint on application level. Additional the faulty Unittest hindering automatic deployment was removed." />
     <MESSAGE value="Unittests for FX calculations implemented" />
     <MESSAGE value="Cleaned code, unit test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned code, unit test" />
+    <MESSAGE value="Cleaned code: JAXB not needed, SOAP examples not relevant" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned code: JAXB not needed, SOAP examples not relevant" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587336733218">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1587336733218" />
-    <state x="257" y="0" key="CommitChangelistDialog2" timestamp="1590235957785">
+    <state x="257" y="0" key="CommitChangelistDialog2" timestamp="1590236161818">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-31" y="-1080" key="CommitChangelistDialog2/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586169735524" />
     <state x="183" y="0" key="CommitChangelistDialog2/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168748270" />
-    <state x="257" y="0" key="CommitChangelistDialog2/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590235957785" />
+    <state x="257" y="0" key="CommitChangelistDialog2/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236161818" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1589910658632">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1589910658632" />
-    <state width="1877" height="379" key="GridCell.Tab.0.bottom" timestamp="1590236067608">
+    <state width="1877" height="379" key="GridCell.Tab.0.bottom" timestamp="1590236364794">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586170601742" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168658165" />
     <state width="1323" height="238" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587405900549" />
-    <state width="1877" height="379" key="GridCell.Tab.0.bottom/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236067608" />
-    <state width="1877" height="379" key="GridCell.Tab.0.center" timestamp="1590236067608">
+    <state width="1877" height="379" key="GridCell.Tab.0.bottom/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236364794" />
+    <state width="1877" height="379" key="GridCell.Tab.0.center" timestamp="1590236364793">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586170601742" />
     <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168658165" />
     <state width="1323" height="238" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587405900549" />
-    <state width="1877" height="379" key="GridCell.Tab.0.center/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236067608" />
-    <state width="1877" height="379" key="GridCell.Tab.0.left" timestamp="1590236067608">
+    <state width="1877" height="379" key="GridCell.Tab.0.center/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236364793" />
+    <state width="1877" height="379" key="GridCell.Tab.0.left" timestamp="1590236364793">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586170601742" />
     <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168658165" />
     <state width="1323" height="238" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587405900549" />
-    <state width="1877" height="379" key="GridCell.Tab.0.left/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236067608" />
-    <state width="1877" height="379" key="GridCell.Tab.0.right" timestamp="1590236067608">
+    <state width="1877" height="379" key="GridCell.Tab.0.left/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236364793" />
+    <state width="1877" height="379" key="GridCell.Tab.0.right" timestamp="1590236364794">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586170601742" />
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168658165" />
     <state width="1323" height="238" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587405900549" />
-    <state width="1877" height="379" key="GridCell.Tab.0.right/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236067608" />
+    <state width="1877" height="379" key="GridCell.Tab.0.right/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236364794" />
     <state width="1323" height="238" key="GridCell.Tab.1.bottom" timestamp="1587405900541">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

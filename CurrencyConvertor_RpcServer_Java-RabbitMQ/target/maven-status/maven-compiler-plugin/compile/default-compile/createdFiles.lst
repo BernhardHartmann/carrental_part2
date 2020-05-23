@@ -1,11 +1,5 @@
 com\ws\RPCServer.class
-io\spring\guides\gs_producing_web_service\GetExchangeRateRequest.class
-io\spring\guides\gs_producing_web_service\ObjectFactory.class
+com\ws\RpcRequest.class
 com\ws\RpcResponse.class
 com\ws\fxRateConvertor.class
 com\ws\DataRetriever.class
-com\ws\WebServiceConfig.class
-com\ws\RpcRequest.class
-io\spring\guides\gs_producing_web_service\GetExchangeRateResponse.class
-io\spring\guides\gs_producing_web_service\ExchangeRate.class
-io\spring\guides\gs_producing_web_service\package-info.class
