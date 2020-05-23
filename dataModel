@@ -1,0 +1,97 @@
+    public class Category
+    {
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+        public int CategoryId { get; set; }
+        [BsonIgnore]
+        public string CategoryLabel { get; set; }
+        [BsonIgnore]
+        public string CategoryDesc { get; set; }
+        [BsonIgnore]
+        public decimal? Price { get; set; }
+    }
+	
+	
+	 public class Location
+    {
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+        public int LocationId { get; set; }		
+		    public string BranchName { get; set; }        
+        public string Streetname { get; set; }        
+        public string Streetno { get; set; }        
+        public string City { get; set; }        
+        public string Zipcode { get; set; }        
+        public string State { get; set; }        
+        public string Country { get; set; }        
+        public string Longitude { get; set; }        
+        public string Latitude { get; set; }        
+        public DateTime? Timestamp { get; set; }
+		
+	}
+	
+	
+	public class Car
+	{
+		[BsonRepresentation(BsonType.ObjectId)]
+		public string Id { get; set; }
+		public int CarId { get; set; }
+		public int CategoryId { get; set; }
+		public int LocationId { get; set; }
+		public string CarDesc { get; set; }
+		public string Color { get; set; }
+		public string Brand { get; set; }
+		public string Model { get; set; }
+		public string EngineNumber { get; set; }
+		public DateTime? PurchaseDate { get; set; }
+		public int? Kilometer { get; set; }
+		public int PetrolId { get; set; }
+		public int IsAvailable { get; set; }
+    }
+    
+    JSON : CarObject
+    {"_id":{"$oid":"5ec6e35ff7231888ecb00575"},"CarId":1,"Category":{"_id":null,"CategoryId":1},"Location":{"_id":null,"LocationId":1},"CarDesc":null,"Color":null,"Brand":null,"Model":null,"EngineNumber":null,"PurchaseDate":null,"Kilometer":null,"Petrol":null,"IsAvailable":0}
+        
+	public class Booking
+	{
+		[BsonRepresentation(BsonType.ObjectId)]
+		public string Id { get; set; }
+		public int ReservationId { get; set; }
+		public int? CarId { get; set; }
+		public int? CatId { get; set; }
+		public int? CurrencyId { get; set; }
+		public int? CustomerId { get; set; }
+		public DateTime DateFrom { get; set; }
+		public DateTime DateTo { get; set; }
+		public int ResStatus { get; set; }
+		public string CarStatus { get; set; }
+		public string ResNote { get; set; }
+		public decimal Price { get; set; }
+		public decimal? KilometerSpent { get; set; }
+		public DateTime? ReturnTime { get; set; }
+		public decimal? ExchangeRate { get; set; }
+	}		
+  JSON: Booking
+  {"_id":{"$oid":"5ec8f10e236ab56728223492"},"ReservationId":"1","CarId":"1","CatId":"1","CurrencyId":"1","CustomerId":"1","DateFrom":"2020-10-10","DateTo":"2020-10-15","ResStatus":"1","CarStatus":"1","ResNote":"","Price":"250","KilometerSpent":"","ReturnTime":"","ExchangeRate":"0.95"}
+	
+	public class User
+	{
+		[BsonRepresentation(BsonType.ObjectId)]
+		public int CustomerId { get; set; }
+		public string FirstName { get; set; }
+		public string LastName { get; set; }
+		public string Password { get; set; }
+		public string Email { get; set; }
+		public string DrivingLicenseNumber { get; set; }
+		public string Mobile { get; set; }
+		public string State { get; set; }
+		public string City { get; set; }
+		public string Country { get; set; }
+		public string Zipcode { get; set; }
+		public string Phone { get; set; }
+		public DateTime RegistrationDate { get; set; }
+	}
+  JSON User:
+  {"_id":{"$oid":"5ec5c4baf72318076026c7fc"},"FirstName":"234","LastName":"234","Password":"234","Email":"234","registerationDate":{"$date":"0001-01-01T00:00:00.000Z"},"Telefon":"234"}
+  
+		
