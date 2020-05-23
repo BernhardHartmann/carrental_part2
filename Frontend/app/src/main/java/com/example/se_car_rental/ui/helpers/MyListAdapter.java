@@ -102,7 +102,6 @@ public class MyListAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         return (mDataset != null ? mDataset.length : 0);
-
     }
 
     @Override

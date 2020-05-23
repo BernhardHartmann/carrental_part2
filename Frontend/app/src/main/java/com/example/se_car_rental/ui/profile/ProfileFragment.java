@@ -42,7 +42,7 @@ public class ProfileFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
-        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        sharedPref = getActivity().getSharedPreferences("Preference", Context.MODE_PRIVATE);
 
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
