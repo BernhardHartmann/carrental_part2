@@ -17,7 +17,7 @@
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public int LocationId { get; set; }		
-		    public string BranchName { get; set; }        
+	public string BranchName { get; set; }        
         public string Streetname { get; set; }        
         public string Streetno { get; set; }        
         public string City { get; set; }        
@@ -50,7 +50,7 @@
     }
     
     JSON : CarObject
-    {"_id":{"$oid":"5ec6e35ff7231888ecb00575"},"CarId":1,"Category":{"_id":null,"CategoryId":1},"Location":{"_id":null,"LocationId":1},"CarDesc":null,"Color":null,"Brand":null,"Model":null,"EngineNumber":null,"PurchaseDate":null,"Kilometer":null,"Petrol":null,"IsAvailable":0}
+ {"_id":{"$oid":"5ec6e35ff7231888ecb00575"},"CarId":1,"CategoryId":"1","LocationId":"1","CarDesc":null,"Color":null,"Brand":null,"Model":null,"EngineNumber":null,"PurchaseDate":null,"Kilometer":null,"Petrol":null,"IsAvailable":0}
         
 	public class Booking
 	{
@@ -92,6 +92,6 @@
 		public DateTime RegistrationDate { get; set; }
 	}
   JSON User:
-  {"_id":{"$oid":"5ec5c4baf72318076026c7fc"},"FirstName":"234","LastName":"234","Password":"234","Email":"234","registerationDate":{"$date":"0001-01-01T00:00:00.000Z"},"Telefon":"234"}
+  {"_id":{"$oid":"5ec5c4baf72318076026c7fc"},"CustomerId":"1","FirstName":"234","LastName":"234","Password":"234","Email":"234","DrivingLicenseNumber":"232323535","RegistrationDate":{"$date":"0001-01-01T00:00:00.000Z"},"State":" ","City":"Vienna","Country":"AT","Zipcode":"1110","Phone":"0660555471556"}
   
 		
