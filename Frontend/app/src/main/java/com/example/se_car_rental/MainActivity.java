@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.se_car_rental.entities.ApiUtil;
 import com.example.se_car_rental.entities.Locations;
 import com.example.se_car_rental.entities.Reservation;
+import com.example.se_car_rental.ui.helpers.LocationListener;
 import com.example.se_car_rental.ui.home.HomeFragment;
 import com.example.se_car_rental.ui.profile.LoginFragment;
 import com.example.se_car_rental.ui.profile.ProfileFragment;
@@ -28,10 +30,12 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeFragment.OnItemSelectedListener, ReservationFragment.OnItemSelectedListener {
+
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeFragment.OnItemSelectedListener, ReservationFragment.OnItemSelectedListener, LocationListener {
 
     private BottomNavigationView navView;
     private ViewPager viewPager;
+    private MainPagerAdapter pagerAdapter;
     static SharedPreferences sharedPref;
     static SharedPreferences.Editor editor;
     private boolean isLoggedIn;
@@ -40,13 +44,20 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPref = getSharedPreferences("Preference", MODE_PRIVATE);
+        new LocationTask(this).execute("utilities/locations");
+        new CurrencyTask().execute("utilities/currencies");
+    }
 
+    @Override
+    public void onLocationsRetrieved() {
+        //Initialize Views only if App can be started. Prevents app from starting before essential data can be loaded.
         navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(this);
 
         viewPager = findViewById(R.id.viewPager);
 
-        MainPagerAdapter pagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
+        pagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragmet(new HomeFragment());
         pagerAdapter.addFragmet(new ReservationFragment());
         pagerAdapter.addFragmet(new ProfileFragment());
@@ -54,13 +65,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         pagerAdapter.addFragmet(new RegisterFragment());
         viewPager.setAdapter(pagerAdapter);
 
-        sharedPref = getSharedPreferences("Preference", MODE_PRIVATE);
+    }
 
-        new LocationTask().execute("utilities/locations");
-        new CurrencyTask().execute("utilities/currencies");
-//        String url = "useCase/getCategoriesToLocationID/" + 1;
-//        new CategoryTask().execute(url);
-
+    @Override
+    public void onLocationsFailed() {
+        TextView txtView= findViewById(R.id.warning);
+        txtView.setText("App unable to connect to API. Please check your internet connection and try again.");
     }
 
     @Override
@@ -99,22 +109,30 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     }
 
+
     public class LocationTask extends AsyncTask<String, Void, String> {
+        private LocationListener callback;
+
+        LocationTask(LocationListener loclist){
+            callback = loclist;
+        }
 
         @Override
         protected String doInBackground(String... strings) {
             String url = strings[0];
-
             return ApiUtil.getFromBackend(url, null);
         }
 
         @Override
         protected void onPostExecute(String s) {
-            //Gson gson = new Gson();
-            //Locations[] locations = gson.fromJson(s, Locations[].class);
-            editor = sharedPref.edit();
-            editor.putString(getString(R.string.locations), s);
-            editor.commit();
+            if(s != null) {
+                editor = sharedPref.edit();
+                editor.putString(getString(R.string.locations), s);
+                editor.commit();
+                callback.onLocationsRetrieved();
+            }else{
+                callback.onLocationsFailed();
+            }
         }
     }
 

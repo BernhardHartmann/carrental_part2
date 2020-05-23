@@ -33,6 +33,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
@@ -47,10 +49,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
     private Locations locations[];
 
-
     // The container Activity must implement this interface so the frag can deliver messages
     public interface OnItemSelectedListener {
-        /** Called by HeadlinesFragment when a list item is selected */
         void onItemSelected(int position, Locations location);
     }
 
@@ -68,7 +68,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                     + " must implement OnItemSelectedListener");
         }
 
-        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        //sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        sharedPref = getActivity().getSharedPreferences("Preference",MODE_PRIVATE);
         String location = sharedPref.getString(getString(R.string.locations), null);
         Gson gson = new Gson();
         locations = gson.fromJson(location, Locations[].class);
