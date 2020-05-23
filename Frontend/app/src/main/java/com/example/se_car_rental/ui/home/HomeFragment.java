@@ -44,6 +44,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
     private SharedPreferences sharedPref;
     private MyListAdapter mAdapter;
     private ListView listView;
+
     private Locations locations[];
 
 
@@ -79,7 +80,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
 
         if(location != null) {
-            listView = (ListView) root.findViewById(R.id.recyclerview);
+            listView = (ListView) root.findViewById(R.id.listview_home);
             mAdapter = new MyListAdapter(locations, getActivity());
             listView.setAdapter(mAdapter);
 

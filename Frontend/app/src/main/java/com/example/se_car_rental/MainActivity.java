@@ -1,10 +1,8 @@
 package com.example.se_car_rental;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -19,19 +17,18 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.se_car_rental.entities.ApiUtil;
 import com.example.se_car_rental.entities.Locations;
-import com.example.se_car_rental.entities.User;
-import com.example.se_car_rental.ui.filter.FilterFragment;
-import com.example.se_car_rental.ui.helpers.PermissionUtils;
+import com.example.se_car_rental.entities.Reservation;
 import com.example.se_car_rental.ui.home.HomeFragment;
 import com.example.se_car_rental.ui.profile.LoginFragment;
 import com.example.se_car_rental.ui.profile.ProfileFragment;
 import com.example.se_car_rental.ui.profile.RegisterFragment;
+import com.example.se_car_rental.ui.reservation.ReservationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeFragment.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeFragment.OnItemSelectedListener, ReservationFragment.OnItemSelectedListener {
 
     private BottomNavigationView navView;
     private ViewPager viewPager;
@@ -51,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         MainPagerAdapter pagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragmet(new HomeFragment());
-        pagerAdapter.addFragmet(new FilterFragment());
+        pagerAdapter.addFragmet(new ReservationFragment());
         pagerAdapter.addFragmet(new ProfileFragment());
         pagerAdapter.addFragmet(new LoginFragment());
         pagerAdapter.addFragmet(new RegisterFragment());
@@ -61,6 +58,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         new LocationTask().execute("utilities/locations");
         new CurrencyTask().execute("utilities/currencies");
+//        String url = "useCase/getCategoriesToLocationID/" + 1;
+//        new CategoryTask().execute(url);
+
     }
 
     @Override
@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         onStop();
     }
 
+    public void onItemSelected(int position, Reservation reservation) {
+
+    }
+
     public class LocationTask extends AsyncTask<String, Void, String> {
 
         @Override
@@ -106,6 +110,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         @Override
         protected void onPostExecute(String s) {
+            //Gson gson = new Gson();
+            //Locations[] locations = gson.fromJson(s, Locations[].class);
             editor = sharedPref.edit();
             editor.putString(getString(R.string.locations), s);
             editor.commit();
@@ -165,6 +171,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         @Override
         protected void onPostExecute(String s) {
+            //Gson gson = new Gson();
+            //Locations[] locations = gson.fromJson(s, Locations[].class);
             editor = sharedPref.edit();
             editor.putString(getString(R.string.categories), s);
             editor.commit();

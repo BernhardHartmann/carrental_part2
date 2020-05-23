@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.se_car_rental.ui.filter.FilterFragment"
+        android:name="com.example.se_car_rental.ui.reservation.ReservationFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_filter" />
+        tools:layout="@layout/fragment_reservation" />
 
     <fragment
         android:id="@+id/navigation_profile"
