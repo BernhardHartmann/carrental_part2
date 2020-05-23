@@ -38,7 +38,8 @@ public class ApiUtil {
     private ApiUtil() {
     }
 
-    public static final String BASE_API_URL = "http://34.230.15.8/fh.campuswien.rest/services/rest/v1/";
+    //public static final String BASE_API_URL = "http://34.230.15.8/fh.campuswien.rest/services/rest/v1/";
+    public static final String BASE_API_URL = "http://10.0.2.2:5001/services/rest/v1/";
     public static String postToBackend(String urlPath, String jwtToken, Object object) throws IOException {
 
 
