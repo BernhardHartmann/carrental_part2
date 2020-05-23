@@ -23,7 +23,12 @@ namespace RpcClientCCY
 
         public RpcClientCCY()
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
+            //var factory = new ConnectionFactory() { HostName = "localhost" };
+
+            //Testing deployment
+            //var factory = new ConnectionFactory() { HostName = "rabbitmq", DispatchConsumersAsync = true };
+
+            var factory = new ConnectionFactory(){ HostName = "rabbitmq" };
 
             connection = factory.CreateConnection();
             channel = connection.CreateModel();

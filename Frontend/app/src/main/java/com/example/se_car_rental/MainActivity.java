@@ -1,6 +1,5 @@
 package com.example.se_car_rental;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -10,15 +9,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.se_car_rental.entities.ApiUtil;
+import com.example.se_car_rental.entities.Category;
 import com.example.se_car_rental.entities.Locations;
 import com.example.se_car_rental.entities.Reservation;
+import com.example.se_car_rental.entities.User;
 import com.example.se_car_rental.ui.helpers.LocationListener;
 import com.example.se_car_rental.ui.home.HomeFragment;
 import com.example.se_car_rental.ui.profile.LoginFragment;
@@ -47,6 +47,28 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         sharedPref = getSharedPreferences("Preference", MODE_PRIVATE);
         new LocationTask(this).execute("utilities/locations");
         new CurrencyTask().execute("utilities/currencies");
+    }
+
+    public class MainPagerAdapter extends FragmentPagerAdapter {
+        private ArrayList<Fragment> fragmentList = new ArrayList<>();
+
+        public MainPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            return fragmentList.get(i);
+        }
+
+        @Override
+        public int getCount() {
+            return fragmentList.size();
+        }
+
+        void addFragmet(Fragment fragment) {
+            fragmentList.add(fragment);
+        }
     }
 
     @Override
@@ -86,6 +108,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.navigation_profile:
                 isLoggedIn = sharedPref.getBoolean(getString(R.string.isLoggedIn), false);
                 if(isLoggedIn){
+                    User user = getUserDataFromSharedPreferences();
+                    String url = "customer/profile/" + user.getId();
+                    //new ProfileTask().execute(url);
                     viewPager.setCurrentItem(2);
                 }else{
                     viewPager.setCurrentItem(3);
@@ -154,46 +179,51 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
     }
 
-
-
-    public class MainPagerAdapter extends FragmentPagerAdapter {
-        private ArrayList<Fragment> fragmentList = new ArrayList<>();
-
-        public MainPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int i) {
-            return fragmentList.get(i);
-        }
-
-        @Override
-        public int getCount() {
-            return fragmentList.size();
-        }
-
-        void addFragmet(Fragment fragment) {
-            fragmentList.add(fragment);
-        }
-    }
-
     public class CategoryTask extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... strings) {
             String url = strings[0];
 
-            return ApiUtil.getFromBackend(url, null);
+            User user = getUserDataFromSharedPreferences();
+
+            return ApiUtil.getFromBackend(url, user.getToken());
         }
 
         @Override
         protected void onPostExecute(String s) {
+
             editor = sharedPref.edit();
             editor.putString(getString(R.string.categories), s);
             editor.commit();
         }
     }
 
+    public class ProfileTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            String url = strings[0];
+
+            User user = getUserDataFromSharedPreferences();
+
+            return ApiUtil.getFromBackend(url, user.getToken());
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            editor = sharedPref.edit();
+            editor.putString(getString(R.string.profileData), s);
+            editor.commit();
+
+        }
+    }
+
+    private User getUserDataFromSharedPreferences() {
+        String userData = sharedPref.getString(getString(R.string.user), null);
+        Gson gson = new Gson();
+        User user = gson.fromJson(userData, User.class);
+
+        return user;
+    }
 }
 
