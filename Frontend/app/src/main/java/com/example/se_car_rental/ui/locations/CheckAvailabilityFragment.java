@@ -132,11 +132,11 @@ public class CheckAvailabilityFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                if(reservation.getDate_from() != null && reservation.getDate_to() != null) {
+                if(reservation.getDateFrom() != null && reservation.getDateTo() != null) {
                     TextInputLayout mEdit  = (TextInputLayout) getActivity().findViewById(R.id.comments);
                     String note = String.valueOf(mEdit.getEditText().getText());
                    // assignCar();
-                    reservation.setRes_note(note);
+                    reservation.setReservationNote(note);
                     mCallback.onFabSelected(BOOK_FRAG, reservation);
                 }else{
                     Toast toast=Toast.makeText(getActivity(),"Please enter at least one date",Toast.LENGTH_LONG);
@@ -177,14 +177,14 @@ public class CheckAvailabilityFragment extends Fragment {
 
         switch (time) {
             case START:
-                reservation.setDate_from(date);
+                reservation.setDateFrom(date);
                 break;
             case END:
-                reservation.setDate_to(date);
+                reservation.setDateTo(date);
                 break;
         }
 
-        if(reservation.getDate_from() != null && reservation.getDate_to() != null) {
+        if(reservation.getDateFrom() != null && reservation.getDateTo() != null) {
           //  try{
             //String url = "useCase/getCarByDate/" + 2 + "/" + reservation.getDate_from() +  "/" + reservation.getDate_to();
           //      String url = "car/getRandomCarByCategoryID/" + category_id;

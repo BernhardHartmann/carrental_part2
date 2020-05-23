@@ -104,7 +104,9 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
         currentPosition = position;
         CheckAvailabilityFragment descFrag = (CheckAvailabilityFragment)
                 fragmentManager.findFragmentById(R.id.description_fragment);
-        TextView category = (TextView) this.findViewById(R.id.txt_category);
+        TextView category =  this.findViewById(R.id.txt_category);
+        ImageView catImage = this.findViewById(R.id.catIcon);
+
 
 
         if (descFrag != null) {
@@ -117,7 +119,27 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
 
             CheckAvailabilityFragment newFragment = new CheckAvailabilityFragment();
             image.setVisibility(View.VISIBLE);
-            category.setText(category_list[position].getName());
+            String catName = category_list[position].getName();
+            category.setText(catName);
+            switch(catName) {
+                case("City Car"):
+                    catImage.setImageResource(R.mipmap.city_foreground);
+                    break;
+                case("Economy Car"):
+                    catImage.setImageResource(R.mipmap.economy_foreground);
+                    break;
+                case("Compact Car"):
+                    catImage.setImageResource(R.mipmap.compact_foreground);
+                    break;
+                case("Family Car"):
+                    catImage.setImageResource(R.mipmap.family_foreground);
+                    break;
+                case("Luxury Car"):
+                    catImage.setImageResource(R.mipmap.luxury_foreground);
+                    break;
+                default:
+                    catImage.setImageResource(R.mipmap.old_foreground);
+            }
             newFragment.setCategories(category_list[currentPosition].getCategoryId());
            //description.setText(category_list[position].getLabel());
             Bundle args = new Bundle();

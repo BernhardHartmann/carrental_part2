@@ -77,10 +77,10 @@ public class ConfirmBookingFragment extends Fragment {
         TextView reservation_msg = (TextView) getActivity().findViewById(R.id.res_comment);
 
         reservationID.setText("Reservation ID: " + reservationToConfirm.getReservation_id());
-        reservation_start.setText("Reservation start: " + reservationToConfirm.getDate_from());
-        reservation_end.setText("Reservation end: " + reservationToConfirm.getDate_to());
+        reservation_start.setText("Reservation start: " + reservationToConfirm.getDateFrom());
+        reservation_end.setText("Reservation end: " + reservationToConfirm.getDateTo());
         reservation_cost.setText("Reservation amount: " + 132);
-        reservation_msg.setText("Additional comments: " + reservationToConfirm.getRes_note());
+        reservation_msg.setText("Additional comments: " + reservationToConfirm.getReservationNote());
 
 
         TextView button = (TextView) getActivity().findViewById(R.id.button);
