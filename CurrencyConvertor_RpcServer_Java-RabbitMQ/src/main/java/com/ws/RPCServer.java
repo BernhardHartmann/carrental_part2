@@ -35,7 +35,8 @@ public class RPCServer {
 
     public static void main(String[] argv) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
+        //factory.setHost("localhost");
+        factory.setHost("rabbitmq");
 
         try (Connection connection = factory.newConnection();
              Channel channel = connection.createChannel()) {
