@@ -1,6 +1,5 @@
 package com.ws;
 
-import io.spring.guides.gs_producing_web_service.GetExchangeRateRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,8 +14,8 @@ import java.text.ParseException;
 import java.util.HashMap;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CurrencyConvertorAppTests {
-/*
+public class RPCServerTests {
+
 
 	@Test
 	public void testFxRateConvertor() throws SAXException, ParserConfigurationException, ParseException, IOException {
@@ -44,9 +43,4 @@ public class CurrencyConvertorAppTests {
 
 
 	}
-
- */
-
-
-
 }
