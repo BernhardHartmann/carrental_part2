@@ -19,6 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.se_car_rental.R;
 import com.example.se_car_rental.entities.ApiUtil;
 import com.example.se_car_rental.entities.Currency;
+import com.example.se_car_rental.entities.Locations;
 import com.example.se_car_rental.entities.Login;
 import com.example.se_car_rental.entities.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -113,23 +114,31 @@ public class LoginFragment extends Fragment {
 
             if(string != null){
 
-                editor = sharedPref.edit();
-                editor.putString(getString(R.string.user), string);
-                editor.putBoolean(getString(R.string.isLoggedIn), true);
-                editor.commit();
+                Gson gson = new Gson();
+                user = gson.fromJson(string, User.class);
 
-                //Change menu to home
-                BottomNavigationView mBottomNavigationView = getActivity().findViewById(R.id.nav_view);
-                mBottomNavigationView.getMenu().findItem(R.id.navigation_home).setChecked(true);
+                if(user.isLoginSuccessful()){
+                    editor = sharedPref.edit();
+                    editor.putString(getString(R.string.user), string);
+                    editor.putBoolean(getString(R.string.isLoggedIn), true);
+                    editor.commit();
 
-                //Load home tab
-                ViewPager viewPager = getActivity().findViewById(R.id.viewPager);
-                viewPager.setCurrentItem(0);
+                    //Change menu to home
+                    BottomNavigationView mBottomNavigationView = getActivity().findViewById(R.id.nav_view);
+                    mBottomNavigationView.getMenu().findItem(R.id.navigation_home).setChecked(true);
 
-                Toast.makeText(getContext(), "Your logged in successfully." ,Toast.LENGTH_SHORT).show();
+                    //Load home tab
+                    ViewPager viewPager = getActivity().findViewById(R.id.viewPager);
+                    viewPager.setCurrentItem(0);
+
+                    Toast.makeText(getContext(), "Your logged in successfully." ,Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "Your email or password is invalid." ,Toast.LENGTH_SHORT).show();
+                }
+
 
             }else{
-                Toast.makeText(getContext(), "Your email or password is invalid." ,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "An error occurred during processing your request." ,Toast.LENGTH_SHORT).show();
             }
 
         }

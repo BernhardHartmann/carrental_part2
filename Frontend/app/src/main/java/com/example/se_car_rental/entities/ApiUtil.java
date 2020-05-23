@@ -42,36 +42,35 @@ public class ApiUtil {
     public static final String BASE_API_URL = "http://10.0.2.2:5001/services/rest/v1/";
     public static String postToBackend(String urlPath, String jwtToken, Object object) throws IOException {
 
+    HttpURLConnection con = null;
+    JsonParser parser = new JsonParser();
+    StringBuilder response = new StringBuilder();
 
-        HttpURLConnection con = null;
-        JsonParser parser = new JsonParser();
-        StringBuilder response = new StringBuilder();
+    try {
+        URL url = new URL(BASE_API_URL + urlPath);
+        Gson gson = new Gson();
 
-        try {
-            URL url = new URL(BASE_API_URL + urlPath);
-            Gson gson = new Gson();
+        con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json; utf-8");
+        con.setRequestProperty("Accept", "application/json");
+        if(jwtToken != null){
+            con.setRequestProperty("authorization", "Bearer " + jwtToken);
+        }
+        con.setDoOutput(true);
 
-            con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("POST");
-            con.setRequestProperty("Content-Type", "application/json; utf-8");
-            con.setRequestProperty("Accept", "application/json");
-            if(jwtToken != null){
-                con.setRequestProperty("authorization", "Bearer " + jwtToken);
-            }
-            con.setDoOutput(true);
+        String jsonInputString = gson.toJson(object); //gson.tojson() converts your pojo to json
 
-            String jsonInputString = gson.toJson(object); //gson.tojson() converts your pojo to json
+        OutputStream os = con.getOutputStream();
+        byte[] input = jsonInputString.getBytes("utf-8");
+        os.write(input, 0, input.length);
 
-            OutputStream os = con.getOutputStream();
-            byte[] input = jsonInputString.getBytes("utf-8");
-            os.write(input, 0, input.length);
+        BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+        String responseLine = null;
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
-            String responseLine = null;
-
-            while ((responseLine = br.readLine()) != null) {
-                response.append(responseLine.trim());
-            }
+        while ((responseLine = br.readLine()) != null) {
+            response.append(responseLine.trim());
+        }
 
         } catch (Exception e) {
             e.printStackTrace();
