@@ -1,0 +1,82 @@
+﻿@model UserManagement.Users.UsersList
+
+@{
+    ViewBag.Title = "User Listings";
+}
+
+<h2>User Listings</h2>
+
+@using (Html.BeginForm())
+{
+	<label for="Email">Email</label>
+	<input type="text" name="Email" value="@Model.Filters.Email" />
+    <label for="Password">Password</label>
+	<input type="text" name="Password" value="@Model.Filters.Password" />
+	<input type="submit" value="Search" />
+}
+
+<p>
+    @Html.ActionLink("Post USER", "Post")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            FirstName
+        </th>
+        
+        <th>
+            LastName
+        </th>
+        
+        <th>
+            Email
+        </th>
+        
+        <th>
+            Password
+        </th>
+        
+        <th>
+            Description
+        </th>
+        <th>
+            Address
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var user in Model.Users)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => user.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => user.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => user.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => user.Password)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => user.Description)
+    </td>
+
+    <td>
+        @String.Join(" ", user.Address)
+    </td>
+    <td>
+        @Html.ActionLink("edit User", "EditUser", new { id = user.Id })
+    </td>
+
+    <td>
+        @Html.ActionLink("Delete", "Delete", new { id = user.Id })
+    </td>
+</tr>
+    }
+
+</table>

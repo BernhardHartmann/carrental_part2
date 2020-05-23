@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="UserManagement.Properties.Settings.ConnectionString-Web.config Connection String" description="UserManagement.Properties.Settings.ConnectionString Die in der Datei &amp;quot;web.config&amp;quot; festgelegte Verbindungszeichenfolge, die von der Anwendung für den Zugriff auf die Datenbank verwendet wird." defaultValue="mongodb://localhost" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\wattar\\Downloads\\userManagement\\after\\src\\RealEstate\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='UserManagement.Properties.Settings.ConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

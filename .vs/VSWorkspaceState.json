@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\_GETTING_STARTED_.NET-RabbitMQ",
-    "\\_GETTING_STARTED_.NET-RabbitMQ\\images",
-    "\\_GETTING_STARTED_.NET-RabbitMQ\\recv",
-    "\\_GETTING_STARTED_.NET-RabbitMQ\\send"
+    "\\CarRental"
   ],
+  "SelectedNode": "\\CarRental\\Module 7.sln",
   "PreviewInSolutionExplorer": false
 }

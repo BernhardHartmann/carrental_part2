@@ -1,0 +1,11 @@
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\carsManagementService\bin\Debug\carsManagementService.dll.config
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\carsManagementService\bin\Debug\carsManagementService.dll
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\carsManagementService\bin\Debug\carsManagementService.pdb
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\carsManagementService\bin\Debug\MongoDB.Bson.dll
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\carsManagementService\bin\Debug\MongoDB.Driver.dll
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\carsManagementService\bin\Debug\MongoDB.Bson.xml
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\carsManagementService\bin\Debug\MongoDB.Driver.xml
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\carsManagementService\obj\Debug\carsManagementService.csproj.CopyComplete
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\carsManagementService\obj\Debug\carsManagementService.dll
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\carsManagementService\obj\Debug\carsManagementService.pdb
+C:\Users\wattar\source\repos\MicroServices\carrental_part2\CarRental\carsManagementService\obj\Debug\carsManagementService.csprojAssemblyReference.cache
