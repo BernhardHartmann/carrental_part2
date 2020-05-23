@@ -134,7 +134,7 @@ public class ApiUtil {
 
         try {
 
-            URL url = new URL(BASE_API_URL + urlPath + "/" + id.toString());
+            URL url = new URL(BASE_API_URL + urlPath + id.toString());
 
             con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");

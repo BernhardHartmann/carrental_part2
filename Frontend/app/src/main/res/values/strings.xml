@@ -43,6 +43,6 @@
     <string name="changeData">Change Data</string>
     <string name="key">key</string>
     <string name="name">locationName</string>
-    <string name="profileData">profileData</string>
+    <string name="customerData">customerData</string>
 
 </resources>

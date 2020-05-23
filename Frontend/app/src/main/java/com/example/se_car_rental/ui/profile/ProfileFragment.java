@@ -8,7 +8,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,24 +32,39 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private ProfileViewModel profileViewModel;
     static SharedPreferences sharedPref;
     static SharedPreferences.Editor editor;
     User user;
+    Currency[] currencies;
+    ArrayList<String> spinnerCurrencies = new ArrayList<>();
+    Currency selectedCurrency;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
         sharedPref = getActivity().getSharedPreferences("Preference", Context.MODE_PRIVATE);
+        String currency = sharedPref.getString(getString(R.string.currencies), null);
+        Gson gson = new Gson();
+        currencies = gson.fromJson(currency, Currency[].class);
+
+        for (Currency item: currencies) {
+            spinnerCurrencies.add(item.getCurrency_name());
+        }
 
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
-
+        Spinner spin = root.findViewById(R.id.spinner_currency_profile);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, spinnerCurrencies);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(adapter);
+        spin.setOnItemSelectedListener(this);
 
         Button logoutButton = root.findViewById(R.id.logout);
         logoutButton.setOnClickListener(new View.OnClickListener()
@@ -98,6 +116,16 @@ public class ProfileFragment extends Fragment {
         });
 
         return root;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        selectedCurrency = currencies[position];
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     private class ProfileTask extends AsyncTask<Object, Void, String> {
