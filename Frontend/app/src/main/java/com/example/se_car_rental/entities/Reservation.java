@@ -6,8 +6,9 @@ import java.time.ZoneId;
 
 public class Reservation implements Entity {
 
-    Integer categoryID;
-    Integer locationID;
+    int categoryID;
+    int locationID;
+    int customerID;
     Integer petrolID;
     Integer reservation_id;
     Integer car_id;
@@ -37,8 +38,19 @@ public class Reservation implements Entity {
     }
 
     //Create empty Reservation for editing
+
     public Reservation(Integer id) {
         this.reservation_id = id;
+    }
+
+    public Reservation(Integer id, Integer customerID) {
+        this.reservation_id = id;
+        this.customerID = customerID;
+        this.resStatus = 1;
+        this.carStatus = "";
+        this.reservationNote = "";
+        this.price = 0;
+        this.kilometerSpent = 0;
     }
 
     public Integer getReservation_id() {
@@ -48,6 +60,12 @@ public class Reservation implements Entity {
     public void setReservation_id(Integer reservation_id) {
         this.reservation_id = reservation_id;
     }
+
+    public void setCategoryID(int catID){
+        this.categoryID = catID;
+    }
+
+    public int getCategoryID(){return this.categoryID;}
 
     public Integer getCar_id() {
         return car_id;
@@ -128,6 +146,8 @@ public class Reservation implements Entity {
                 .toLocalDateTime();
         this.dateTo = date;
     }
+
+    public Integer getCustomerID(){return customerID;}
 
     public Integer getResStatus() {
         return resStatus;

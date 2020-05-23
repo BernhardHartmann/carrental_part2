@@ -87,8 +87,10 @@ public class ConfirmBookingFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                //String url = "useCase/bookCarToCategory/" + category_id;
-                String url = "useCase/bookCarToCategory/";
+                //TODO: Get Customer ID from Shared Preferences
+                String url = "reservation/createReservation/";
+                //{categoryID}/{customerID}/{datefrom}/{dateto}"
+                url = url + reservationToConfirm.getCategoryID() + "/1/" + reservationToConfirm.getDateFrom() + "/" + reservationToConfirm.getDateTo() + "/";
                 try {
                     new ReservationTask().execute(url, reservationToConfirm);
                 } catch (Exception e) {

@@ -125,9 +125,12 @@ public class CheckAvailabilityFragment extends Fragment {
         TextView description = (TextView) getActivity().findViewById(R.id.text_booking);
         args = getArguments();
         description.setText(testString);
-        reservation = new Reservation(1);
+        //TODO: Get customer ID from shared preferences
+        reservation = new Reservation(1, 1);
+        reservation.setCategoryID(category_id);
+
         this.showDatePickerDialog();
-        TextView button = (TextView) getActivity().findViewById(R.id.button);
+        TextView button = getActivity().findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -181,6 +184,7 @@ public class CheckAvailabilityFragment extends Fragment {
                 break;
             case END:
                 reservation.setDateTo(date);
+                reservation.setReturnTime(reservation.getDateTo());
                 break;
         }
 
