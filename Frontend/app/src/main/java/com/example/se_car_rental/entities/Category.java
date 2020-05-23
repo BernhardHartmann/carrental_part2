@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Category implements Entity, Parcelable {
-    private int category_id;
+    private int categoryID;
     private float categoryPrice;
     private String categoryDescription;
     private String categoryImage;
@@ -13,8 +13,8 @@ public class Category implements Entity, Parcelable {
     private boolean success;
 
 
-    public Category(int category_id, long price, String category_desc, String category_image, int amtav, int amtnav, boolean suc) {
-        this.category_id = category_id;;
+    public Category(int categoryID, long price, String category_desc, String category_image, int amtav, int amtnav, boolean suc) {
+        this.categoryID = categoryID;
         this.categoryDescription = category_desc;
         this.categoryImage = category_image;
         this.categoryPrice = price;
@@ -24,7 +24,7 @@ public class Category implements Entity, Parcelable {
     }
 
     protected Category(Parcel in) {
-        this.category_id = in.readInt();
+        this.categoryID = in.readInt();
         this.categoryImage = in.readString();
         this.categoryPrice = in.readInt();
     }
@@ -41,12 +41,12 @@ public class Category implements Entity, Parcelable {
         }
     };
 
-    public int getCategory_id() {
-        return category_id;
+    public int getCategoryId() {
+        return categoryID;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setCategoryId(int categoryId) {
+        this.categoryID = categoryId;
     }
 
 
@@ -77,21 +77,25 @@ public class Category implements Entity, Parcelable {
     @Override
     public String getName() {
         String car;
-        switch(category_id){
+
+        switch (categoryID) {
             case 1:
-                car =  "City Car";
+                car = "City Car";
                 break;
             case 2:
                 car = "Economy Car";
                 break;
             case 3:
-                car =  "Compact Car";
+                car = "Compact Car";
                 break;
             case 4:
                 car = "Family Car";
                 break;
+            case 5:
+                car = "Luxury Car";
+                break;
             default:
-                car =  "A car";
+                car = "A car";
                 break;
         }
         return car;
@@ -109,7 +113,7 @@ public class Category implements Entity, Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(category_id);
+        parcel.writeInt(categoryID);
         parcel.writeString(categoryImage);
     }
 }

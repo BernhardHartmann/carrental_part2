@@ -109,7 +109,7 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
 
         if (descFrag != null) {
             category.setText(category_list[position].getName());
-            descFrag.setCategories(category_list[currentPosition].getCategory_id());
+            descFrag.setCategories(category_list[currentPosition].getCategoryId());
            // description.setText(category_list[position].getLabel());
             descFrag.updateBookingView(position);
 
@@ -118,7 +118,7 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
             CheckAvailabilityFragment newFragment = new CheckAvailabilityFragment();
             image.setVisibility(View.VISIBLE);
             category.setText(category_list[position].getName());
-            newFragment.setCategories(category_list[currentPosition].getCategory_id());
+            newFragment.setCategories(category_list[currentPosition].getCategoryId());
            //description.setText(category_list[position].getLabel());
             Bundle args = new Bundle();
             args.putInt(CheckAvailabilityFragment.ARG_POSITION, position);
@@ -148,7 +148,7 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
             // Call a method in the ArticleFragment to update its content
             bookingFrag.updateBookingView(position);
             bookingFrag.setReservation(reservation);
-            bookingFrag.setCategories(category_list[currentPosition].getCategory_id());
+            bookingFrag.setCategories(category_list[currentPosition].getCategoryId());
             currentActivity = 2;
 
         } else {

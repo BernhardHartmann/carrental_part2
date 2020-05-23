@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ public class MyListAdapter extends BaseAdapter {
     public static class MyViewHolderHome extends RecyclerView.ViewHolder {
         public TextView textView1;
         public TextView textView2;
+        public ImageView imageView;
         public View listItem;
         private Entity[] dataSet;
         private Context mContext;
@@ -37,6 +39,7 @@ public class MyListAdapter extends BaseAdapter {
             listItem  = item;
             textView1 = item.findViewById(R.id.text1);
             textView2 = item.findViewById(R.id.text2);
+            imageView = item.findViewById(R.id.iView);
         }
     }
 
@@ -83,7 +86,29 @@ public class MyListAdapter extends BaseAdapter {
             Entity entity = mDataset[position];
             holder.textView1.setText(entity.getName());
             holder.textView2.setText(entity.getLabel());
-        }
+            if(className.equals("com.example.se_car_rental.entities.Category")){
+                String catName = entity.getName();
+                switch(catName) {
+                    case("City Car"):
+                        holder.imageView.setImageResource(R.mipmap.city_foreground);
+                        break;
+                    case("Economy Car"):
+                        holder.imageView.setImageResource(R.mipmap.economy_foreground);
+                        break;
+                    case("Compact Car"):
+                        holder.imageView.setImageResource(R.mipmap.compact_foreground);
+                        break;
+                    case("Family Car"):
+                        holder.imageView.setImageResource(R.mipmap.family_foreground);
+                        break;
+                    case("Luxury Car"):
+                        holder.imageView.setImageResource(R.mipmap.luxury_foreground);
+                        break;
+                    default:
+                        holder.imageView.setImageResource(R.mipmap.old_foreground);
+                }
+                }
+            }
 
         return listItem;
     }

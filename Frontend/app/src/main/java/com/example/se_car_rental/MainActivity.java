@@ -189,8 +189,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         @Override
         protected void onPostExecute(String s) {
-            //Gson gson = new Gson();
-            //Locations[] locations = gson.fromJson(s, Locations[].class);
             editor = sharedPref.edit();
             editor.putString(getString(R.string.categories), s);
             editor.commit();
