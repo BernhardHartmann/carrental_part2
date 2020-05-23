@@ -2,51 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89664776-cc19-4b56-ae25-a49093cbd459" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ws/ServiceConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/.vs/RpcClientCCY.NET-RabbitMQ/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/.vs/RpcClientCCY.NET-RabbitMQ/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/.vs/RpcClientCCY.NET-RabbitMQ/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/.vs/RpcClientCCY.NET-RabbitMQ/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/RpcClientCCY.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/RpcClientCCY.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/RpcCurrencyConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/RpcCurrencyConverter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Debug/netcoreapp3.1/RpcClientCCY.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Debug/netcoreapp3.1/RpcClientCCY.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Debug/netcoreapp3.1/RpcClientCCY.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Debug/netcoreapp3.1/RpcClientCCY.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/RpcClientCCY.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/RpcClientCCY.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/RpcClientCCY.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/RpcClientCCY.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/publish/RpcClientCCY.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/publish/RpcClientCCY.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/publish/RpcClientCCY.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/publish/RpcClientCCY.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Debug/netcoreapp3.1/RpcClientCCY.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Debug/netcoreapp3.1/RpcClientCCY.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Debug/netcoreapp3.1/RpcClientCCY.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Debug/netcoreapp3.1/RpcClientCCY.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Release/netcoreapp3.1/RpcClientCCY.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Release/netcoreapp3.1/RpcClientCCY.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Release/netcoreapp3.1/RpcClientCCY.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Release/netcoreapp3.1/RpcClientCCY.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Release/netcoreapp3.1/RpcClientCCY.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Release/netcoreapp3.1/RpcClientCCY.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ws/WebServiceConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ExchangeRates.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ExchangeRates.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/JAXB/episode_xjc.xjb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ws/DataRetriever.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ws/RPCServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ws/RpcRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ws/RpcResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ws/WebServiceConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ws/fxRateConvertor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/io/spring/guides/gs_producing_web_service/ExchangeRate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/io/spring/guides/gs_producing_web_service/GetExchangeRateRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/io/spring/guides/gs_producing_web_service/GetExchangeRateResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/io/spring/guides/gs_producing_web_service/ObjectFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/io/spring/guides/gs_producing_web_service/package-info.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/jaxb/META-INF/JAXB/episode_xjc.xjb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/jaxb/io/spring/guides/gs_producing_web_service/ExchangeRate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/jaxb/io/spring/guides/gs_producing_web_service/GetExchangeRateRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/jaxb/io/spring/guides/gs_producing_web_service/GetExchangeRateResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/jaxb/io/spring/guides/gs_producing_web_service/ObjectFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/jaxb/io/spring/guides/gs_producing_web_service/package-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jaxb2/.xjc-xjcStaleFlag" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ws/RPCServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ws/RPCServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ws/RPCServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ws/RPCServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT.war" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT.war.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/ExchangeRates.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/META-INF/JAXB/episode_xjc.xjb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/com/ws/DataRetriever.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/com/ws/RPCServer.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/com/ws/RpcRequest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/com/ws/RpcResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/com/ws/WebServiceConfig.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/com/ws/fxRateConvertor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/io/spring/guides/gs_producing_web_service/ExchangeRate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/io/spring/guides/gs_producing_web_service/GetExchangeRateRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/io/spring/guides/gs_producing_web_service/GetExchangeRateResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/io/spring/guides/gs_producing_web_service/ObjectFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/io/spring/guides/gs_producing_web_service/package-info.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/FastInfoset-1.2.16.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/amqp-client-5.9.0.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/classmate-1.5.1.jar" beforeDir="false" />
@@ -290,6 +276,7 @@
       <workItem from="1589904218602" duration="9782000" />
       <workItem from="1589925540800" duration="1852000" />
       <workItem from="1589993568715" duration="145000" />
+      <workItem from="1590237102249" duration="5994000" />
     </task>
     <task id="LOCAL-00001" summary="Revert &quot;clean up code&quot;&#10;&#10;This reverts commit 038a932da09f4950e390746a2393bf9279c5120d.">
       <created>1586168901086</created>
@@ -333,7 +320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590236168465</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixed: plugin config blocking WAR-build">
+      <created>1590236458292</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1590236458292</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,51 +340,52 @@
     <MESSAGE value="Unittests for FX calculations implemented" />
     <MESSAGE value="Cleaned code, unit test" />
     <MESSAGE value="Cleaned code: JAXB not needed, SOAP examples not relevant" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned code: JAXB not needed, SOAP examples not relevant" />
+    <MESSAGE value="Fixed: plugin config blocking WAR-build" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed: plugin config blocking WAR-build" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587336733218">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1587336733218" />
-    <state x="257" y="0" key="CommitChangelistDialog2" timestamp="1590236161818">
+    <state x="0" y="1" width="1920" height="1036" key="CommitChangelistDialog2" timestamp="1590253896076">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-31" y="-1080" key="CommitChangelistDialog2/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586169735524" />
     <state x="183" y="0" key="CommitChangelistDialog2/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168748270" />
-    <state x="257" y="0" key="CommitChangelistDialog2/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236161818" />
+    <state x="0" y="1" width="1920" height="1036" key="CommitChangelistDialog2/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590253896076" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1589910658632">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1589910658632" />
-    <state width="1877" height="379" key="GridCell.Tab.0.bottom" timestamp="1590236364794">
+    <state width="1877" height="379" key="GridCell.Tab.0.bottom" timestamp="1590249800923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586170601742" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168658165" />
     <state width="1323" height="238" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587405900549" />
-    <state width="1877" height="379" key="GridCell.Tab.0.bottom/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236364794" />
-    <state width="1877" height="379" key="GridCell.Tab.0.center" timestamp="1590236364793">
+    <state width="1877" height="379" key="GridCell.Tab.0.bottom/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590249800923" />
+    <state width="1877" height="379" key="GridCell.Tab.0.center" timestamp="1590249800923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586170601742" />
     <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168658165" />
     <state width="1323" height="238" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587405900549" />
-    <state width="1877" height="379" key="GridCell.Tab.0.center/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236364793" />
-    <state width="1877" height="379" key="GridCell.Tab.0.left" timestamp="1590236364793">
+    <state width="1877" height="379" key="GridCell.Tab.0.center/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590249800923" />
+    <state width="1877" height="379" key="GridCell.Tab.0.left" timestamp="1590249800922">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586170601742" />
     <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168658165" />
     <state width="1323" height="238" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587405900549" />
-    <state width="1877" height="379" key="GridCell.Tab.0.left/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236364793" />
-    <state width="1877" height="379" key="GridCell.Tab.0.right" timestamp="1590236364794">
+    <state width="1877" height="379" key="GridCell.Tab.0.left/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590249800922" />
+    <state width="1877" height="379" key="GridCell.Tab.0.right" timestamp="1590249800923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586170601742" />
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168658165" />
     <state width="1323" height="238" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587405900549" />
-    <state width="1877" height="379" key="GridCell.Tab.0.right/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236364794" />
+    <state width="1877" height="379" key="GridCell.Tab.0.right/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590249800923" />
     <state width="1323" height="238" key="GridCell.Tab.1.bottom" timestamp="1587405900541">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -428,11 +423,11 @@
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168636927" />
     <state x="229" y="0" key="SettingsEditor/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1587336700756" />
-    <state x="552" y="253" width="1070" height="534" key="Vcs.Push.Dialog.v2" timestamp="1590235983466">
+    <state x="552" y="253" width="1070" height="534" key="Vcs.Push.Dialog.v2" timestamp="1590236481221">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="264" y="-827" width="1070" height="534" key="Vcs.Push.Dialog.v2/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586169743829" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590235983466" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236481221" />
     <state x="731" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1587314564350">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
