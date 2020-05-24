@@ -125,18 +125,21 @@ public class CheckAvailabilityFragment extends Fragment {
         TextView description = (TextView) getActivity().findViewById(R.id.text_booking);
         args = getArguments();
         description.setText(testString);
-        reservation = new Reservation(1);
+        //TODO: Get customer ID from shared preferences
+        reservation = new Reservation(1, 1);
+        reservation.setCategoryID(category_id);
+
         this.showDatePickerDialog();
-        TextView button = (TextView) getActivity().findViewById(R.id.button);
+        TextView button = getActivity().findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                if(reservation.getDate_from() != null && reservation.getDate_to() != null) {
+                if(reservation.getDateFrom() != null && reservation.getDateTo() != null) {
                     TextInputLayout mEdit  = (TextInputLayout) getActivity().findViewById(R.id.comments);
                     String note = String.valueOf(mEdit.getEditText().getText());
                    // assignCar();
-                    reservation.setRes_note(note);
+                    reservation.setReservationNote(note);
                     mCallback.onFabSelected(BOOK_FRAG, reservation);
                 }else{
                     Toast toast=Toast.makeText(getActivity(),"Please enter at least one date",Toast.LENGTH_LONG);
@@ -177,14 +180,15 @@ public class CheckAvailabilityFragment extends Fragment {
 
         switch (time) {
             case START:
-                reservation.setDate_from(date);
+                reservation.setDateFrom(date);
                 break;
             case END:
-                reservation.setDate_to(date);
+                reservation.setDateTo(date);
+                reservation.setReturnTime(reservation.getDateTo());
                 break;
         }
 
-        if(reservation.getDate_from() != null && reservation.getDate_to() != null) {
+        if(reservation.getDateFrom() != null && reservation.getDateTo() != null) {
           //  try{
             //String url = "useCase/getCarByDate/" + 2 + "/" + reservation.getDate_from() +  "/" + reservation.getDate_to();
           //      String url = "car/getRandomCarByCategoryID/" + category_id;

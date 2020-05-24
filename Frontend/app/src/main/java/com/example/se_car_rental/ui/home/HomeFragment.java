@@ -109,7 +109,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         if(locations != null ){
         for (int i=0; i<this.locations.length; i++)
         {
-            branch0 = new LatLng(Double.parseDouble(this.locations[i].getLongitude()), Double.parseDouble(this.locations[i].getLatitude()));
+            branch0 = new LatLng(Double.parseDouble(this.locations[i].getLatitude()), Double.parseDouble(this.locations[i].getLongitude()));
             map.addMarker(new MarkerOptions().position(branch0).title(this.locations[i].getName()));
         }
         }

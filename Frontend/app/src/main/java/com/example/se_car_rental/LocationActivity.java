@@ -104,12 +104,14 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
         currentPosition = position;
         CheckAvailabilityFragment descFrag = (CheckAvailabilityFragment)
                 fragmentManager.findFragmentById(R.id.description_fragment);
-        TextView category = (TextView) this.findViewById(R.id.txt_category);
+        TextView category =  this.findViewById(R.id.txt_category);
+        ImageView catImage = this.findViewById(R.id.catIcon);
+
 
 
         if (descFrag != null) {
             category.setText(category_list[position].getName());
-            descFrag.setCategories(category_list[currentPosition].getCategory_id());
+            descFrag.setCategories(category_list[currentPosition].getCategoryId());
            // description.setText(category_list[position].getLabel());
             descFrag.updateBookingView(position);
 
@@ -117,8 +119,28 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
 
             CheckAvailabilityFragment newFragment = new CheckAvailabilityFragment();
             image.setVisibility(View.VISIBLE);
-            category.setText(category_list[position].getName());
-            newFragment.setCategories(category_list[currentPosition].getCategory_id());
+            String catName = category_list[position].getName();
+            category.setText(catName);
+            switch(catName) {
+                case("City Car"):
+                    catImage.setImageResource(R.mipmap.city_foreground);
+                    break;
+                case("Economy Car"):
+                    catImage.setImageResource(R.mipmap.economy_foreground);
+                    break;
+                case("Compact Car"):
+                    catImage.setImageResource(R.mipmap.compact_foreground);
+                    break;
+                case("Family Car"):
+                    catImage.setImageResource(R.mipmap.family_foreground);
+                    break;
+                case("Luxury Car"):
+                    catImage.setImageResource(R.mipmap.luxury_foreground);
+                    break;
+                default:
+                    catImage.setImageResource(R.mipmap.old_foreground);
+            }
+            newFragment.setCategories(category_list[currentPosition].getCategoryId());
            //description.setText(category_list[position].getLabel());
             Bundle args = new Bundle();
             args.putInt(CheckAvailabilityFragment.ARG_POSITION, position);
@@ -148,7 +170,7 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
             // Call a method in the ArticleFragment to update its content
             bookingFrag.updateBookingView(position);
             bookingFrag.setReservation(reservation);
-            bookingFrag.setCategories(category_list[currentPosition].getCategory_id());
+            bookingFrag.setCategories(category_list[currentPosition].getCategoryId());
             currentActivity = 2;
 
         } else {
