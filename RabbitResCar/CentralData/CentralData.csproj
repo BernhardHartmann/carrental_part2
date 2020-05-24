@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5CE2E802-3650-4272-8AFF-19BDFA201621}</ProjectGuid>
+    <ProjectGuid>{E43A0E3C-BF7F-4E87-AC4A-DF09AC0DF34D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>RabbitTest</RootNamespace>
-    <AssemblyName>RabbitTest</AssemblyName>
+    <RootNamespace>CentralData</RootNamespace>
+    <AssemblyName>CentralData</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,14 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CarManagementConsumer\CarReceiver.cs" />
-    <Compile Include="CarManagementConsumer\Car.cs" />
     <Compile Include="Data\ConnectionClass.cs" />
     <Compile Include="Data\MongoConn.cs" />
-    <Compile Include="DirectMessageToReservation.cs" />
-    <Compile Include="CarManagementConsumer\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reservation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

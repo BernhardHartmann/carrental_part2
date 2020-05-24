@@ -12,7 +12,7 @@ namespace CarsRequest
         static void Main(string[] args)
         {
             DirectMessageToCars directmessages = new DirectMessageToCars();
-            directmessages.SendMessageToCars();
+            directmessages.GetReservationByID("5ec9be88387b6f433c43f0ef");
             Console.ReadLine(); 
         }
     }
