@@ -2,8 +2,8 @@ package com.example.se_car_rental.entities;
 
 public class Customer {
     public Integer  customerId;
-    public String firstName;
-    public String lastName;
+    public String firstname;
+    public String lastname;
     public String password;
     public String email;
     public String drivingLicenseNumber;
@@ -13,12 +13,12 @@ public class Customer {
     public String country;
     public String zipCode;
     public String phone;
-    public Integer preferred_currency;
+    public Integer currency;
 
-    public Customer(Integer customerId, String firstName, String lastName, String password, String email, String drivingLicenseNumber, String mobile, String state, String city, String country, String zipCode, String phone, Integer preferred_currency) {
+    public Customer(Integer customerId, String firstname, String lastname, String password, String email, String drivingLicenseNumber, String mobile, String state, String city, String country, String zipCode, String phone, Integer currency) {
         this.customerId = customerId;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.password = password;
         this.email = email;
         this.drivingLicenseNumber = drivingLicenseNumber;
@@ -28,7 +28,7 @@ public class Customer {
         this.country = country;
         this.zipCode = zipCode;
         this.phone = phone;
-        this.preferred_currency = preferred_currency;
+        this.currency = currency;
     }
 
     public Integer getCustomerId() {
@@ -40,19 +40,19 @@ public class Customer {
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstname;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstname = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastname = lastName;
     }
 
     public String getPassword() {
@@ -127,12 +127,12 @@ public class Customer {
         this.phone = phone;
     }
 
-    public Integer getPreferred_currency() {
-        return preferred_currency;
+    public Integer getCurrency() {
+        return currency;
     }
 
-    public void setPreferred_currency(Integer preferred_currency) {
-        this.preferred_currency = preferred_currency;
+    public void setCurrency(Integer currency) {
+        this.currency = currency;
     }
 }
 
