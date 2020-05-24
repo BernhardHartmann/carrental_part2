@@ -42,7 +42,7 @@
             android:id="@+id/listview_reservation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="50dp"
+            android:paddingBottom="100dp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="16dp"/>
 

@@ -26,6 +26,7 @@ import com.example.se_car_rental.entities.ApiUtil;
 import com.example.se_car_rental.entities.Car;
 import com.example.se_car_rental.entities.Category;
 import com.example.se_car_rental.entities.Reservation;
+import com.example.se_car_rental.entities.User;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
@@ -35,6 +36,8 @@ import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class CheckAvailabilityFragment extends Fragment {
     public static final String ARG_POSITION = "position";
@@ -47,7 +50,6 @@ public class CheckAvailabilityFragment extends Fragment {
     private String testString = "";
     private OnFabSelectedInterface mCallback;
     private Bundle args;
-    //TODO: change booking_msg to a Reservation object and edit object instead
     private Reservation reservation;
     private Date startDate;
     private Date endDate;
@@ -134,7 +136,8 @@ public class CheckAvailabilityFragment extends Fragment {
             mCurrentPosition = savedInstanceState.getInt(ARG_POSITION);
         }
 
-        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        sharedPref = getActivity().getSharedPreferences("Preference", MODE_PRIVATE);
+
         String currency = sharedPref.getString(getString(R.string.currencies), null);
 
         return inflater.inflate(R.layout.description_view, container, false);
@@ -156,8 +159,13 @@ public class CheckAvailabilityFragment extends Fragment {
         TextView description = (TextView) getActivity().findViewById(R.id.text_booking);
         args = getArguments();
         description.setText(testString);
+
+        String userData = sharedPref.getString(getString(R.string.user), null);
+        Gson gson = new Gson();
+        User user = gson.fromJson(userData, User.class);
+
         //TODO: Get customer ID from shared preferences
-        reservation = new Reservation(1, 1);
+        reservation = new Reservation(user.getId());
         reservation.setCategoryID(category_id);
         reservation.setReservation_price(category.getPrice());
 

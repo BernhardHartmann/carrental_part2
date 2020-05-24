@@ -38,7 +38,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
-    private HomeViewModel homeViewModel;
     private static final int LOCATION_PERMISSION_REQUEST_CODE=100;
     private MapView mapView;
     private GoogleMap map;
@@ -57,7 +56,6 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
 

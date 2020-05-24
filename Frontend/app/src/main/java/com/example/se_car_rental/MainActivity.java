@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.se_car_rental.entities.ApiUtil;
@@ -31,6 +32,7 @@ import com.example.se_car_rental.ui.reservation.ReservationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -43,6 +45,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     static SharedPreferences.Editor editor;
     private boolean isLoggedIn;
 
+    /*
+    public MainActivity(){
+        sharedPref = getSharedPreferences("Preference", MODE_PRIVATE);
+        editor = sharedPref.edit();
+        editor.putBoolean(getString(R.string.isLoggedIn), false);
+        editor.commit();
+    }
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,15 +61,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         sharedPref = getSharedPreferences("Preference", MODE_PRIVATE);
 
-        editor = sharedPref.edit();
-        editor.putBoolean(getString(R.string.isLoggedIn), false);
-        editor.commit();
-
         new LocationTask(this).execute("utilities/locations");
         new CurrencyTask().execute("utilities/currencies");
     }
 
-    public class MainPagerAdapter extends FragmentPagerAdapter {
+    public class MainPagerAdapter extends FragmentStatePagerAdapter {
         private ArrayList<Fragment> fragmentList = new ArrayList<>();
 
         public MainPagerAdapter(FragmentManager fm) {
@@ -68,6 +75,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         @Override
         public Fragment getItem(int i) {
             return fragmentList.get(i);
+        }
+
+        @Override
+        public int getItemPosition(Object object){
+            return POSITION_NONE;
         }
 
         @Override
@@ -118,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     new ReservationTask().execute(url);
                     viewPager.setCurrentItem(1);
                 } else {
-                    Toast.makeText(this, "You need to be logged in to access your reservations.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "You need to be logged in to access your bookings.", Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.navigation_profile:
@@ -147,8 +159,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     public void onItemSelected(int position, ReservationOverview reservation) {
-        ReservationOverview res = reservation;
-        Integer temp = position;
+        String url = "reservation/customer/cancel";
+        new CancelReservationTask().execute(url, reservation);
     }
 
 
@@ -231,6 +243,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             editor = sharedPref.edit();
             editor.putString(getString(R.string.customerData), s);
             editor.commit();
+            pagerAdapter.notifyDataSetChanged();
         }
     }
 
@@ -249,6 +262,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             editor = sharedPref.edit();
             editor.putString(getString(R.string.reservations), s);
             editor.commit();
+            pagerAdapter.notifyDataSetChanged();
         }
     }
 
@@ -259,6 +273,39 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         return user;
     }
+
+    private class CancelReservationTask extends AsyncTask<Object, Void, String> {
+        @Override
+        protected String doInBackground(Object... objects) {
+            String url = (String) objects[0];
+            Object object = objects[1];
+
+            User user = getUserDataFromSharedPreferences();
+
+            try {
+                return ApiUtil.putToBackend(url, user.getToken(), object);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String string) {
+
+            if(string != null) {
+
+                if (string.contains("exception")) {
+                    Toast.makeText(MainActivity.this, "An error occurred during processing your request.", Toast.LENGTH_SHORT).show();
+                    pagerAdapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(MainActivity.this, "Your successfully canceled your booking.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+    }
+
 }
 
 

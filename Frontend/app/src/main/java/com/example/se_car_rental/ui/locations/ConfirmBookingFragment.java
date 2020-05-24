@@ -17,9 +17,13 @@ import com.example.se_car_rental.R;
 import com.example.se_car_rental.entities.ApiUtil;
 import com.example.se_car_rental.entities.Category;
 import com.example.se_car_rental.entities.Reservation;
+import com.example.se_car_rental.entities.User;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class ConfirmBookingFragment extends Fragment {
     public static final String ARG_POSITION = "position";
@@ -34,16 +38,20 @@ public class ConfirmBookingFragment extends Fragment {
     static SharedPreferences.Editor editor;
     private boolean isLoggedIn;
     int category_id;
+    User user;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        sharedPref = getActivity().getSharedPreferences("Preference", MODE_PRIVATE);
+
         //TODO: currency from backend. Discuss with others.
         String currency = sharedPref.getString(getString(R.string.currencies), null);
-       //TODO: GET CUSTOMER ID!
 
+        String userData = sharedPref.getString(getString(R.string.user), null);
+        Gson gson = new Gson();
+        user = gson.fromJson(userData, User.class);
 
         // If activity recreated (such as from screen rotate), restore
         // the previous article selection set by onSaveInstanceState().
@@ -75,13 +83,11 @@ public class ConfirmBookingFragment extends Fragment {
         }
 
         //Set text
-        TextView reservationID = (TextView) getActivity().findViewById(R.id.res_id);
         TextView reservation_start = (TextView) getActivity().findViewById(R.id.res_start);
         TextView reservation_end = (TextView) getActivity().findViewById(R.id.res_end);
         TextView reservation_cost = (TextView) getActivity().findViewById(R.id.res_currency);
         TextView reservation_msg = (TextView) getActivity().findViewById(R.id.res_comment);
 
-        reservationID.setText("Reservation ID: " + reservationToConfirm.getReservation_id());
         reservation_start.setText("Reservation start: " + reservationToConfirm.getDateFrom());
         reservation_end.setText("Reservation end: " + reservationToConfirm.getDateTo());
         reservation_cost.setText("Reservation amount: " + reservationToConfirm.getReservation_price());
@@ -96,7 +102,7 @@ public class ConfirmBookingFragment extends Fragment {
                 //TODO: Microservices also has {locationID} for Reservation POST request
                 //{categoryID}/{customerID}/{datefrom}/{dateto}"
                 String url = "reservation/createReservation/";
-                url = url + reservationToConfirm.getCategoryID() + "/1/" + reservationToConfirm.getDateFrom() + "/" + reservationToConfirm.getDateTo() + "/";
+                url = url + reservationToConfirm.getCategoryID() + "/" + user.getId() + "/" + reservationToConfirm.getDateFrom() + "/" + reservationToConfirm.getDateTo() + "/";
                 try {
                     new ReservationTask().execute(url, reservationToConfirm);
                 } catch (Exception e) {
@@ -139,7 +145,7 @@ public class ConfirmBookingFragment extends Fragment {
             Object object = objects[1];
 
             try {
-                return ApiUtil.postToBackend(url, null, object);
+                return ApiUtil.postToBackend(url, user.getToken(), object);
             } catch (IOException e) {
                 e.printStackTrace();
             }
