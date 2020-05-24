@@ -26,7 +26,6 @@ namespace ReservationRequest
             CarReceiver messageReceiver = new CarReceiver(channel);
             channel.BasicConsume("cars.queue", false, messageReceiver);
             channel.BasicConsume("reservation.queue", false, messageReceiver);
-            channel.BasicConsume("request.reservation.getByID", false, messageReceiver);
             Console.ReadLine();
         }
     }

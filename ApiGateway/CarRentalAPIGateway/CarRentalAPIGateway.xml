@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CarRentalAPIGateway</name>
+    </assembly>
+    <members>
+        <member name="T:CarRentalAPIGateway.Dto.LoginDto">
+            <summary>
+            Login model
+            </summary>
+        </member>
+        <member name="P:CarRentalAPIGateway.Dto.LoginDto.Mail">
+            <summary>
+            Mail
+            </summary>
+        </member>
+        <member name="P:CarRentalAPIGateway.Dto.LoginDto.Password">
+            <summary>
+            Password
+            </summary>
+        </member>
+        <member name="T:CarRentalAPIGateway.Dto.LoginResponseDto">
+            <summary>
+            LoginResponseDto
+            </summary>
+        </member>
+        <member name="P:CarRentalAPIGateway.Dto.LoginResponseDto.Id">
+            <summary>
+            Id of logged in user
+            </summary>
+        </member>
+        <member name="P:CarRentalAPIGateway.Dto.LoginResponseDto.LoginDateTime">
+            <summary>
+            Date and time when the user logged in
+            </summary>
+        </member>
+        <member name="P:CarRentalAPIGateway.Dto.LoginResponseDto.ExceptionMessage">
+            <summary>
+            Exception
+            </summary>
+        </member>
+        <member name="P:CarRentalAPIGateway.Dto.LoginResponseDto.IsLoginSuccessful">
+            <summary>
+            Whether the login was successful
+            </summary>
+        </member>
+        <member name="P:CarRentalAPIGateway.Dto.LoginResponseDto.Token">
+            <summary>
+            JWT
+            </summary>
+        </member>
+        <member name="M:CarRentalAPIGateway.Dto.LoginResponseDto.#ctor">
+            <summary>
+            Parameterless constructor
+            </summary>
+        </member>
+        <member name="M:CarRentalAPIGateway.Dto.LoginResponseDto.#ctor(System.Exception,System.Boolean)">
+            <summary>
+            Constructs the response object with an exception
+            </summary>
+            <param name="exception"></param>
+            <param name="isLoginSuccessful"></param>
+        </member>
+        <member name="M:CarRentalAPIGateway.Dto.LoginResponseDto.#ctor(System.Int32,System.String,System.Boolean,System.String)">
+            <summary>
+            LoginResponseDto
+            </summary>
+            <param name="id"></param>
+            <param name="loginDateTime"></param>
+            <param name="isLoginSuccessful"></param>
+        </member>
+        <member name="T:CarRentalAPIGateway.Dto.RegisterDto">
+            <summary>
+            Model for the user registration
+            </summary>
+        </member>
+        <member name="P:CarRentalAPIGateway.Dto.RegisterDto.FirstName">
+            <summary>
+            FirstName
+            </summary>
+        </member>
+        <member name="P:CarRentalAPIGateway.Dto.RegisterDto.LastName">
+            <summary>
+            LastName
+            </summary>
+        </member>
+        <member name="P:CarRentalAPIGateway.Dto.RegisterDto.Mail">
+            <summary>
+            Mail
+            </summary>
+        </member>
+        <member name="P:CarRentalAPIGateway.Dto.RegisterDto.Password">
+            <summary>
+            Password
+            </summary>
+        </member>
+        <member name="P:CarRentalAPIGateway.Dto.RegisterDto.CurrencyID">
+            <summary>
+            Role
+            </summary>
+        </member>
+        <member name="T:CarRentalAPIGateway.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="M:CarRentalAPIGateway.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Startup
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:CarRentalAPIGateway.Startup.Configuration">
+            <summary>
+            Configuration
+            </summary>
+        </member>
+        <member name="M:CarRentalAPIGateway.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime.Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:CarRentalAPIGateway.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
