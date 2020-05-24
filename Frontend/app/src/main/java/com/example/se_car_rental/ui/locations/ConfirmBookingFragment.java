@@ -84,7 +84,7 @@ public class ConfirmBookingFragment extends Fragment {
         reservationID.setText("Reservation ID: " + reservationToConfirm.getReservation_id());
         reservation_start.setText("Reservation start: " + reservationToConfirm.getDateFrom());
         reservation_end.setText("Reservation end: " + reservationToConfirm.getDateTo());
-        reservation_cost.setText("Reservation amount: " + 132);
+        reservation_cost.setText("Reservation amount: " + reservationToConfirm.getReservation_price());
         reservation_msg.setText("Additional comments: " + reservationToConfirm.getReservationNote());
 
 
@@ -93,6 +93,7 @@ public class ConfirmBookingFragment extends Fragment {
             @Override
             public void onClick(View arg0) {
                 //TODO: Get Customer ID from Shared Preferences
+                //TODO: Microservices also has {locationID} for Reservation POST request
                 //{categoryID}/{customerID}/{datefrom}/{dateto}"
                 String url = "reservation/createReservation/";
                 url = url + reservationToConfirm.getCategoryID() + "/1/" + reservationToConfirm.getDateFrom() + "/" + reservationToConfirm.getDateTo() + "/";
