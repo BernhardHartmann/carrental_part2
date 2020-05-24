@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
+using System.Linq;
 using System.Text;
 
 namespace CarRentalAPIGateway.RabbitMQCommunication
@@ -21,8 +22,7 @@ namespace CarRentalAPIGateway.RabbitMQCommunication
             {
                 HostName = Configuration.GetValue<string>("RabbitMQ:BrokerHostName"),
                 UserName = Configuration.GetValue<string>("RabbitMQ:UserName"),
-                Password = Configuration.GetValue<string>("RabbitMQ:Password"),
-                Port = Configuration.GetValue<int>("RabbitMQ:Port")
+                Password = Configuration.GetValue<string>("RabbitMQ:Password")
             };
         }
 
@@ -31,9 +31,9 @@ namespace CarRentalAPIGateway.RabbitMQCommunication
             try
             {
                 string message = string.Empty;
-                using (Connection = Factory.CreateConnection())
+                using (var connection = Factory.CreateConnection())
                 {
-                    using (Channel = Connection.CreateModel())
+                    using (var channel = Connection.CreateModel())
                     {
                         var queue = Channel.QueueDeclare(queue: queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
                         var consumer = new EventingBasicConsumer(Channel);
@@ -49,33 +49,34 @@ namespace CarRentalAPIGateway.RabbitMQCommunication
                     return message;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
             }
         }
 
-        public bool SendMessage(string message, string queueName)
+        public bool SendMessage(string message, string queueName, string exchange, string routingKey)
         {
             try
             {
-                using (Connection = Factory.CreateConnection())
+                var factory = new ConnectionFactory() { HostName = "localhost", UserName = "guest", Password = "guest" };
+                using (Connection = factory.CreateConnection())
                 {
                     using (Channel = Connection.CreateModel())
                     {
-                        Channel.QueueDeclare(queue: queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
+                        Channel.QueueDeclare(queue: queueName, durable: true, exclusive: false, autoDelete: false, arguments: null);
 
                         var json = JsonConvert.SerializeObject(message);
                         var body = Encoding.UTF8.GetBytes(json);
 
-                        Channel.BasicPublish(exchange: "", routingKey: queueName, basicProperties: null, body: body);
+                        Channel.BasicPublish(exchange: exchange, routingKey: routingKey, basicProperties: null, body: body);
 
                         return true;
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 return false;

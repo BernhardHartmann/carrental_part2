@@ -340,7 +340,7 @@ namespace CarRentalAPIGateway.Controllers
                 if (registerDto == null)
                     return BadRequest(registerDto);
 
-                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(registerDto, _jsonSerializerSettings), "user.register");
+                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(registerDto, _jsonSerializerSettings), "user.register", "test", "test");
                 var reply = _rabbitMQCommunication.ReceiveMessage("user.register");
 
                 string jsonToReturn;
@@ -372,7 +372,7 @@ namespace CarRentalAPIGateway.Controllers
             {
                 if (loginDto == null) return BadRequest(loginDto);
 
-                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(loginDto, _jsonSerializerSettings), "user.login");
+                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(loginDto, _jsonSerializerSettings), "user.login", "test", "test");
                 var reply = _rabbitMQCommunication.ReceiveMessage("user.register");
 
                 string jsonToReturn;
@@ -405,7 +405,7 @@ namespace CarRentalAPIGateway.Controllers
                 if (customerDto == null) return BadRequest(customerDto);
 
 
-                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(customerDto, _jsonSerializerSettings), "user.update");
+                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(customerDto, _jsonSerializerSettings), "user.update", "test", "test");
                 var reply = _rabbitMQCommunication.ReceiveMessage("user.register");
 
                 string jsonToReturn;
@@ -437,7 +437,7 @@ namespace CarRentalAPIGateway.Controllers
             {
                 if (passwordChangeDto == null) return BadRequest(passwordChangeDto);
 
-                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(passwordChangeDto, _jsonSerializerSettings), "user.change");
+                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(passwordChangeDto, _jsonSerializerSettings), "user.change", "test", "test");
                 var reply = _rabbitMQCommunication.ReceiveMessage("user.register");
 
                 string jsonToReturn;
@@ -471,7 +471,7 @@ namespace CarRentalAPIGateway.Controllers
                 {
                     return BadRequest(customerID);
                 }
-                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(customerID, _jsonSerializerSettings), "user.change");
+                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(customerID, _jsonSerializerSettings), "user.change", "test", "test");
                 var reply = _rabbitMQCommunication.ReceiveMessage("user.register");
 
                 string jsonToReturn;
@@ -491,6 +491,71 @@ namespace CarRentalAPIGateway.Controllers
             {
                 var content = StatusCode((int)HttpStatusCode.InternalServerError, $"{ex.Message} : {ex.InnerException}");
                 return Content(JsonConvert.SerializeObject(content), MediaType.ApplicationJson);
+            }
+        }
+
+        [HttpGet]
+        //[Authorize(AuthenticationSchemes = AuthenticationConstants.AuthenticationScheme, Roles = "Customer")]
+        [Route("/services/rest/v1/reservation/customer/get/{id}")]
+        public IActionResult GetReservationById(string id)
+        {
+            try
+            {
+                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(id, _jsonSerializerSettings), "reservation.queue", "request.reservation", "reservation.get.by.id");
+                var reply = _rabbitMQCommunication.ReceiveMessage("reservation.queue");
+
+                string jsonToReturn;
+
+                if (!string.IsNullOrEmpty(reply))
+                {
+                    jsonToReturn = JsonConvert.SerializeObject(reply, _jsonSerializerSettings);
+                    return new OkObjectResult(jsonToReturn);
+                }
+                else
+                {
+                    jsonToReturn = string.Empty;
+                    return BadRequest(jsonToReturn);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"{ex.Message} : {ex.InnerException}");
+                var content = StatusCode((int)HttpStatusCode.InternalServerError);
+                return Content(JsonConvert.SerializeObject(content), MediaType.ApplicationJson);
+            }
+        }
+
+        [HttpPost]
+        [Route("/services/rest/v1/reservation/createReservation")]
+        // [Authorize(AuthenticationSchemes = AuthenticationConstants.AuthenticationScheme, Roles = "Customer")]
+        public async Task<IActionResult> CreateReservation([FromBody]ReservationNormalDto reservationDto)
+        {
+            try
+            {
+                if (reservationDto == null)
+                    return BadRequest(reservationDto);
+
+                var serializedObject = JsonConvert.SerializeObject(reservationDto, _jsonSerializerSettings);
+                var isSentMessage = _rabbitMQCommunication.SendMessage(serializedObject, "reservation.queue", "request.reservation", "reservation.create");
+                var reply = _rabbitMQCommunication.ReceiveMessage("reservation.queue");
+
+                string jsonToReturn;
+
+                if (!string.IsNullOrEmpty(reply))
+                {
+                    jsonToReturn = JsonConvert.SerializeObject(reply, _jsonSerializerSettings);
+                    return new OkObjectResult(jsonToReturn);
+                }
+                else
+                {
+                    jsonToReturn = string.Empty;
+                    return BadRequest(jsonToReturn);
+                }
+            }
+            catch (Exception ex)
+            {
+                var content = StatusCode((int)HttpStatusCode.BadRequest, $"{ex.Message} : {ex.InnerException}");
+                return Content(JsonConvert.SerializeObject(content), "application/json");
             }
         }
     }
