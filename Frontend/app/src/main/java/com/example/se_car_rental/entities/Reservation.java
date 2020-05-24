@@ -1,10 +1,13 @@
 package com.example.se_car_rental.entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.util.Locale;
+import java.util.TimeZone;
 
-public class Reservation {
+
+
+public class Reservation implements Entity {
 
     int categoryID;
     int locationID;
@@ -13,17 +16,18 @@ public class Reservation {
     Integer reservation_id;
     Integer car_id;
     Integer currency_id;
-    LocalDateTime dateFrom;
-    LocalDateTime dateTo;
+    //LocalDateTime dateFrom;
+    String dateFrom;
+    String dateTo;
     Integer resStatus;
     String carStatus;
     String reservationNote;
     double price;
     double kilometerSpent;
-    LocalDateTime returnTime;
+    String returnTime;
 
 
-    public Reservation(Integer reservation_id, Integer car_id, Integer currency_id, LocalDateTime dateFrom, LocalDateTime date_to, Integer res_status, String car_status, String res_note, double reservation_price, double kilometer_spent, LocalDateTime return_time) {
+    public Reservation(Integer reservation_id, Integer car_id, Integer currency_id, String dateFrom, String date_to, Integer res_status, String car_status, String res_note, double reservation_price, double kilometer_spent, String return_time) {
         this.reservation_id = reservation_id;
         this.car_id = car_id;
         this.currency_id = currency_id;
@@ -38,7 +42,6 @@ public class Reservation {
     }
 
     //Create empty Reservation for editing
-
     public Reservation(Integer id) {
         this.reservation_id = id;
     }
@@ -61,13 +64,11 @@ public class Reservation {
         this.reservation_id = reservation_id;
     }
 
-    public void setCategoryID(int catID) {
+    public void setCategoryID(int catID){
         this.categoryID = catID;
     }
 
-    public int getCategoryID() {
-        return this.categoryID;
-    }
+    public int getCategoryID(){return this.categoryID;}
 
     public Integer getCar_id() {
         return car_id;
@@ -93,11 +94,11 @@ public class Reservation {
         this.kilometerSpent = kilometerSpent;
     }
 
-    public LocalDateTime getReturnTime() {
+    public String getReturnTime() {
         return returnTime;
     }
 
-    public void setReturnTime(LocalDateTime returnTime) {
+    public void setReturnTime(String returnTime) {
         this.returnTime = returnTime;
     }
 
@@ -125,33 +126,42 @@ public class Reservation {
         this.carStatus = carStatus;
     }
 
-    public LocalDateTime getDateFrom() {
+    public String getDateFrom() {
         return dateFrom;
     }
 
     public void setDateFrom(Date dateFrom) {
 
-        LocalDateTime date = dateFrom.toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDateTime();
+        String date = formatDate(dateFrom);
+
         this.dateFrom = date;
     }
 
-    public LocalDateTime getDateTo() {
+
+    public String getDateTo() {
         return dateTo;
     }
 
 
     public void setDateTo(Date dateTo) {
-        LocalDateTime date = dateTo.toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDateTime();
+
+        String date = formatDate(dateTo);
+
         this.dateTo = date;
     }
 
-    public Integer getCustomerID() {
-        return customerID;
+    public String formatDate(Date dateToFormat){
+
+        SimpleDateFormat format = new SimpleDateFormat(
+                "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.GERMANY);
+        format.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+        String date = format.format(dateToFormat);
+
+        return date;
     }
+
+    public Integer getCustomerID(){return customerID;}
 
     public Integer getResStatus() {
         return resStatus;
@@ -161,5 +171,13 @@ public class Reservation {
         this.resStatus = resStatus;
     }
 
+    @Override
+    public String getName() {
+        return Integer.toString(reservation_id);
+    }
 
+    @Override
+    public String getLabel() {
+        return "this is a test reservation";
+    }
 }

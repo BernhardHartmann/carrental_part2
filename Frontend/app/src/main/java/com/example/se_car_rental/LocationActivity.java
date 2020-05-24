@@ -1,15 +1,18 @@
 package com.example.se_car_rental;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -30,8 +33,13 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
     private Category[] category_list;
     int currentPosition = 1;
     int currentActivity = 0;
+    private String myDepot = "";
+    private String myDepotAdd = "";
     static SharedPreferences sharedPref;
     static SharedPreferences.Editor editor;
+    private TextView textdesc;
+    private TextView textView;
+
     private boolean isLoggedIn;
 
     @SuppressLint("RestrictedApi")
@@ -39,15 +47,13 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
-        String myDepot = i.getStringExtra(getString(R.string.name));
+        myDepot = i.getStringExtra(getString(R.string.name));
+        myDepotAdd = i.getStringExtra(getString(R.string.locationAddr));
         int loc_key = i.getIntExtra(getString(R.string.key), 0);
 
         //Need to call SharedPreferences by name
-        sharedPref = getSharedPreferences("Preference",MODE_PRIVATE);
+        sharedPref = getSharedPreferences("Preference", MODE_PRIVATE);
         isLoggedIn = sharedPref.getBoolean(getString(R.string.isLoggedIn), false);
-
-       // String url = "useCase/getCategoriesToLocationID/" + loc_key;
-       // new CategoryTask().execute(url);
 
         //Set data from shared preferences
         String cat = sharedPref.getString(getString(R.string.categories), null);
@@ -55,19 +61,21 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
         category_list = gson.fromJson(cat, Category[].class);
 
         setContentView(R.layout.activity_depot);
+        final View fragView = findViewById(R.id.fragment_container);
         fragmentManager = getSupportFragmentManager();
 
-        final TextView textView = this.findViewById(R.id.text_booking);
+        textView = this.findViewById(R.id.text_booking);
         textView.setText(myDepot);
+        textdesc = this.findViewById(R.id.text_label);
+        textdesc.setText(myDepotAdd);
 
 
-
-        ImageView view = (ImageView) findViewById(R.id.closeView);
+        ImageView view = findViewById(R.id.closeView);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 Intent intent = new Intent(LocationActivity.this, MainActivity.class);
-                startActivity(intent);// here u can start another activity or just call finish method to close the activity.
+                startActivity(intent);
                 finish();
             }
         });
@@ -85,15 +93,36 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
             if (savedInstanceState != null) {
                 return;
             }
-            // Create an instance of ExampleFragment
+            // Create an instance of Category List Fragment
             Category_ListFragment firstFragment = new Category_ListFragment();
             firstFragment.setCategories(category_list);
 
             firstFragment.setArguments(getIntent().getExtras());
 
+
             // Add the fragment to the 'fragment_container' FrameLayout
             fragmentManager.beginTransaction()
-                    .add(R.id.fragment_container, firstFragment).commit();
+                    .add(R.id.fragment_container, firstFragment, "LIST").commit();
+
+            //Hides button and reset View
+
+            fragView.setFocusableInTouchMode(true);
+            fragView.requestFocus();
+            fragView.setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK) {
+                        if (currentActivity == 1) {
+                            button.setVisibility(button.GONE);
+                            image.setVisibility(image.GONE);
+                            textView.setText(myDepot);
+                        }
+                        //TODO: Fixed some issues. Button will still appear if moving back from Confirm Reservation fragment
+                    }
+                    return false;
+                }
+            });
+
         }
     }
 
@@ -101,19 +130,22 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
     @Override
     public void onCategorySelected(int position) {
 
+        //TODO: Check if logged in.
         currentPosition = position;
         CheckAvailabilityFragment descFrag = (CheckAvailabilityFragment)
                 fragmentManager.findFragmentById(R.id.description_fragment);
-        TextView category =  this.findViewById(R.id.txt_category);
+        TextView category = this.findViewById(R.id.txt_category);
+        TextView desc = this.findViewById(R.id.booking_desc);
         ImageView catImage = this.findViewById(R.id.catIcon);
-
 
 
         if (descFrag != null) {
             category.setText(category_list[position].getName());
-            descFrag.setCategories(category_list[currentPosition].getCategoryId());
-           // description.setText(category_list[position].getLabel());
+            descFrag.setCategories(category_list[currentPosition]);
+            textdesc.setText(Float.toString(category_list[position].getPrice())+"€ per day");
+           // desc.setText(category_list[currentPosition].getLabel());
             descFrag.updateBookingView(position);
+            currentActivity = 1;
 
         } else {
 
@@ -121,27 +153,28 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
             image.setVisibility(View.VISIBLE);
             String catName = category_list[position].getName();
             category.setText(catName);
-            switch(catName) {
-                case("City Car"):
+            switch (catName) {
+                case ("City Car"):
                     catImage.setImageResource(R.mipmap.city_foreground);
                     break;
-                case("Economy Car"):
+                case ("Economy Car"):
                     catImage.setImageResource(R.mipmap.economy_foreground);
                     break;
-                case("Compact Car"):
+                case ("Compact Car"):
                     catImage.setImageResource(R.mipmap.compact_foreground);
                     break;
-                case("Family Car"):
+                case ("Family Car"):
                     catImage.setImageResource(R.mipmap.family_foreground);
                     break;
-                case("Luxury Car"):
+                case ("Luxury Car"):
                     catImage.setImageResource(R.mipmap.luxury_foreground);
                     break;
                 default:
                     catImage.setImageResource(R.mipmap.old_foreground);
             }
-            newFragment.setCategories(category_list[currentPosition].getCategoryId());
-           //description.setText(category_list[position].getLabel());
+            newFragment.setCategories(category_list[currentPosition]);
+            textdesc.setText(Float.toString(category_list[position].getPrice())+"€ per day");
+            //desc.setText(category_list[currentPosition].getLabel());
             Bundle args = new Bundle();
             args.putInt(CheckAvailabilityFragment.ARG_POSITION, position);
             newFragment.setArguments(args);
@@ -165,9 +198,8 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
                 fragmentManager.findFragmentById(R.id.booking_fragment);
 
         if (bookingFrag != null) {
-            // If article frag is available, we're in two-pane layout...
 
-            // Call a method in the ArticleFragment to update its content
+            // Call a method in the BookingFragment to update its content
             bookingFrag.updateBookingView(position);
             bookingFrag.setReservation(reservation);
             bookingFrag.setCategories(category_list[currentPosition].getCategoryId());
@@ -187,6 +219,7 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
             transaction.replace(R.id.fragment_container, newFragment);
             transaction.addToBackStack(null);
 
+
             transaction.commit();
             currentActivity = 2;
 
@@ -194,42 +227,25 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
     }
 
     @Override
-    public void onFabSelected(int currentActivity, Reservation reservation) {
+    public void onFabSelected(int currentActivity, Reservation reservation, String msg) {
 
-        switch(currentActivity) {
+        switch (currentActivity) {
             case 1:
                 onBookingSelected(currentPosition, reservation);
                 break;
             case 2:
-                Intent intent=new Intent(LocationActivity.this, MainActivity.class);
+                Intent intent = new Intent(LocationActivity.this, MainActivity.class);
                 startActivity(intent);// here u can start another activity or just call finish method to close the activity.
-                String toastMsg = "Reservation successful ";
-                Toast toast=Toast.makeText(getApplicationContext(),toastMsg,Toast.LENGTH_LONG);
-                toast.setMargin(100,100);
+                Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG);
+                toast.setMargin(100, 100);
                 toast.show();
                 onStop();
                 break;
         }
     }
 
-    public class CategoryTask extends AsyncTask<String, Void, String> {
 
-        @Override
-        protected String doInBackground(String... strings) {
-            String url = strings[0];
-
-            return ApiUtil.getFromBackend(url, null);
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            editor = sharedPref.edit();
-            editor.putString(getString(R.string.categories), s);
-            editor.commit();
-        }
-    }
-
-    }
+}
 
 
 

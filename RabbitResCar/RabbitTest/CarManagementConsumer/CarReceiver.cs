@@ -31,26 +31,35 @@ namespace CarmanagementConsumer
             Console.WriteLine(string.Concat("Routing tag: ", routingKey));
             Console.WriteLine(string.Concat("Message: ", Encoding.UTF8.GetString(body)));
 
-            Car carConsumed = JsonConvert.DeserializeObject<Car>(Encoding.UTF8.GetString(body));
-            Console.WriteLine(string.Concat("desirialized: ", carConsumed.CarId));
 
-            System.Threading.Thread.Sleep(3000);
+            if (Encoding.UTF8.GetString(body).GetType() == typeof(Car))
+            {
+                Car carConsumed = JsonConvert.DeserializeObject<Car>(Encoding.UTF8.GetString(body));
+                Console.WriteLine(string.Concat("desirialized: ", carConsumed.CarId));
 
-            DirectMessageToReservation ds = new DirectMessageToReservation();
-            ds.SendMessageToReservation(carConsumed);
+                System.Threading.Thread.Sleep(3000);
 
-            //MongoConn
-            /*
-            mongoConn = new MongoConn();
-            var coll = mongoConn.getCollection("CarManagement", "Cars");
-            coll.Find(new BsonDocument()).ForEachAsync(x => Console.WriteLine(x));
-             */
+                DirectMessageToReservation ds = new DirectMessageToReservation();
+                ds.SendMessageToReservation(carConsumed);
+            }
 
-            Console.WriteLine("retrieved car DATA");
+            if (exchange.Equals("request.reservation"))
+            {
+                if (routingKey.Equals("get_res_by_id_key"))
+                {
+                    Console.WriteLine("get ReservationID " + Encoding.UTF8.GetString(body));
+                    DirectMessageToReservation ds = new DirectMessageToReservation();
+                    ds.SendReservationByID(Encoding.UTF8.GetString(body));
+                }
+            }
+           
+
+            Console.WriteLine("retrieved car DATA: "+body);
 
             _channel.BasicAck(deliveryTag, false);
 
         }
+
 
     }
 }
