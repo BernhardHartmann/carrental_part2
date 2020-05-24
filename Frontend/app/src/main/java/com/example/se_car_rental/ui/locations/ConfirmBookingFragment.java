@@ -40,6 +40,7 @@ public class ConfirmBookingFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        //TODO: currency from backend. Discuss with others.
         String currency = sharedPref.getString(getString(R.string.currencies), null);
        //TODO: GET CUSTOMER ID!
 
@@ -92,8 +93,8 @@ public class ConfirmBookingFragment extends Fragment {
             @Override
             public void onClick(View arg0) {
                 //TODO: Get Customer ID from Shared Preferences
-                String url = "reservation/createReservation/";
                 //{categoryID}/{customerID}/{datefrom}/{dateto}"
+                String url = "reservation/createReservation/";
                 url = url + reservationToConfirm.getCategoryID() + "/1/" + reservationToConfirm.getDateFrom() + "/" + reservationToConfirm.getDateTo() + "/";
                 try {
                     new ReservationTask().execute(url, reservationToConfirm);

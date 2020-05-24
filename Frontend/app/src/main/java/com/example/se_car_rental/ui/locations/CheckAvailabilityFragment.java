@@ -207,7 +207,7 @@ public class CheckAvailabilityFragment extends Fragment {
 
 
     private void setReservation(Date date, String time) {
-
+        //TODO: check end date not before start date
         switch (time) {
             case START:
                 reservation.setDateFrom(date);
