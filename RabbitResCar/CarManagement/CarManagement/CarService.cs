@@ -77,7 +77,7 @@ namespace CarManagement
             return (JsonConvert.SerializeObject(true));
         }
 
-        public string reserveCarByDocumentID(string dokumentID)
+        public string markCarAsReserved(string dokumentID)
         {
             Car car = Context.Cars.AsQueryable().ToList().Where(x=> x.Id == dokumentID).FirstOrDefault();
             car.IsAvailable = -1; // reserved
@@ -121,7 +121,7 @@ namespace CarManagement
         }
 
 
-        public async Task<string> DeleteCarByDocumentID(string id)
+        public string DeleteCarByDocumentID(string id)
         {
             try
             {
@@ -197,7 +197,7 @@ namespace CarManagement
         }
 
         // getrandom Car
-        public string get_CarBy_Category_And_Location(int LocId , int CatID ) 
+        public string get_RandomCarBy_Category_And_Location(int LocId , int CatID ) 
         {
             Car randomCar = new Car();
             try
@@ -227,6 +227,14 @@ namespace CarManagement
         {
             //var c = Context.Customers.AsQueryable().Count();
             return JsonConvert.SerializeObject(Context.Categories.AsQueryable().ToList());
+
+        }
+
+        public string getCategoriesListPerLocation( int LocID)
+        {           
+            var cars = Context.Cars.AsQueryable().ToList();
+            var categories = cars.Where(x => x.LocationId == LocID).Distinct().Select(s => s.CategoryId).ToList();
+            return JsonConvert.SerializeObject(categories);
 
         }
 

@@ -14,14 +14,14 @@ namespace CarManagement
     /*
      * The cars consumer is in the reservationRequest project
      */
-    public class DirectMessageBackToCarReq
+    public class RabbitDataHandler
     {
         private string jsonStringCar;
         private string jsonStringCategory;
         private string jsonString;
         private ConnectionClass connClass;
       
-        public void CreateReservation(Car car, Category category)
+        public void Reservecar(Car car)
         {
             connClass = new ConnectionClass();
             ConnectionFactory connectionFactory = connClass.getConnectionFactored();
@@ -33,7 +33,7 @@ namespace CarManagement
             
            
             jsonStringCar = JsonConvert.SerializeObject(car);
-            jsonStringCategory = JsonConvert.SerializeObject(category);
+            //jsonStringCategory = JsonConvert.SerializeObject(category);
 
             
 
