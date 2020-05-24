@@ -7,10 +7,8 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace CarManagement
 {
-    public class CarsFullData
-    {
-		[BsonRepresentation(BsonType.ObjectId)]
-		public string Id { get; set; }
+    public class CarsCreate
+    {		
 		public int CarId { get; set; }
 		public int CategoryId { get; set; }
 		public int LocationId { get; set; }
@@ -48,7 +46,7 @@ namespace CarManagement
 
 		public string BranchName { get; set; }
 
-		public CarsFullData(Car car, Category category, Location location)
+		public CarsCreate(Car car, Category category, Location location)
 		{
 
 		}
