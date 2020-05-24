@@ -39,6 +39,7 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
     static SharedPreferences.Editor editor;
     private TextView textdesc;
     private TextView textView;
+    private TextView category;
 
     private boolean isLoggedIn;
 
@@ -68,6 +69,7 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
         textView.setText(myDepot);
         textdesc = this.findViewById(R.id.text_label);
         textdesc.setText(myDepotAdd);
+        category = this.findViewById(R.id.txt_category);
 
 
         ImageView view = findViewById(R.id.closeView);
@@ -115,7 +117,9 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
                         if (currentActivity == 1) {
                             button.setVisibility(button.GONE);
                             image.setVisibility(image.GONE);
+                            category.setText("");
                             textView.setText(myDepot);
+                            textdesc.setText(myDepotAdd);
                         }
                         //TODO: Fixed some issues. Button will still appear if moving back from Confirm Reservation fragment
                     }

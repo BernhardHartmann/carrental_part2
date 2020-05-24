@@ -29,6 +29,9 @@ import com.example.se_car_rental.entities.Reservation;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -169,6 +172,7 @@ public class CheckAvailabilityFragment extends Fragment {
                     String note = String.valueOf(mEdit.getEditText().getText());
                    // assignCar();
                     reservation.setReservationNote(note);
+                    reservation.setReservation_price(calcPrice(reservation.getReservation_price()));
                     mCallback.onFabSelected(BOOK_FRAG, reservation, "");
                 }else{
                     Toast toast=Toast.makeText(getActivity(),"Please enter at least one date",Toast.LENGTH_LONG);
@@ -259,7 +263,20 @@ public class CheckAvailabilityFragment extends Fragment {
 
     }
 
-    public void assignCar(){
+    private double calcPrice(double price){
+        double days = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24);
+
+        if(days == 0){
+            days = 1;
+        }
+
+        double calcPrice = price * days;
+        calcPrice = new BigDecimal(calcPrice).setScale(2, RoundingMode.HALF_UP).doubleValue();
+
+        return calcPrice;
+    }
+
+    private void assignCar(){
         String getCar =  sharedPref.getString(getString(R.string.car), null);
         Gson gson = new Gson();
         Car car = gson.fromJson( getCar , Car.class);
@@ -271,7 +288,7 @@ public class CheckAvailabilityFragment extends Fragment {
         category = cat;
     }
 
-    public class CheckAvaibilityTask extends AsyncTask<String, Void, String> {
+    private class CheckAvaibilityTask extends AsyncTask<String, Void, String> {
         FragmentActivity context;
 
         CheckAvaibilityTask(FragmentActivity view) {
