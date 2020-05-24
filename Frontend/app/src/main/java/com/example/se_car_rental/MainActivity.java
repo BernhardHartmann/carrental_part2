@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         new CategoryTask().execute(url);
         intent.putExtra(getString(R.string.key), location.getLocation_id());
         intent.putExtra(getString(R.string.name), location.getName());
+        intent.putExtra(getString(R.string.locationAddr), location.getLabel());
         startActivity(intent);
         onStop();
     }

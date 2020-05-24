@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/text_booking"
+        android:id="@+id/booking_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -23,10 +23,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.011" />
 
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/text_booking"
+        app:layout_constraintTop_toBottomOf="@+id/booking_desc"
         app:layout_constraintStart_toStartOf="parent">
 
         <ScrollView

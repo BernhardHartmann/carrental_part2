@@ -34,8 +34,12 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
     int currentPosition = 1;
     int currentActivity = 0;
     private String myDepot = "";
+    private String myDepotAdd = "";
     static SharedPreferences sharedPref;
     static SharedPreferences.Editor editor;
+    private TextView textdesc;
+    private TextView textView;
+
     private boolean isLoggedIn;
 
     @SuppressLint("RestrictedApi")
@@ -44,6 +48,7 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
         myDepot = i.getStringExtra(getString(R.string.name));
+        myDepotAdd = i.getStringExtra(getString(R.string.locationAddr));
         int loc_key = i.getIntExtra(getString(R.string.key), 0);
 
         //Need to call SharedPreferences by name
@@ -59,8 +64,10 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
         final View fragView = findViewById(R.id.fragment_container);
         fragmentManager = getSupportFragmentManager();
 
-        final TextView textView = this.findViewById(R.id.text_booking);
+        textView = this.findViewById(R.id.text_booking);
         textView.setText(myDepot);
+        textdesc = this.findViewById(R.id.text_label);
+        textdesc.setText(myDepotAdd);
 
 
         ImageView view = findViewById(R.id.closeView);
@@ -128,13 +135,15 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
         CheckAvailabilityFragment descFrag = (CheckAvailabilityFragment)
                 fragmentManager.findFragmentById(R.id.description_fragment);
         TextView category = this.findViewById(R.id.txt_category);
+        TextView desc = this.findViewById(R.id.booking_desc);
         ImageView catImage = this.findViewById(R.id.catIcon);
 
 
         if (descFrag != null) {
             category.setText(category_list[position].getName());
-            descFrag.setCategories(category_list[currentPosition].getCategoryId());
-            // description.setText(category_list[position].getLabel());
+            descFrag.setCategories(category_list[currentPosition]);
+            textdesc.setText(Float.toString(category_list[position].getPrice())+"€ per day");
+           // desc.setText(category_list[currentPosition].getLabel());
             descFrag.updateBookingView(position);
             currentActivity = 1;
 
@@ -163,8 +172,9 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
                 default:
                     catImage.setImageResource(R.mipmap.old_foreground);
             }
-            newFragment.setCategories(category_list[currentPosition].getCategoryId());
-            //description.setText(category_list[position].getLabel());
+            newFragment.setCategories(category_list[currentPosition]);
+            textdesc.setText(Float.toString(category_list[position].getPrice())+"€ per day");
+            //desc.setText(category_list[currentPosition].getLabel());
             Bundle args = new Bundle();
             args.putInt(CheckAvailabilityFragment.ARG_POSITION, position);
             newFragment.setArguments(args);
