@@ -986,3 +986,4 @@ MigrationBackup/
 
 # End of https://www.gitignore.io/api/java,maven,python,android,pycharm,intellij,netbeans,dotnetcore,aspnetcore,visualstudio,androidstudio,visualstudiocode
 *.rar
+/CarRental
