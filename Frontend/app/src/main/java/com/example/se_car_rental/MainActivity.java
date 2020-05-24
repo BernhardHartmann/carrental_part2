@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +20,7 @@ import com.example.se_car_rental.entities.ApiUtil;
 import com.example.se_car_rental.entities.Category;
 import com.example.se_car_rental.entities.Locations;
 import com.example.se_car_rental.entities.Reservation;
+import com.example.se_car_rental.entities.ReservationOverview;
 import com.example.se_car_rental.entities.User;
 import com.example.se_car_rental.ui.helpers.LocationListener;
 import com.example.se_car_rental.ui.home.HomeFragment;
@@ -44,7 +47,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         sharedPref = getSharedPreferences("Preference", MODE_PRIVATE);
+
+        editor = sharedPref.edit();
+        editor.putBoolean(getString(R.string.isLoggedIn), false);
+        editor.commit();
+
         new LocationTask(this).execute("utilities/locations");
         new CurrencyTask().execute("utilities/currencies");
     }
@@ -91,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public void onLocationsFailed() {
-        TextView txtView= findViewById(R.id.warning);
+        TextView txtView = findViewById(R.id.warning);
         txtView.setText("App unable to connect to API. Please check your internet connection and try again.");
     }
 
@@ -103,15 +112,22 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 viewPager.setCurrentItem(0);
                 break;
             case R.id.navigation_dashboard:
-                viewPager.setCurrentItem(1);
+                isLoggedIn = sharedPref.getBoolean(getString(R.string.isLoggedIn), false);
+                if (isLoggedIn) {
+                    String url = "reservation/customer/overview/";
+                    new ReservationTask().execute(url);
+                    viewPager.setCurrentItem(1);
+                } else {
+                    Toast.makeText(this, "You need to be logged in to access your reservations.", Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.navigation_profile:
                 isLoggedIn = sharedPref.getBoolean(getString(R.string.isLoggedIn), false);
-                if(isLoggedIn){
+                if (isLoggedIn) {
                     String url = "customer/profile/";
                     new ProfileTask().execute(url);
                     viewPager.setCurrentItem(2);
-                }else{
+                } else {
                     viewPager.setCurrentItem(3);
                 }
                 break;
@@ -125,19 +141,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         new CategoryTask().execute(url);
         intent.putExtra(getString(R.string.key), location.getLocation_id());
         intent.putExtra(getString(R.string.name), location.getName());
+        intent.putExtra(getString(R.string.locationAddr), location.getLabel());
         startActivity(intent);
         onStop();
     }
 
-    public void onItemSelected(int position, Reservation reservation) {
-
+    public void onItemSelected(int position, ReservationOverview reservation) {
+        ReservationOverview res = reservation;
+        Integer temp = position;
     }
 
 
     public class LocationTask extends AsyncTask<String, Void, String> {
         private LocationListener callback;
 
-        LocationTask(LocationListener loclist){
+        LocationTask(LocationListener loclist) {
             callback = loclist;
         }
 
@@ -149,12 +167,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         @Override
         protected void onPostExecute(String s) {
-            if(s != null) {
+            if (s != null) {
                 editor = sharedPref.edit();
                 editor.putString(getString(R.string.locations), s);
                 editor.commit();
                 callback.onLocationsRetrieved();
-            }else{
+            } else {
                 callback.onLocationsFailed();
             }
         }
@@ -216,6 +234,24 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
     }
 
+    private class ReservationTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            String url = strings[0];
+
+            User user = getUserDataFromSharedPreferences();
+
+            return ApiUtil.getFromBackend(url, user.getToken(), user.getId());
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            editor = sharedPref.edit();
+            editor.putString(getString(R.string.reservations), s);
+            editor.commit();
+        }
+    }
+
     private User getUserDataFromSharedPreferences() {
         String userData = sharedPref.getString(getString(R.string.user), null);
         Gson gson = new Gson();
@@ -224,4 +260,5 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return user;
     }
 }
+
 

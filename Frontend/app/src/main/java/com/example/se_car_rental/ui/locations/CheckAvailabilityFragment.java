@@ -24,6 +24,7 @@ import androidx.fragment.app.FragmentActivity;
 import com.example.se_car_rental.R;
 import com.example.se_car_rental.entities.ApiUtil;
 import com.example.se_car_rental.entities.Car;
+import com.example.se_car_rental.entities.Category;
 import com.example.se_car_rental.entities.Reservation;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
@@ -51,6 +52,7 @@ public class CheckAvailabilityFragment extends Fragment {
     static SharedPreferences sharedPref;
     static SharedPreferences.Editor editor;
     private static int category_id;
+    private static Category category;
 
 
     public static class MyOnClickListener implements View.OnClickListener {
@@ -154,6 +156,7 @@ public class CheckAvailabilityFragment extends Fragment {
         //TODO: Get customer ID from shared preferences
         reservation = new Reservation(1, 1);
         reservation.setCategoryID(category_id);
+        reservation.setReservation_price(category.getPrice());
 
         this.showDatePickerDialog();
         TextView button = getActivity().findViewById(R.id.button);
@@ -263,8 +266,9 @@ public class CheckAvailabilityFragment extends Fragment {
         reservation.setCar_id(car.getCarId());
     }
 
-    public void setCategories(int catID){
-        category_id = catID;
+    public void setCategories(Category cat){
+        category_id = cat.getCategoryId();
+        category = cat;
     }
 
     public class CheckAvaibilityTask extends AsyncTask<String, Void, String> {

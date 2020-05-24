@@ -46,6 +46,7 @@ public class MyListAdapter extends BaseAdapter {
     public static class MyViewHolderReservations extends RecyclerView.ViewHolder {
         public TextView textView1;
         public TextView textView2;
+        public TextView textView3;
         public View listItem;
         private Entity[] dataSet;
         private Context mContext;
@@ -56,6 +57,7 @@ public class MyListAdapter extends BaseAdapter {
             listItem  = item;
             textView1 =  item.findViewById(R.id.text1);
             textView2 =  item.findViewById(R.id.text2);
+            textView3 =  item.findViewById(R.id.text3);
         }
     }
 
@@ -67,7 +69,7 @@ public class MyListAdapter extends BaseAdapter {
             className = mDataset.getClass().getComponentType().getName();
         }
 
-        if(className.equals("com.example.se_car_rental.entities.Reservation")){
+        if(className.equals("com.example.se_car_rental.entities.ReservationOverview")){
 
             listItem =  LayoutInflater.from(myContext)
                     .inflate(R.layout.list_item_reservation, null);
@@ -77,6 +79,8 @@ public class MyListAdapter extends BaseAdapter {
             Entity entity = mDataset[position];
             holder.textView1.setText(entity.getName());
             holder.textView2.setText(entity.getLabel());
+            holder.textView3.setText(entity.getLabel2());
+
         }else{
             listItem = LayoutInflater.from(myContext)
                     .inflate(R.layout.list_item, null);
