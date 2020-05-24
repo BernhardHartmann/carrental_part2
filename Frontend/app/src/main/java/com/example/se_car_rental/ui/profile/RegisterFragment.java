@@ -39,6 +39,7 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
     SharedPreferences sharedPref;
     Currency[] currencies;
     ArrayList<String> spinnerCurrencies = new ArrayList<>();
+    Currency selectedCurrency;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,7 +66,7 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
         final TextInputLayout  password = root.findViewById(R.id.password);
 
 
-        Spinner spin = root.findViewById(R.id.currency);
+        Spinner spin = root.findViewById(R.id.spinner_currency_register);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, spinnerCurrencies);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(adapter);
@@ -83,7 +84,7 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
 
                 String url = "customer/register";
 
-                Register register = new Register(firstName.getEditText().getText().toString(), lastName.getEditText().getText().toString(), mail.getEditText().getText().toString(), password.getEditText().getText().toString(), 1);
+                Register register = new Register(firstName.getEditText().getText().toString(), lastName.getEditText().getText().toString(), mail.getEditText().getText().toString(), password.getEditText().getText().toString(), selectedCurrency.getCurrency_id());
                 //Send register request to backend and wait for response
                 try {
                     new RegisterTask().execute(url, register);
@@ -117,7 +118,7 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         //Toast.makeText(getContext(), "Selected User: "+currency[position] ,Toast.LENGTH_SHORT).show();
-
+        selectedCurrency = currencies[position];
     }
 
     @Override

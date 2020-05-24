@@ -2,8 +2,11 @@ package com.example.se_car_rental.ui.locations;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.fragment.app.ListFragment;
 
@@ -30,6 +33,7 @@ public class Category_ListFragment extends ListFragment {
 
         mAdapter = new MyListAdapter(dummy_list, getActivity());
         setListAdapter(mAdapter);
+
 
     }
 

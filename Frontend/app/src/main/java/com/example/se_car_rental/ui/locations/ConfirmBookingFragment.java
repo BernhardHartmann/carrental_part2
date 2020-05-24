@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -25,6 +26,7 @@ public class ConfirmBookingFragment extends Fragment {
     public static final int DESC_FRAG = 2;
     int mCurrentPosition = -1;
     private OnFabSelectedInterface mCallback;
+    private int customerID;
     private ArrayList<Category> category_list = new ArrayList();
     private Bundle args;
     private Reservation reservationToConfirm;
@@ -38,7 +40,10 @@ public class ConfirmBookingFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        //TODO: currency from backend. Discuss with others.
         String currency = sharedPref.getString(getString(R.string.currencies), null);
+       //TODO: GET CUSTOMER ID!
+
 
         // If activity recreated (such as from screen rotate), restore
         // the previous article selection set by onSaveInstanceState().
@@ -88,8 +93,8 @@ public class ConfirmBookingFragment extends Fragment {
             @Override
             public void onClick(View arg0) {
                 //TODO: Get Customer ID from Shared Preferences
-                String url = "reservation/createReservation/";
                 //{categoryID}/{customerID}/{datefrom}/{dateto}"
+                String url = "reservation/createReservation/";
                 url = url + reservationToConfirm.getCategoryID() + "/1/" + reservationToConfirm.getDateFrom() + "/" + reservationToConfirm.getDateTo() + "/";
                 try {
                     new ReservationTask().execute(url, reservationToConfirm);
@@ -97,7 +102,6 @@ public class ConfirmBookingFragment extends Fragment {
                     Log.d("error", e.getMessage());
                 }
 
-                mCallback.onFabSelected(DESC_FRAG, reservationToConfirm);
             }
         });
 
@@ -142,9 +146,11 @@ public class ConfirmBookingFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(String string) {
-            String responseCode = string;
+        protected void onPostExecute(String response) {
+             String responseCode = "RESERVATION RESPONSE: " + response;
             System.out.println(responseCode);
+            mCallback.onFabSelected(DESC_FRAG, reservationToConfirm, responseCode);
+
         }
     }
 

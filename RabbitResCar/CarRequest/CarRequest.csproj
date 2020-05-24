@@ -64,5 +64,11 @@
       <Version>6.0.0</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CurrencyConverterConsumer\CurrencyConverterConsumer.csproj">
+      <Project>{873643b4-7593-4a81-bdd7-2d3c8f08ef3d}</Project>
+      <Name>CurrencyConverterConsumer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

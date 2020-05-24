@@ -108,9 +108,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.navigation_profile:
                 isLoggedIn = sharedPref.getBoolean(getString(R.string.isLoggedIn), false);
                 if(isLoggedIn){
-                    User user = getUserDataFromSharedPreferences();
-                    String url = "customer/profile/" + user.getId();
-                    //new ProfileTask().execute(url);
+                    String url = "customer/profile/";
+                    new ProfileTask().execute(url);
                     viewPager.setCurrentItem(2);
                 }else{
                     viewPager.setCurrentItem(3);
@@ -206,15 +205,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             User user = getUserDataFromSharedPreferences();
 
-            return ApiUtil.getFromBackend(url, user.getToken());
+            return ApiUtil.getFromBackend(url, user.getToken(), user.getId());
         }
 
         @Override
         protected void onPostExecute(String s) {
             editor = sharedPref.edit();
-            editor.putString(getString(R.string.profileData), s);
+            editor.putString(getString(R.string.customerData), s);
             editor.commit();
-
         }
     }
 
