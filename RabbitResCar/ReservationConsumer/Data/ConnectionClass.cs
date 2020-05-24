@@ -16,8 +16,8 @@ namespace ReservationConsumer.Data
 
         public ConnectionClass()
         {
-            UName = "guest";
-            PWD = "guest";
+            UName = "user";
+            PWD = "password";
             HName = "localhost";
         }
 
@@ -41,6 +41,14 @@ namespace ReservationConsumer.Data
         public IBasicProperties getProperties()
         {
             return getModel().CreateBasicProperties();
+        }
+
+        public RabbitMQ.Client.QueueDeclareOk createQueue(string queueName)
+        {
+            var model = getModel();
+            var queue = model.QueueDeclare(queueName, true, false, false, null);
+
+            return queue;
         }
 
     }

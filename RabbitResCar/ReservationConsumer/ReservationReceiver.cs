@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
-
+using ReservationConsumer.Data;
 
 namespace ReservationConsumer
 {
@@ -38,7 +38,7 @@ namespace ReservationConsumer
                 var db = client.GetDatabase("ReservationManagement");
                 var coll = db.GetCollection<BsonDocument>("Reservation");
 
-                if (routingKey.Equals("get_res_by_id_key"))
+                if (routingKey.Equals("reservation.get.by.id"))
                 {
 
                     Console.WriteLine("get ReservationID " + Encoding.UTF8.GetString(body));
@@ -59,7 +59,7 @@ namespace ReservationConsumer
                 }
                 else
                 {
-                    if (routingKey.Equals("reservation_key"))
+                    if (routingKey.Equals("reservation.create"))
                     {
                         Reservation reservationConsumed = JsonConvert.DeserializeObject<Reservation>(Encoding.UTF8.GetString(body));
 
@@ -68,21 +68,25 @@ namespace ReservationConsumer
                         var insert = new BsonDocument
                         {
                             {"CarID", reservationConsumed.CarID },
-                            {"CategoryID", reservationConsumed.CurrencyExchangeRate },
+                            {"CategoryID", reservationConsumed.CategoryID },
                             {"LocationID", reservationConsumed.LocationID },
+                            {"CustomerID", reservationConsumed.CustomerID },
                             // TODO get CurrencyExchangeRate from PALOS Microservice
 
-                            {"CurrencyID", reservationConsumed.CurrencyExchangeRate },
+                            {"CurrencyID", reservationConsumed.CurrencyID },
+                            {"CurrencyExchangeRate", reservationConsumed.CurrencyExchangeRate },
                             {"StartDate", reservationConsumed.StartDate },
                             {"EndDate", reservationConsumed.EndDate }
 
                         };
 
                         coll.InsertOneAsync(insert);
+
+                        DirectMessageToGateway ds = new DirectMessageToGateway();
+                        ds.SendMessage(insert.ToString());
                         Console.WriteLine("inserted");
                     }
                 }
-                _channel.BasicAck(deliveryTag, false);
             }
         }
     }
