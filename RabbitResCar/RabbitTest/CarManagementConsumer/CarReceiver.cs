@@ -56,7 +56,6 @@ namespace CarmanagementConsumer
                     ds.SendReservationByID(Encoding.UTF8.GetString(body));
                 }
             }
-           
 
             Console.WriteLine("retrieved car DATA: "+body);
 

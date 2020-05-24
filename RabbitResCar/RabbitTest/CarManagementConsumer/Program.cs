@@ -18,7 +18,6 @@ namespace ReservationRequest
             connClass = new ConnectionClass();
             var connectionFactory = connClass.getConnectionFactored();
 
-
             var connection = connectionFactory.CreateConnection();
             var channel = connection.CreateModel();
 
