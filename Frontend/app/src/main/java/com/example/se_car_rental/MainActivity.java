@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 isLoggedIn = sharedPref.getBoolean(getString(R.string.isLoggedIn), false);
                 if(isLoggedIn){
                     String url = "customer/profile/";
-                    //new ProfileTask().execute(url);
+                    new ProfileTask().execute(url);
                     viewPager.setCurrentItem(2);
                 }else{
                     viewPager.setCurrentItem(3);

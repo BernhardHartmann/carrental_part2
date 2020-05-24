@@ -26,6 +26,7 @@ public class ConfirmBookingFragment extends Fragment {
     public static final int DESC_FRAG = 2;
     int mCurrentPosition = -1;
     private OnFabSelectedInterface mCallback;
+    private int customerID;
     private ArrayList<Category> category_list = new ArrayList();
     private Bundle args;
     private Reservation reservationToConfirm;
@@ -40,6 +41,8 @@ public class ConfirmBookingFragment extends Fragment {
 
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         String currency = sharedPref.getString(getString(R.string.currencies), null);
+       //TODO: GET CUSTOMER ID!
+
 
         // If activity recreated (such as from screen rotate), restore
         // the previous article selection set by onSaveInstanceState().

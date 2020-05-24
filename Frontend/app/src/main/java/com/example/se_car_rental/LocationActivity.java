@@ -82,7 +82,7 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
             if (savedInstanceState != null) {
                 return;
             }
-            // Create an instance of ExampleFragment
+            // Create an instance of Category List Fragment
             Category_ListFragment firstFragment = new Category_ListFragment();
             firstFragment.setCategories(category_list);
 
@@ -162,9 +162,8 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
                 fragmentManager.findFragmentById(R.id.booking_fragment);
 
         if (bookingFrag != null) {
-            // If article frag is available, we're in two-pane layout...
 
-            // Call a method in the ArticleFragment to update its content
+            // Call a method in the BookingFragment to update its content
             bookingFrag.updateBookingView(position);
             bookingFrag.setReservation(reservation);
             bookingFrag.setCategories(category_list[currentPosition].getCategoryId());

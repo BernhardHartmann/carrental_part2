@@ -1,15 +1,10 @@
 package com.example.se_car_rental.entities;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZonedDateTime;
 import java.util.Date;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import static java.time.format.DateTimeFormatter.ISO_INSTANT;
 
 
 public class Reservation implements Entity {
@@ -47,7 +42,6 @@ public class Reservation implements Entity {
     }
 
     //Create empty Reservation for editing
-
     public Reservation(Integer id) {
         this.reservation_id = id;
     }
@@ -132,7 +126,6 @@ public class Reservation implements Entity {
         this.carStatus = carStatus;
     }
 
-    //public LocalDateTime getDateFrom() {
     public String getDateFrom() {
         return dateFrom;
     }
@@ -151,9 +144,6 @@ public class Reservation implements Entity {
 
 
     public void setDateTo(Date dateTo) {
-//        LocalDateTime date = dateTo.toInstant()
-//                .atZone(ZoneId.systemDefault())
-//                .toLocalDateTime();
 
         String date = formatDate(dateTo);
 
