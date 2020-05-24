@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservationConsumer", "Rese
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRequest", "CarRequest\CarRequest.csproj", "{92FFCD8A-54D0-410F-85E8-A3A736476B77}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customers", "Customers\Customers\Customers.csproj", "{B36204CD-07DB-40E4-899B-BFAC092DF46E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarManagement", "CarManagement\CarManagement\CarManagement.csproj", "{7C988EDD-3A52-44AB-95C8-F76CD40579A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{92FFCD8A-54D0-410F-85E8-A3A736476B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92FFCD8A-54D0-410F-85E8-A3A736476B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92FFCD8A-54D0-410F-85E8-A3A736476B77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B36204CD-07DB-40E4-899B-BFAC092DF46E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B36204CD-07DB-40E4-899B-BFAC092DF46E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B36204CD-07DB-40E4-899B-BFAC092DF46E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B36204CD-07DB-40E4-899B-BFAC092DF46E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C988EDD-3A52-44AB-95C8-F76CD40579A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C988EDD-3A52-44AB-95C8-F76CD40579A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C988EDD-3A52-44AB-95C8-F76CD40579A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C988EDD-3A52-44AB-95C8-F76CD40579A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
