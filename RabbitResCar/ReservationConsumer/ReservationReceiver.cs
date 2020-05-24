@@ -9,6 +9,7 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 
+
 namespace ReservationConsumer
 {
     public class ReservationReceiver : DefaultBasicConsumer
@@ -28,6 +29,7 @@ namespace ReservationConsumer
             Console.WriteLine(string.Concat("Delivery tag: ", deliveryTag));
             Console.WriteLine(string.Concat("Routing tag: ", routingKey));
             Console.WriteLine(string.Concat("Message: ", Encoding.UTF8.GetString(body)));          
+
 
             if (exchange.Equals("request.reservation"))
             {
@@ -61,17 +63,14 @@ namespace ReservationConsumer
                     {
                         Reservation reservationConsumed = JsonConvert.DeserializeObject<Reservation>(Encoding.UTF8.GetString(body));
 
+                        
                         //ReservationInsert
                         var insert = new BsonDocument
                         {
                             {"CarID", reservationConsumed.CarID },
                             {"CategoryID", reservationConsumed.CurrencyExchangeRate },
                             {"LocationID", reservationConsumed.LocationID },
-
                             // TODO get CurrencyExchangeRate from PALOS Microservice
-
-
-                            
 
                             {"CurrencyID", reservationConsumed.CurrencyExchangeRate },
                             {"StartDate", reservationConsumed.StartDate },

@@ -13,16 +13,15 @@ namespace CarsRequest
         static void Main(string[] args)
         {
             DirectMessageToCars directmessages = new DirectMessageToCars();
-            directmessages.SendMessageToCars();
-            Console.ReadLine();
 
-        //EXAMPLE exchange request
-            //step 1 - create request
-            RpcRequest request = new RpcRequest { fromCCY = "USD", toCCY = "EUR"};
-            //step 2 - send request 
-            RpcResponse testResponse = Task.Run(async () => await RpcCurrencyConverter.GetRpcResult(request)).Result;
-            //step 3 - read response
-            double exchangeRate = testResponse.exchangeRate;
+            Car car = new Car();
+            car.CarId = 1;
+            car.CategoryId = 33;
+            car.LocationId = 99;
+
+            directmessages.CreateReservation(car);
+            Console.ReadLine();
+                                                              
             directmessages.GetReservationByID("5ec9be88387b6f433c43f0ef");
             Console.ReadLine(); 
         }

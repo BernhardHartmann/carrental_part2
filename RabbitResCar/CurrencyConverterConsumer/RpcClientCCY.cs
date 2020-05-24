@@ -32,6 +32,7 @@ namespace CurrencyConverterClient
             channel = connection.CreateModel();
             replyQueueName = channel.QueueDeclare().QueueName;
             consumer = new EventingBasicConsumer(channel);
+
             consumer.Received += (model, ea) =>
             {
                 if (!callbackMapper.TryRemove(ea.BasicProperties.CorrelationId, out TaskCompletionSource<string> tcs))

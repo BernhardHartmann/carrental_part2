@@ -18,7 +18,7 @@ namespace CarsRequest
         private string jsonString;
         private ConnectionClass connClass;
       
-        public void SendMessageToCars()
+        public void CreateReservation(Car car)
         {
             connClass = new ConnectionClass();
             ConnectionFactory connectionFactory = connClass.getConnectionFactored();
@@ -27,10 +27,7 @@ namespace CarsRequest
             var properties = connClass.getProperties();
             properties.Persistent = false;
 
-            Car car = new Car();
-            car.CarId = 1;
-            car.CategoryId = 33;
-            car.LocationId = 99;
+            
            
             jsonString = JsonConvert.SerializeObject(car);
             byte[] messagebuffer = Encoding.Default.GetBytes(jsonString);
