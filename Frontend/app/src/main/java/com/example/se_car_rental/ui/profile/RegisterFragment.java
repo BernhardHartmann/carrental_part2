@@ -35,16 +35,13 @@ import java.util.Arrays;
 
 public class RegisterFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    private ProfileViewModel profileViewModel;
     SharedPreferences sharedPref;
     Currency[] currencies;
     ArrayList<String> spinnerCurrencies = new ArrayList<>();
     Currency selectedCurrency;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         sharedPref = getActivity().getSharedPreferences("Preference", Context.MODE_PRIVATE);
         String currency = sharedPref.getString(getString(R.string.currencies), null);

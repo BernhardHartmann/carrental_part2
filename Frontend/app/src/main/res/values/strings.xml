@@ -44,5 +44,7 @@
     <string name="key">key</string>
     <string name="name">locationName</string>
     <string name="customerData">customerData</string>
+    <string name="reservations">reservations</string>
+    <string name="locationAddr">locationAddress</string>
 
 </resources>
