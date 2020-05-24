@@ -1,5 +1,5 @@
-﻿using CurrencyConverterClient;
-using CurrencyConverterConsumer.Data;
+﻿
+using CarManagement.Data;
 using RabbitMQ.Client;
 using System;
 using System.Collections.Generic;
@@ -7,11 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CurrencyConverterConsumer
+namespace CarManagement
 {
     class Program
     {
-
         private static ConnectionClass connClass;
 
         static void Main(string[] args)
@@ -24,10 +23,10 @@ namespace CurrencyConverterConsumer
             var channel = connection.CreateModel();
 
             channel.BasicQos(0, 1, false);
-          /*  RpcClientCCY messageReceiver = new RpcClientCCY(channel);
-            channel.BasicConsume("reservation.queue", false, messageReceiver);
-            channel.BasicConsume("request.reservation.getByID", false, messageReceiver);
-            Console.ReadLine();   */
+            CarReceiver messageReceiver = new CarReceiver(channel);
+            channel.BasicConsume("cars.queue", false, messageReceiver);
+  
+            Console.ReadLine();
         }
     }
 }

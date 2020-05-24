@@ -7,9 +7,9 @@ using Microsoft.Extensions.Hosting;
 
 namespace CarManagement
 {
-    public class Program
+    public class Program_old
     {
-        public static void Main(string[] args)
+        /*public static void Main(string[] args)
         {
             CarService carService = new CarService();
             //var test = carService.getCarListPerLocation();
@@ -24,5 +24,6 @@ namespace CarManagement
                 {
                     services.AddHostedService<Worker>();
                 });
+    }  */
     }
 }

@@ -5,16 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using RabbitMQ.Client;
 using Newtonsoft.Json;
-using CarsRequest.Data;
+using CarManagement.Data;
 using System.Configuration;
-using CarRequest;
 
-namespace CarsRequest
+
+namespace CarManagement
 {
     /*
      * The cars consumer is in the reservationRequest project
      */
-    public class DirectMessageToCars
+    public class DirectMessageBackToCarReq
     {
         private string jsonStringCar;
         private string jsonStringCategory;
@@ -35,6 +35,9 @@ namespace CarsRequest
             jsonStringCar = JsonConvert.SerializeObject(car);
             jsonStringCategory = JsonConvert.SerializeObject(category);
 
+            
+
+
             byte[] messagebuffer = Encoding.Default.GetBytes(jsonStringCar+jsonStringCategory);
 
 
@@ -53,7 +56,7 @@ namespace CarsRequest
             var properties = connClass.getProperties();
             properties.Persistent = false;
 
-            string jsonLocCat = "{'locationID':'" + locationID + "','categoryID':'"+categoryID+"'}";
+            string jsonLocCat = "{'locationID':'" + locationID + "','categoryID':"+categoryID+"'}";
 
 
             byte[] messagebuffer = Encoding.Default.GetBytes(jsonLocCat);
@@ -65,27 +68,7 @@ namespace CarsRequest
 
         }
 
-        public void GetReservationByID(string id)
-        {
-            connClass = new ConnectionClass();
-            ConnectionFactory connectionFactory = connClass.getConnectionFactored();
-
-            var model = connClass.getModel();
-            var properties = connClass.getProperties();
-            properties.Persistent = false;
-
-            byte[] messagebuffer = Encoding.Default.GetBytes(id);
-
-            var requestReservationExchange = ConfigurationSettings.AppSettings["exchangeReservation"];
-            var getReservationByIDKey = ConfigurationSettings.AppSettings["reservationByIDKey"];
-
-
-            model.BasicPublish(requestReservationExchange, getReservationByIDKey, properties, messagebuffer);
-
-            Console.WriteLine("Cars Message Sent with queue request.reservation and key reservation_key");
-           
-
-        }
+       
 
     }
 
