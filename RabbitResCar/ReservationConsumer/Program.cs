@@ -24,7 +24,6 @@ namespace ReservationConsumer
             channel.BasicQos(0, 1, false);
             ReservationReceiver messageReceiver = new ReservationReceiver(channel);
             channel.BasicConsume("reservation.queue", false, messageReceiver);
-            channel.BasicConsume("request.reservation.getByID", false, messageReceiver);
             Console.ReadLine();
         }
     }

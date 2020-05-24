@@ -10,6 +10,7 @@ using MongoDB.Bson;
 using ReservationRequest.Data;
 using ReservationRequest;
 using System.Threading;
+using RabbitTest;
 
 namespace CarmanagementConsumer
 {
@@ -32,15 +33,18 @@ namespace CarmanagementConsumer
             Console.WriteLine(string.Concat("Message: ", Encoding.UTF8.GetString(body)));
 
 
-            if (Encoding.UTF8.GetString(body).GetType() == typeof(Car))
+            if (exchange.Equals("request.reservation"))
             {
-                Car carConsumed = JsonConvert.DeserializeObject<Car>(Encoding.UTF8.GetString(body));
-                Console.WriteLine(string.Concat("desirialized: ", carConsumed.CarId));
+                if (routingKey.Equals("reservation.create"))
+                {
+                    var message = JsonConvert.DeserializeObject<ReservationCreate>(Encoding.UTF8.GetString(body));
+                    //Console.WriteLine(string.Concat("desirialized: ", carConsumed.CarId));
 
-                System.Threading.Thread.Sleep(3000);
+                    System.Threading.Thread.Sleep(3000);
 
-                DirectMessageToReservation ds = new DirectMessageToReservation();
-                ds.SendMessageToReservation(carConsumed);
+                    DirectMessageToReservation ds = new DirectMessageToReservation();
+                    ds.SendMessageToReservation(message);
+                }
             }
 
             if (exchange.Equals("request.reservation"))

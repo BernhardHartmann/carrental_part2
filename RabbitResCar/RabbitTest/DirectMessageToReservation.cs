@@ -7,6 +7,7 @@ using RabbitMQ.Client;
 using Newtonsoft.Json;
 using ReservationRequest.Data;
 using CarmanagementConsumer;
+using RabbitTest;
 
 namespace ReservationRequest
 {
@@ -15,7 +16,7 @@ namespace ReservationRequest
         private string jsonString;
         private ConnectionClass connClass;
       
-        public void SendMessageToReservation(Car encodedCar)
+        public void SendMessageToReservation(ReservationCreate encodedCar)
         {
             connClass = new ConnectionClass();
             ConnectionFactory connectionFactory = connClass.getConnectionFactored();
@@ -24,10 +25,12 @@ namespace ReservationRequest
             var properties = connClass.getProperties();
             properties.Persistent = false;
 
+            var queue = connClass.createQueue("reservation.queue");
+
             Reservation reservation = new Reservation();
-            reservation.CategoryID = encodedCar.CategoryId;
-            reservation.CarID = encodedCar.CarId;
-            reservation.LocationID = encodedCar.LocationId;
+            reservation.CategoryID = encodedCar.CategoryID;
+            reservation.CarID = encodedCar.CarID;
+            reservation.LocationID = encodedCar.LocationID;
             reservation.CurrencyID = 5;
             reservation.CurrencyExchangeRate = "0.8";
             reservation.StartDate = new DateTime();
@@ -36,7 +39,7 @@ namespace ReservationRequest
             jsonString = JsonConvert.SerializeObject(reservation);
             byte[] messagebuffer = Encoding.Default.GetBytes(jsonString);
 
-            model.BasicPublish("request.reservation", "reservation_key", properties, messagebuffer);
+            model.BasicPublish("request.reservation", "reservation.create", properties, messagebuffer);
             Console.WriteLine("Reservation Message Sent");
 
         }
@@ -49,9 +52,11 @@ namespace ReservationRequest
             var properties = connClass.getProperties();
             properties.Persistent = false;
 
+            var queue = connClass.createQueue("reservation.queue");
+
             byte[] messagebuffer = Encoding.Default.GetBytes(id);
 
-            model.BasicPublish("request.reservation", "get_res_by_id_key", properties, messagebuffer);
+            model.BasicPublish("request.reservation", "reservation.get.by.id", properties, messagebuffer);
             Console.WriteLine("Reservation Message - get Res By ID sent");
         }
 
