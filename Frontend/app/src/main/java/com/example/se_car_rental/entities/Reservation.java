@@ -7,7 +7,7 @@ import java.util.TimeZone;
 
 
 
-public class Reservation implements Entity {
+public class Reservation {
 
     int categoryID;
     int locationID;
@@ -171,13 +171,5 @@ public class Reservation implements Entity {
         this.resStatus = resStatus;
     }
 
-    @Override
-    public String getName() {
-        return Integer.toString(reservation_id);
-    }
-
-    @Override
-    public String getLabel() {
-        return "this is a test reservation";
-    }
+   
 }
