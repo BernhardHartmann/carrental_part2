@@ -50,11 +50,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         sharedPref = getSharedPreferences("Preference", MODE_PRIVATE);
 
-        /*
         editor = sharedPref.edit();
         editor.putBoolean(getString(R.string.isLoggedIn), false);
         editor.commit();
-        */
 
         new LocationTask(this).execute("utilities/locations");
         new CurrencyTask().execute("utilities/currencies");
