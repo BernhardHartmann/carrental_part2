@@ -32,6 +32,7 @@ import com.example.se_car_rental.ui.reservation.ReservationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -158,8 +159,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     public void onItemSelected(int position, ReservationOverview reservation) {
-        ReservationOverview res = reservation;
-        Integer temp = position;
+        String url = "reservation/customer/cancel";
+        new CancelReservationTask().execute(url, reservation);
     }
 
 
@@ -272,6 +273,39 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         return user;
     }
+
+    private class CancelReservationTask extends AsyncTask<Object, Void, String> {
+        @Override
+        protected String doInBackground(Object... objects) {
+            String url = (String) objects[0];
+            Object object = objects[1];
+
+            User user = getUserDataFromSharedPreferences();
+
+            try {
+                return ApiUtil.putToBackend(url, user.getToken(), object);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String string) {
+
+            if(string != null) {
+
+                if (string.contains("exception")) {
+                    Toast.makeText(MainActivity.this, "An error occurred during processing your request.", Toast.LENGTH_SHORT).show();
+                    pagerAdapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(MainActivity.this, "Your successfully canceled your booking.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+    }
+
 }
 
 
