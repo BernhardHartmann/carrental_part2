@@ -1,5 +1,6 @@
 package com.example.se_car_rental.ui.reservation;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -38,8 +39,10 @@ public class ReservationFragment extends Fragment {
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        reservationViewModel =
-                ViewModelProviders.of(this).get(ReservationViewModel.class);
+        reservationViewModel = ViewModelProviders.of(this).get(ReservationViewModel.class);
+
+        sharedPref = getActivity().getSharedPreferences("Preference", Context.MODE_PRIVATE);
+
         View root = inflater.inflate(R.layout.fragment_reservation, container, false);
 
         try {

@@ -1,17 +1,13 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using RpcClientSample;
 using System;
 using System.Collections.Concurrent;
-using System.Net.Cache;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 
+//TODO: RpcClientCCY has to be included in CarRental-Micro-Services that communicates with currency convertor
 namespace RpcClientCCY
 {
     public class RpcClientCCY
@@ -27,7 +23,12 @@ namespace RpcClientCCY
 
         public RpcClientCCY()
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
+            //var factory = new ConnectionFactory() { HostName = "localhost" };
+
+            //Testing deployment
+            //var factory = new ConnectionFactory() { HostName = "rabbitmq", DispatchConsumersAsync = true };
+
+            var factory = new ConnectionFactory(){ HostName = "rabbitmq" };
 
             connection = factory.CreateConnection();
             channel = connection.CreateModel();
@@ -74,52 +75,11 @@ namespace RpcClientCCY
             {
                 channel.Close();
                 connection.Close();
+
             } catch (Exception e)
             {
-                Console.WriteLine(e);
+                //TODO: Log exception
             }
-        }
-    }
-
-    public class Rpc
-    {
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("RPC Client");
-            string fromCCY = args.Length > 0 ?  args[0] : "USD";
-            string toCCY = args.Length > 0 ? args[0] : "EUR";
-            Console.WriteLine(fromCCY);
-            Console.WriteLine(toCCY);
-
-            RpcRequest request = new RpcRequest
-            {
-                fromCCY = fromCCY,
-                toCCY = toCCY
-            };
-
-            Task t = InvokeAsync(request);
-            t.Wait();
-            Task t2 = InvokeAsync(request);
-            t2.Wait();
-
-            Console.WriteLine(" Press [enter] to exit.");
-            Console.ReadLine();
-        }
-
-        private static async Task InvokeAsync(RpcRequest request)
-        {
-
-            string jsonRequest = JsonSerializer.Serialize(request);
-            
-             var rpcClient = new RpcClientCCY();
-
-             Console.WriteLine(" [x] Requesting '{0}'", jsonRequest);
-             var response = await rpcClient.CallAsync(jsonRequest);
-             Console.WriteLine(" [.] Got '{0}'", response);
-
-             rpcClient.Close();
-             Console.WriteLine("cc"); 
-             
         }
     }
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,8 +15,6 @@ import com.example.se_car_rental.R;
 import com.example.se_car_rental.entities.Entity;
 
 public class MyListAdapter extends BaseAdapter {
-
-    //private ArrayList<Entity> mDataset;
     private Entity[] mDataset;
     private Context myContext;
     private View listItem;
@@ -29,18 +28,18 @@ public class MyListAdapter extends BaseAdapter {
     public static class MyViewHolderHome extends RecyclerView.ViewHolder {
         public TextView textView1;
         public TextView textView2;
+        public ImageView imageView;
         public View listItem;
-        //private ArrayList<Entity> dataSet;
         private Entity[] dataSet;
         private Context mContext;
-        //public MyViewHolder(View item, ArrayList<Entity> dataset, Context context) {
         public MyViewHolderHome(View item, Entity[] dataset, Context context) {
             super(item);
             dataSet = dataset;
             mContext = context;
             listItem  = item;
-            textView1 = (TextView) item.findViewById(R.id.text1);
-            textView2 = (TextView) item.findViewById(R.id.text2);
+            textView1 = item.findViewById(R.id.text1);
+            textView2 = item.findViewById(R.id.text2);
+            imageView = item.findViewById(R.id.iView);
         }
     }
 
@@ -48,17 +47,15 @@ public class MyListAdapter extends BaseAdapter {
         public TextView textView1;
         public TextView textView2;
         public View listItem;
-        //private ArrayList<Entity> dataSet;
         private Entity[] dataSet;
         private Context mContext;
-        //public MyViewHolder(View item, ArrayList<Entity> dataset, Context context) {
         public MyViewHolderReservations(View item, Entity[] dataset, Context context) {
             super(item);
             dataSet = dataset;
             mContext = context;
             listItem  = item;
-            textView1 = (TextView) item.findViewById(R.id.text1);
-            textView2 = (TextView) item.findViewById(R.id.text2);
+            textView1 =  item.findViewById(R.id.text1);
+            textView2 =  item.findViewById(R.id.text2);
         }
     }
 
@@ -70,31 +67,48 @@ public class MyListAdapter extends BaseAdapter {
             className = mDataset.getClass().getComponentType().getName();
         }
 
+        if(className.equals("com.example.se_car_rental.entities.Reservation")){
 
-        if(className.equals("com.example.se_car_rental.entities.Locations")){
-            listItem = (LinearLayout) LayoutInflater.from(myContext)
-                    .inflate(R.layout.list_item, null);
-
-            MyViewHolderHome holder = new MyViewHolderHome(listItem, mDataset, myContext);
-
-            //Entity entity =  mDataset.get(position);
-            Entity entity = mDataset[position];
-            holder.textView1.setText(entity.getName());
-            holder.textView2.setText(entity.getLabel());
-        }else if(className.equals("com.example.se_car_rental.entities.Reservation")){
-
-            listItem = (LinearLayout) LayoutInflater.from(myContext)
+            listItem =  LayoutInflater.from(myContext)
                     .inflate(R.layout.list_item_reservation, null);
 
             MyViewHolderReservations holder = new MyViewHolderReservations(listItem, mDataset, myContext);
 
-            //Entity entity =  mDataset.get(position);
             Entity entity = mDataset[position];
             holder.textView1.setText(entity.getName());
             holder.textView2.setText(entity.getLabel());
+        }else{
+            listItem = LayoutInflater.from(myContext)
+                    .inflate(R.layout.list_item, null);
 
-
-        }
+            MyViewHolderHome holder = new MyViewHolderHome(listItem, mDataset, myContext);
+            ;
+            Entity entity = mDataset[position];
+            holder.textView1.setText(entity.getName());
+            holder.textView2.setText(entity.getLabel());
+            if(className.equals("com.example.se_car_rental.entities.Category")){
+                String catName = entity.getName();
+                switch(catName) {
+                    case("City Car"):
+                        holder.imageView.setImageResource(R.mipmap.city_foreground);
+                        break;
+                    case("Economy Car"):
+                        holder.imageView.setImageResource(R.mipmap.economy_foreground);
+                        break;
+                    case("Compact Car"):
+                        holder.imageView.setImageResource(R.mipmap.compact_foreground);
+                        break;
+                    case("Family Car"):
+                        holder.imageView.setImageResource(R.mipmap.family_foreground);
+                        break;
+                    case("Luxury Car"):
+                        holder.imageView.setImageResource(R.mipmap.luxury_foreground);
+                        break;
+                    default:
+                        holder.imageView.setImageResource(R.mipmap.old_foreground);
+                }
+                }
+            }
 
         return listItem;
     }
@@ -102,7 +116,6 @@ public class MyListAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         return (mDataset != null ? mDataset.length : 0);
-
     }
 
     @Override

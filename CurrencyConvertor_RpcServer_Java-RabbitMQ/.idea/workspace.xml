@@ -1,7 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89664776-cc19-4b56-ae25-a49093cbd459" name="Default Changelist" comment="Service Consumer Authentication and faulty UnitTest removal&#10;&#10;SOAP Security Header is handled by the endpoint on application level. Additional the faulty Unittest hindering automatic deployment was removed." />
+    <list default="true" id="89664776-cc19-4b56-ae25-a49093cbd459" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ws/ServiceConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/.vs/RpcClientCCY.NET-RabbitMQ/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/.vs/RpcClientCCY.NET-RabbitMQ/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/.vs/RpcClientCCY.NET-RabbitMQ/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/.vs/RpcClientCCY.NET-RabbitMQ/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/RpcClientCCY.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/RpcClientCCY.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/RpcCurrencyConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/RpcCurrencyConverter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Debug/netcoreapp3.1/RpcClientCCY.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Debug/netcoreapp3.1/RpcClientCCY.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Debug/netcoreapp3.1/RpcClientCCY.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Debug/netcoreapp3.1/RpcClientCCY.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/RpcClientCCY.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/RpcClientCCY.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/RpcClientCCY.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/RpcClientCCY.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/publish/RpcClientCCY.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/publish/RpcClientCCY.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/publish/RpcClientCCY.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/bin/Release/netcoreapp3.1/publish/RpcClientCCY.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Debug/netcoreapp3.1/RpcClientCCY.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Debug/netcoreapp3.1/RpcClientCCY.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Debug/netcoreapp3.1/RpcClientCCY.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Debug/netcoreapp3.1/RpcClientCCY.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Release/netcoreapp3.1/RpcClientCCY.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Release/netcoreapp3.1/RpcClientCCY.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Release/netcoreapp3.1/RpcClientCCY.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Release/netcoreapp3.1/RpcClientCCY.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Release/netcoreapp3.1/RpcClientCCY.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/RPC_client/obj/Release/netcoreapp3.1/RpcClientCCY.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../CurrencyConverter_RpcClient_.NET-RabbitMQ/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ws/RPCServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ws/RPCServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ws/RPCServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ws/RPCServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT.war.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/com/ws/DataRetriever.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/com/ws/RPCServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/com/ws/RpcRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/com/ws/RpcResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/classes/com/ws/fxRateConvertor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/FastInfoset-1.2.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/amqp-client-5.9.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/classmate-1.5.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/gson-2.8.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/hibernate-validator-6.0.18.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/istack-commons-runtime-3.0.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jackson-annotations-2.10.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jackson-core-2.10.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jackson-databind-2.10.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jackson-datatype-jdk8-2.10.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jackson-datatype-jsr310-2.10.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jackson-module-parameter-names-2.10.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jakarta.activation-api-1.2.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jakarta.annotation-api-1.3.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jakarta.jws-api-1.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jakarta.validation-api-2.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jakarta.xml.bind-api-2.3.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jakarta.xml.soap-api-1.4.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jakarta.xml.ws-api-2.3.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jaxb-runtime-2.3.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jboss-logging-3.4.1.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/jul-to-slf4j-1.7.29.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/log4j-api-2.12.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/log4j-to-slf4j-2.12.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/logback-classic-1.2.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/logback-core-1.2.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/mimepull-1.9.12.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/saaj-impl-1.5.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/slf4j-api-1.7.29.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/snakeyaml-1.25.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-aop-5.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-beans-5.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-boot-2.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-boot-autoconfigure-2.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-boot-starter-2.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-boot-starter-json-2.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-boot-starter-logging-2.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-boot-starter-validation-2.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-boot-starter-web-2.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-boot-starter-web-services-2.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-context-5.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-core-5.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-expression-5.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-jcl-5.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-oxm-5.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-web-5.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-webmvc-5.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-ws-core-3.0.8.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/spring-xml-3.0.8.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/stax-ex-1.8.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/txw2-2.3.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/producing-web-service-0.0.1-SNAPSHOT/WEB-INF/lib/wsdl4j-1.6.3.jar" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,8 +203,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Send" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ws.Send" />
+    <configuration name="RPCServerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="producing-web-service" />
       <extension name="coverage">
         <pattern>
@@ -128,6 +211,9 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.ws" />
+      <option name="MAIN_CLASS_NAME" value="com.ws.RPCServerTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -140,13 +226,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RPCServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="producing-web-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ws.RPCServer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.RPCServer" />
+        <item itemvalue="JUnit.RPCServerTests" />
         <item itemvalue="Application.RPCServerSample" />
         <item itemvalue="Application.RPCClient" />
         <item itemvalue="Application.Recv" />
-        <item itemvalue="Application.Send" />
       </list>
     </recent_temporary>
   </component>
@@ -183,6 +276,7 @@
       <workItem from="1589904218602" duration="9782000" />
       <workItem from="1589925540800" duration="1852000" />
       <workItem from="1589993568715" duration="145000" />
+      <workItem from="1590237102249" duration="5994000" />
     </task>
     <task id="LOCAL-00001" summary="Revert &quot;clean up code&quot;&#10;&#10;This reverts commit 038a932da09f4950e390746a2393bf9279c5120d.">
       <created>1586168901086</created>
@@ -212,7 +306,28 @@
       <option name="project" value="LOCAL" />
       <updated>1587316429864</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Cleaned code, unit test">
+      <created>1590235964499</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1590235964499</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Cleaned code: JAXB not needed, SOAP examples not relevant">
+      <created>1590236168465</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1590236168465</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fixed: plugin config blocking WAR-build">
+      <created>1590236458292</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1590236458292</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,51 +338,54 @@
     <MESSAGE value="Add JAXB-Files" />
     <MESSAGE value="Service Consumer Authentication and faulty UnitTest removal&#10;&#10;SOAP Security Header is handled by the endpoint on application level. Additional the faulty Unittest hindering automatic deployment was removed." />
     <MESSAGE value="Unittests for FX calculations implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unittests for FX calculations implemented" />
+    <MESSAGE value="Cleaned code, unit test" />
+    <MESSAGE value="Cleaned code: JAXB not needed, SOAP examples not relevant" />
+    <MESSAGE value="Fixed: plugin config blocking WAR-build" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed: plugin config blocking WAR-build" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587336733218">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1587336733218" />
-    <state x="257" y="0" key="CommitChangelistDialog2" timestamp="1587316428338">
+    <state x="0" y="1" width="1920" height="1036" key="CommitChangelistDialog2" timestamp="1590253896076">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-31" y="-1080" key="CommitChangelistDialog2/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586169735524" />
     <state x="183" y="0" key="CommitChangelistDialog2/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168748270" />
-    <state x="257" y="0" key="CommitChangelistDialog2/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1587316428338" />
+    <state x="0" y="1" width="1920" height="1036" key="CommitChangelistDialog2/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590253896076" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1589910658632">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1589910658632" />
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1589993714707">
+    <state width="1877" height="379" key="GridCell.Tab.0.bottom" timestamp="1590249800923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586170601742" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168658165" />
     <state width="1323" height="238" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587405900549" />
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1589993714707" />
-    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1589993714706">
+    <state width="1877" height="379" key="GridCell.Tab.0.bottom/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590249800923" />
+    <state width="1877" height="379" key="GridCell.Tab.0.center" timestamp="1590249800923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586170601742" />
     <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168658165" />
     <state width="1323" height="238" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587405900549" />
-    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1589993714706" />
-    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1589993714705">
+    <state width="1877" height="379" key="GridCell.Tab.0.center/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590249800923" />
+    <state width="1877" height="379" key="GridCell.Tab.0.left" timestamp="1590249800922">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586170601742" />
     <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168658165" />
     <state width="1323" height="238" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587405900549" />
-    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1589993714705" />
-    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1589993714706">
+    <state width="1877" height="379" key="GridCell.Tab.0.left/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590249800922" />
+    <state width="1877" height="379" key="GridCell.Tab.0.right" timestamp="1590249800923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586170601742" />
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168658165" />
     <state width="1323" height="238" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587405900549" />
-    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1589993714706" />
+    <state width="1877" height="379" key="GridCell.Tab.0.right/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590249800923" />
     <state width="1323" height="238" key="GridCell.Tab.1.bottom" timestamp="1587405900541">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -305,10 +423,11 @@
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728/-288.-1080.1920.1040@0.0.1366.728" timestamp="1586168636927" />
     <state x="229" y="0" key="SettingsEditor/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1587336700756" />
-    <state x="264" y="-827" width="1070" height="534" key="Vcs.Push.Dialog.v2" timestamp="1586169743829">
-      <screen x="-288" y="-1080" width="1920" height="1040" />
+    <state x="552" y="253" width="1070" height="534" key="Vcs.Push.Dialog.v2" timestamp="1590236481221">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="264" y="-827" width="1070" height="534" key="Vcs.Push.Dialog.v2/0.0.1366.728/-288.-1080.1920.1040@-288.-1080.1920.1040" timestamp="1586169743829" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/243.1080.1366.728@0.0.1920.1040" timestamp="1590236481221" />
     <state x="731" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1587314564350">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
