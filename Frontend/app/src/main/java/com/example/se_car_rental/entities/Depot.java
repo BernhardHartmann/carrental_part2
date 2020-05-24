@@ -64,6 +64,11 @@ public class Depot implements Entity, Parcelable {
         return address;
     }
 
+    @Override
+    public String getLabel2() {
+        return null;
+    }
+
     private void setAddress(String address){
         this.address = address;
     }

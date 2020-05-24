@@ -107,6 +107,11 @@ public class Category implements Entity, Parcelable {
     }
 
     @Override
+    public String getLabel2() {
+        return null;
+    }
+
+    @Override
     public int describeContents() {
         return 0;
     }

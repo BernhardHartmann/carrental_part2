@@ -32,7 +32,6 @@ import static android.view.View.*;
 
 public class LoginFragment extends Fragment {
 
-    private ProfileViewModel profileViewModel;
     private User user;
     static SharedPreferences sharedPref;
     static SharedPreferences.Editor editor;
@@ -40,8 +39,6 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
 
         sharedPref = getActivity().getSharedPreferences("Preference", Context.MODE_PRIVATE);
 

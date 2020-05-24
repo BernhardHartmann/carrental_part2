@@ -4,7 +4,7 @@ import java.util.Date;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
-public class Reservation implements Entity {
+public class Reservation {
 
     int categoryID;
     int locationID;
@@ -61,11 +61,13 @@ public class Reservation implements Entity {
         this.reservation_id = reservation_id;
     }
 
-    public void setCategoryID(int catID){
+    public void setCategoryID(int catID) {
         this.categoryID = catID;
     }
 
-    public int getCategoryID(){return this.categoryID;}
+    public int getCategoryID() {
+        return this.categoryID;
+    }
 
     public Integer getCar_id() {
         return car_id;
@@ -147,7 +149,9 @@ public class Reservation implements Entity {
         this.dateTo = date;
     }
 
-    public Integer getCustomerID(){return customerID;}
+    public Integer getCustomerID() {
+        return customerID;
+    }
 
     public Integer getResStatus() {
         return resStatus;
@@ -157,13 +161,5 @@ public class Reservation implements Entity {
         this.resStatus = resStatus;
     }
 
-    @Override
-    public String getName() {
-        return Integer.toString(reservation_id);
-    }
 
-    @Override
-    public String getLabel() {
-        return "this is a test reservation";
-    }
 }
