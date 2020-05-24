@@ -17,8 +17,8 @@ namespace ReservationRequest.Data
 
         public ConnectionClass()
         {
-            UName = "guest";
-            PWD = "guest";
+            UName = "user";
+            PWD = "password";
             HName = "localhost";
         }
 

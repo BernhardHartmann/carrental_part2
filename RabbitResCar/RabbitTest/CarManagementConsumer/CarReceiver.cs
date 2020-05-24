@@ -37,7 +37,8 @@ namespace CarmanagementConsumer
             {
                 if (routingKey.Equals("reservation.create"))
                 {
-                    var message = JsonConvert.DeserializeObject<ReservationCreate>(Encoding.UTF8.GetString(body));
+
+                    ReservationCreate message = JsonConvert.DeserializeObject<ReservationCreate>(Encoding.UTF8.GetString(body));
                     //Console.WriteLine(string.Concat("desirialized: ", carConsumed.CarId));
 
                     System.Threading.Thread.Sleep(3000);

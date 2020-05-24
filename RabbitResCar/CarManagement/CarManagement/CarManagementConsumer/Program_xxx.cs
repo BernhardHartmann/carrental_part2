@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarManagement
 {
-    class Program
+    class Program_xxx
     {
         private static ConnectionClass connClass;
 

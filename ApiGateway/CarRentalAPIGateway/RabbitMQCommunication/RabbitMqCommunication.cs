@@ -11,19 +11,10 @@ namespace CarRentalAPIGateway.RabbitMQCommunication
     public class RabbitMqCommunication : IRabbitMQCommunication
     {
         private IConfiguration Configuration { get; set; }
-        private ConnectionFactory Factory { get; set; }
-        private IConnection Connection { get; set; }
-        private IModel Channel { get; set; }
 
         public RabbitMqCommunication(IConfiguration configuration)
         {
             Configuration = configuration;
-            Factory = new ConnectionFactory()
-            {
-                HostName = Configuration.GetValue<string>("RabbitMQ:BrokerHostName"),
-                UserName = Configuration.GetValue<string>("RabbitMQ:UserName"),
-                Password = Configuration.GetValue<string>("RabbitMQ:Password")
-            };
         }
 
         public string ReceiveMessage(string queueName)
@@ -31,23 +22,27 @@ namespace CarRentalAPIGateway.RabbitMQCommunication
             try
             {
                 string message = string.Empty;
-                using (var connection = Factory.CreateConnection())
+                var factory = new ConnectionFactory() { HostName = "localhost", UserName = "user", Password = "password" };
+                using (var connection = factory.CreateConnection())
                 {
-                    using (var channel = Connection.CreateModel())
+                    using (var channel = connection.CreateModel())
                     {
-                        var queue = Channel.QueueDeclare(queue: queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
-                        var consumer = new EventingBasicConsumer(Channel);
-                        consumer.Received += (sender, e) => 
+                        channel.BasicQos(0, 1, false);
+
+                        var queue = channel.QueueDeclare(queue: queueName, durable: true, exclusive: false, autoDelete: false, arguments: null);
+                        var consumer = new EventingBasicConsumer(channel);
+                        consumer.Received += (sender, e) =>
                         {
                             var body = e.Body;
                             message = JsonConvert.SerializeObject(Encoding.UTF8.GetString(body.ToArray()));
                         };
 
-                        Channel.BasicConsume(queueName, true, consumer);
+                        channel.BasicConsume(queueName, false, consumer);
                     }
-
-                    return message;
                 }
+
+                return message;
+
             }
             catch (Exception ex)
             {
@@ -60,17 +55,16 @@ namespace CarRentalAPIGateway.RabbitMQCommunication
         {
             try
             {
-                var factory = new ConnectionFactory() { HostName = "localhost", UserName = "guest", Password = "guest" };
-                using (Connection = factory.CreateConnection())
+                var factory = new ConnectionFactory() { HostName = "localhost", UserName = "user", Password = "password" };
+                using (var connection = factory.CreateConnection())
                 {
-                    using (Channel = Connection.CreateModel())
+                    using (var channel = connection.CreateModel())
                     {
-                        Channel.QueueDeclare(queue: queueName, durable: true, exclusive: false, autoDelete: false, arguments: null);
+                        channel.QueueDeclare(queue: queueName, durable: true, exclusive: false, autoDelete: false, arguments: null);
 
-                        var json = JsonConvert.SerializeObject(message);
-                        var body = Encoding.UTF8.GetBytes(json);
+                        var body = Encoding.UTF8.GetBytes(message);
 
-                        Channel.BasicPublish(exchange: exchange, routingKey: routingKey, basicProperties: null, body: body);
+                        channel.BasicPublish(exchange: exchange, routingKey: routingKey, basicProperties: null, body: body);
 
                         return true;
                     }

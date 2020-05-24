@@ -535,7 +535,7 @@ namespace CarRentalAPIGateway.Controllers
                 if (reservationDto == null)
                     return BadRequest(reservationDto);
 
-                var serializedObject = JsonConvert.SerializeObject(reservationDto, _jsonSerializerSettings);
+                var serializedObject = JsonConvert.SerializeObject(reservationDto);
                 var isSentMessage = _rabbitMQCommunication.SendMessage(serializedObject, "reservation.queue", "request.reservation", "reservation.create");
                 var reply = _rabbitMQCommunication.ReceiveMessage("reservation.queue");
 

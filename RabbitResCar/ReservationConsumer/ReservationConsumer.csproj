@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Data\ConnectionClass.cs" />
     <Compile Include="Data\MongoConn.cs" />
+    <Compile Include="DirectMessageToGateway.cs" />
     <Compile Include="ReservationReceiver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
