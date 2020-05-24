@@ -39,7 +39,6 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
     static SharedPreferences.Editor editor;
     private TextView textdesc;
     private TextView textView;
-
     private boolean isLoggedIn;
 
     @SuppressLint("RestrictedApi")
@@ -131,66 +130,72 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
     public void onCategorySelected(int position) {
 
         //TODO: Check if logged in.
-        currentPosition = position;
-        CheckAvailabilityFragment descFrag = (CheckAvailabilityFragment)
-                fragmentManager.findFragmentById(R.id.description_fragment);
-        TextView category = this.findViewById(R.id.txt_category);
-        TextView desc = this.findViewById(R.id.booking_desc);
-        ImageView catImage = this.findViewById(R.id.catIcon);
+        if (isLoggedIn) {
+
+            currentPosition = position;
+            CheckAvailabilityFragment descFrag = (CheckAvailabilityFragment)
+                    fragmentManager.findFragmentById(R.id.description_fragment);
+            TextView category = this.findViewById(R.id.txt_category);
+            TextView desc = this.findViewById(R.id.booking_desc);
+            ImageView catImage = this.findViewById(R.id.catIcon);
 
 
-        if (descFrag != null) {
-            category.setText(category_list[position].getName());
-            descFrag.setCategories(category_list[currentPosition]);
-            textdesc.setText(Float.toString(category_list[position].getPrice())+"€ per day");
-           // desc.setText(category_list[currentPosition].getLabel());
-            descFrag.updateBookingView(position);
-            currentActivity = 1;
+            if (descFrag != null) {
+                category.setText(category_list[position].getName());
+                descFrag.setCategories(category_list[currentPosition]);
+                textdesc.setText(Float.toString(category_list[position].getPrice()) + "€ per day");
+                // desc.setText(category_list[currentPosition].getLabel());
+                descFrag.updateBookingView(position);
+                currentActivity = 1;
 
-        } else {
+            } else {
 
-            CheckAvailabilityFragment newFragment = new CheckAvailabilityFragment();
-            image.setVisibility(View.VISIBLE);
-            String catName = category_list[position].getName();
-            category.setText(catName);
-            switch (catName) {
-                case ("City Car"):
-                    catImage.setImageResource(R.mipmap.city_foreground);
-                    break;
-                case ("Economy Car"):
-                    catImage.setImageResource(R.mipmap.economy_foreground);
-                    break;
-                case ("Compact Car"):
-                    catImage.setImageResource(R.mipmap.compact_foreground);
-                    break;
-                case ("Family Car"):
-                    catImage.setImageResource(R.mipmap.family_foreground);
-                    break;
-                case ("Luxury Car"):
-                    catImage.setImageResource(R.mipmap.luxury_foreground);
-                    break;
-                default:
-                    catImage.setImageResource(R.mipmap.old_foreground);
+                CheckAvailabilityFragment newFragment = new CheckAvailabilityFragment();
+                image.setVisibility(View.VISIBLE);
+                String catName = category_list[position].getName();
+                category.setText(catName);
+                switch (catName) {
+                    case ("City Car"):
+                        catImage.setImageResource(R.mipmap.city_foreground);
+                        break;
+                    case ("Economy Car"):
+                        catImage.setImageResource(R.mipmap.economy_foreground);
+                        break;
+                    case ("Compact Car"):
+                        catImage.setImageResource(R.mipmap.compact_foreground);
+                        break;
+                    case ("Family Car"):
+                        catImage.setImageResource(R.mipmap.family_foreground);
+                        break;
+                    case ("Luxury Car"):
+                        catImage.setImageResource(R.mipmap.luxury_foreground);
+                        break;
+                    default:
+                        catImage.setImageResource(R.mipmap.old_foreground);
+                }
+                newFragment.setCategories(category_list[currentPosition]);
+                textdesc.setText(Float.toString(category_list[position].getPrice()) + "€ per day");
+                //desc.setText(category_list[currentPosition].getLabel());
+                Bundle args = new Bundle();
+                args.putInt(CheckAvailabilityFragment.ARG_POSITION, position);
+                newFragment.setArguments(args);
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+
+                transaction.replace(R.id.fragment_container, newFragment);
+                transaction.addToBackStack(null);
+                button.setVisibility(View.VISIBLE);
+                button.setText("Reserve Car from Category");
+                currentActivity = 1;
+
+                transaction.commit();
             }
-            newFragment.setCategories(category_list[currentPosition]);
-            textdesc.setText(Float.toString(category_list[position].getPrice())+"€ per day");
-            //desc.setText(category_list[currentPosition].getLabel());
-            Bundle args = new Bundle();
-            args.putInt(CheckAvailabilityFragment.ARG_POSITION, position);
-            newFragment.setArguments(args);
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-
-
-            transaction.replace(R.id.fragment_container, newFragment);
-            transaction.addToBackStack(null);
-            button.setVisibility(View.VISIBLE);
-            button.setText("Reserve Car from Category");
-            currentActivity = 1;
-
-            transaction.commit();
-
+        }else{
+            Toast.makeText(this, "You need to be logged in to reserve a car.", Toast.LENGTH_LONG).show();
         }
     }
+
+
 
     public void onBookingSelected(int position, Reservation reservation) {
 

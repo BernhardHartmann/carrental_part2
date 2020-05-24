@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.se_car_rental.entities.ApiUtil;
@@ -43,6 +44,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     static SharedPreferences.Editor editor;
     private boolean isLoggedIn;
 
+    /*
+    public MainActivity(){
+        sharedPref = getSharedPreferences("Preference", MODE_PRIVATE);
+        editor = sharedPref.edit();
+        editor.putBoolean(getString(R.string.isLoggedIn), false);
+        editor.commit();
+    }
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,15 +60,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         sharedPref = getSharedPreferences("Preference", MODE_PRIVATE);
 
-        editor = sharedPref.edit();
-        editor.putBoolean(getString(R.string.isLoggedIn), false);
-        editor.commit();
-
         new LocationTask(this).execute("utilities/locations");
         new CurrencyTask().execute("utilities/currencies");
     }
 
-    public class MainPagerAdapter extends FragmentPagerAdapter {
+    public class MainPagerAdapter extends FragmentStatePagerAdapter {
         private ArrayList<Fragment> fragmentList = new ArrayList<>();
 
         public MainPagerAdapter(FragmentManager fm) {
@@ -68,6 +74,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         @Override
         public Fragment getItem(int i) {
             return fragmentList.get(i);
+        }
+
+        @Override
+        public int getItemPosition(Object object){
+            return POSITION_NONE;
         }
 
         @Override
@@ -118,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     new ReservationTask().execute(url);
                     viewPager.setCurrentItem(1);
                 } else {
-                    Toast.makeText(this, "You need to be logged in to access your reservations.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "You need to be logged in to access your bookings.", Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.navigation_profile:
@@ -231,6 +242,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             editor = sharedPref.edit();
             editor.putString(getString(R.string.customerData), s);
             editor.commit();
+            pagerAdapter.notifyDataSetChanged();
         }
     }
 
@@ -249,6 +261,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             editor = sharedPref.edit();
             editor.putString(getString(R.string.reservations), s);
             editor.commit();
+            pagerAdapter.notifyDataSetChanged();
         }
     }
 

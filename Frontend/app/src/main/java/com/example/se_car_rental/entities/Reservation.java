@@ -41,13 +41,7 @@ public class Reservation {
         this.returnTime = return_time;
     }
 
-    //Create empty Reservation for editing
-    public Reservation(Integer id) {
-        this.reservation_id = id;
-    }
-
-    public Reservation(Integer id, Integer customerID) {
-        this.reservation_id = id;
+    public Reservation(Integer customerID) {
         this.customerID = customerID;
         this.resStatus = 1;
         this.carStatus = "";
