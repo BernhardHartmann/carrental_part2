@@ -46,9 +46,6 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
         sharedPref = getSharedPreferences("Preference",MODE_PRIVATE);
         isLoggedIn = sharedPref.getBoolean(getString(R.string.isLoggedIn), false);
 
-       // String url = "useCase/getCategoriesToLocationID/" + loc_key;
-       // new CategoryTask().execute(url);
-
         //Set data from shared preferences
         String cat = sharedPref.getString(getString(R.string.categories), null);
         Gson gson = new Gson();
@@ -67,7 +64,7 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
             @Override
             public void onClick(View arg0) {
                 Intent intent = new Intent(LocationActivity.this, MainActivity.class);
-                startActivity(intent);// here u can start another activity or just call finish method to close the activity.
+                startActivity(intent);
                 finish();
             }
         });
@@ -211,22 +208,6 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
         }
     }
 
-    public class CategoryTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... strings) {
-            String url = strings[0];
-
-            return ApiUtil.getFromBackend(url, null);
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            editor = sharedPref.edit();
-            editor.putString(getString(R.string.categories), s);
-            editor.commit();
-        }
-    }
 
     }
 
