@@ -194,7 +194,7 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
     }
 
     @Override
-    public void onFabSelected(int currentActivity, Reservation reservation) {
+    public void onFabSelected(int currentActivity, Reservation reservation, String msg) {
 
         switch(currentActivity) {
             case 1:
@@ -203,8 +203,7 @@ public class LocationActivity extends FragmentActivity implements Category_ListF
             case 2:
                 Intent intent=new Intent(LocationActivity.this, MainActivity.class);
                 startActivity(intent);// here u can start another activity or just call finish method to close the activity.
-                String toastMsg = "Reservation successful ";
-                Toast toast=Toast.makeText(getApplicationContext(),toastMsg,Toast.LENGTH_LONG);
+                Toast toast=Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG);
                 toast.setMargin(100,100);
                 toast.show();
                 onStop();

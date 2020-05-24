@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -97,7 +98,6 @@ public class ConfirmBookingFragment extends Fragment {
                     Log.d("error", e.getMessage());
                 }
 
-                mCallback.onFabSelected(DESC_FRAG, reservationToConfirm);
             }
         });
 
@@ -142,9 +142,11 @@ public class ConfirmBookingFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(String string) {
-            String responseCode = string;
+        protected void onPostExecute(String response) {
+             String responseCode = "RESERVATION RESPONSE: " + response;
             System.out.println(responseCode);
+            mCallback.onFabSelected(DESC_FRAG, reservationToConfirm, responseCode);
+
         }
     }
 

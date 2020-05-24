@@ -140,7 +140,7 @@ public class CheckAvailabilityFragment extends Fragment {
                     String note = String.valueOf(mEdit.getEditText().getText());
                    // assignCar();
                     reservation.setReservationNote(note);
-                    mCallback.onFabSelected(BOOK_FRAG, reservation);
+                    mCallback.onFabSelected(BOOK_FRAG, reservation, "");
                 }else{
                     Toast toast=Toast.makeText(getActivity(),"Please enter at least one date",Toast.LENGTH_LONG);
                     toast.setMargin(50,50);
