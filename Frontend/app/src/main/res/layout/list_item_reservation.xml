@@ -18,13 +18,13 @@
         android:paddingBottom="10dp">
 
         <ImageView
-            android:id="@+id/iView"
+            android:id="@+id/btnCancel"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignStart="@id/layout2"
-            android:layout_alignBottom="@id/layout2"
+            android:layout_alignStart="@id/layout3"
+            android:layout_alignBottom="@id/layout3"
             android:gravity="bottom"
-            android:src="@drawable/ic_home_black_24dp" />
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,6 +50,15 @@
                 android:text=""
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="10sp" />
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

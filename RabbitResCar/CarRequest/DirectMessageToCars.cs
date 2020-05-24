@@ -7,6 +7,7 @@ using RabbitMQ.Client;
 using Newtonsoft.Json;
 using CarsRequest.Data;
 using System.Configuration;
+using CarRequest;
 
 namespace CarsRequest
 {
@@ -15,10 +16,12 @@ namespace CarsRequest
      */
     public class DirectMessageToCars
     {
+        private string jsonStringCar;
+        private string jsonStringCategory;
         private string jsonString;
         private ConnectionClass connClass;
       
-        public void SendMessageToCars()
+        public void CreateReservation(Car car, Category category)
         {
             connClass = new ConnectionClass();
             ConnectionFactory connectionFactory = connClass.getConnectionFactored();
@@ -27,19 +30,41 @@ namespace CarsRequest
             var properties = connClass.getProperties();
             properties.Persistent = false;
 
-            Car car = new Car();
-            car.CarId = 1;
-            car.CategoryId = 33;
-            car.LocationId = 99;
+            
            
-            jsonString = JsonConvert.SerializeObject(car);
-            byte[] messagebuffer = Encoding.Default.GetBytes(jsonString);
+            jsonStringCar = JsonConvert.SerializeObject(car);
+            jsonStringCategory = JsonConvert.SerializeObject(category);
+
+            byte[] messagebuffer = Encoding.Default.GetBytes(jsonStringCar+jsonStringCategory);
 
 
             model.BasicPublish("request.cars", "cars_key", properties, messagebuffer);
             Console.WriteLine("Cars Message Sent with queue request.cars and key cars_key");
 
         }
+
+        public void getRandomCar(int locationID, int categoryID)
+        {
+
+            connClass = new ConnectionClass();
+            ConnectionFactory connectionFactory = connClass.getConnectionFactored();
+
+            var model = connClass.getModel();
+            var properties = connClass.getProperties();
+            properties.Persistent = false;
+
+            string jsonLocCat = "{'locationID':'" + locationID + "','categoryID':'"+categoryID+"'}";
+
+
+            byte[] messagebuffer = Encoding.Default.GetBytes(jsonLocCat);
+
+
+            model.BasicPublish("request.cars", "get_random_car", properties, messagebuffer);
+
+            Console.WriteLine("send locationID and categoryID ");
+
+        }
+
         public void GetReservationByID(string id)
         {
             connClass = new ConnectionClass();

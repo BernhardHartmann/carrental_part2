@@ -39,7 +39,6 @@ import java.util.ArrayList;
 
 public class ProfileFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    private ProfileViewModel profileViewModel;
     static SharedPreferences sharedPref;
     static SharedPreferences.Editor editor;
     User user;
@@ -54,7 +53,6 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
         sharedPref = getActivity().getSharedPreferences("Preference", Context.MODE_PRIVATE);
         Gson gson = new Gson();
 

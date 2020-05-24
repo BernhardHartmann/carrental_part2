@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CurrencyConverterClient;
+using CarRequest;
 
 namespace CarsRequest
 {
@@ -13,18 +14,28 @@ namespace CarsRequest
         static void Main(string[] args)
         {
             DirectMessageToCars directmessages = new DirectMessageToCars();
-            directmessages.SendMessageToCars();
-            Console.ReadLine();
+            Car car = new Car();
+            car.CarId = 1;
+            car.CategoryId = 33;
+            car.LocationId = 99;
 
-        //EXAMPLE exchange request
-            //step 1 - create request
-            RpcRequest request = new RpcRequest { fromCCY = "USD", toCCY = "EUR"};
-            //step 2 - send request 
-            RpcResponse testResponse = Task.Run(async () => await RpcCurrencyConverter.GetRpcResult(request)).Result;
-            //step 3 - read response
-            double exchangeRate = testResponse.exchangeRate;
+            
+            var locationID = 1;
+            var categoryID = 2;
+            directmessages.getRandomCar(locationID, categoryID);
+
+
+            Category category = new Category();
+            category.CategoryId = 3;
+            category.Price = (decimal)50.0;
+            category.CategoryLabel = "label";
+            category.CategoryDesc = "descr";
+
+            /*directmessages.CreateReservation(car,category);
+            Console.ReadLine();
+                                                              
             directmessages.GetReservationByID("5ec9be88387b6f433c43f0ef");
-            Console.ReadLine(); 
+            Console.ReadLine();    */
         }
     }
 }

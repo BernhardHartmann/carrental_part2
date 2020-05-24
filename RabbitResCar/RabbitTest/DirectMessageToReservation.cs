@@ -28,6 +28,7 @@ namespace ReservationRequest
             reservation.CategoryID = encodedCar.CategoryId;
             reservation.CarID = encodedCar.CarId;
             reservation.LocationID = encodedCar.LocationId;
+            reservation.CurrencyID = 5;
             reservation.CurrencyExchangeRate = "0.8";
             reservation.StartDate = new DateTime();
             reservation.EndDate = new DateTime();

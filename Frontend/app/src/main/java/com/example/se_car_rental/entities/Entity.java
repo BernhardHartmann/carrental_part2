@@ -6,4 +6,6 @@ public interface Entity  {
 
     String getLabel();
 
+    String getLabel2();
+
 }

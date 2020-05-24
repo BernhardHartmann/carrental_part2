@@ -115,4 +115,9 @@ public class Locations implements Entity {
     public String getLabel() {
         return street + " " + street_no + "\n" + zip_code + " " + city + ", " + " country";
     }
+
+    @Override
+    public String getLabel2() {
+        return null;
+    }
 }
