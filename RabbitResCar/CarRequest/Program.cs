@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CurrencyConverterClient;
 
 namespace CarsRequest
 {
@@ -13,7 +14,15 @@ namespace CarsRequest
         {
             DirectMessageToCars directmessages = new DirectMessageToCars();
             directmessages.SendMessageToCars();
-            Console.ReadLine(); 
+            Console.ReadLine();
+
+        //EXAMPLE exchange request
+            //step 1 - create request
+            RpcRequest request = new RpcRequest { fromCCY = "USD", toCCY = "EUR"};
+            //step 2 - send request 
+            RpcResponse testResponse = Task.Run(async () => await RpcCurrencyConverter.GetRpcResult(request)).Result;
+            //step 3 - read response
+            double exchangeRate = testResponse.exchangeRate;
         }
     }
 }
