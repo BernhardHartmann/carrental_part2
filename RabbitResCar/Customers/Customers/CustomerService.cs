@@ -18,8 +18,8 @@ namespace CustomersMangement
 
         public int getLatestCustomerId()
         {
-            //var c = Context.Customers.AsQueryable().Count();
-            return Context.Customers.AsQueryable().OrderByDescending(r => r.CustomerId).FirstOrDefault().CustomerId;
+            var c = Context.Customers.AsQueryable().Count();
+            return c == 0 ? 1 : Context.Customers.AsQueryable().OrderByDescending(r => r.CustomerId).FirstOrDefault().CustomerId;
 
         }
         public string RegisterCustomer(string first_name, string last_name, string password, string email, string driving_licence_number, string mobile, string state, string city, string country, string zipcode, string phone, DateTime registrationDate)

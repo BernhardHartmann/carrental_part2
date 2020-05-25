@@ -74,7 +74,7 @@ namespace CustomersMangement
                     //replyProps.CorrelationId = props.CorrelationId;
 
                     //long deliveryTag = envelope.getDeliveryTag();
-                    _channel.BasicAck(deliveryTag, true);
+                    //_channel.BasicAck(deliveryTag, true);
                 }
                 
             }
