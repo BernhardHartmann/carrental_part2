@@ -1,8 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\RabbitResCar"
+    ""
   ],
-  "SelectedNode": "\\RabbitResCar\\RabbitTest.sln",
+  "SelectedNode": "\\docker-compose.yml",
   "PreviewInSolutionExplorer": false
 }
