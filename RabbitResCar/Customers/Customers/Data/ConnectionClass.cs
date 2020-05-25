@@ -17,8 +17,8 @@ namespace Customers.Data
 
         public ConnectionClass()
         {
-            UName = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("DB_Rabbit")["DB_Password"];
-            PWD = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("DB_Rabbit")["DB_User"];
+            UName = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("DB_Rabbit")["DB_User"];
+            PWD = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("DB_Rabbit")["DB_Password"];
             HName = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("DB_Rabbit")["DB_Host"];
         }
 

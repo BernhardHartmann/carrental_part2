@@ -331,7 +331,7 @@ namespace CarRentalAPIGateway.Controllers
         }
 
         [HttpPost]
-        [Authorize(AuthenticationSchemes = AuthenticationConstants.AuthenticationScheme, Roles = "Customer")]
+        //[Authorize(AuthenticationSchemes = AuthenticationConstants.AuthenticationScheme, Roles = "Customer")]
         [Route("/services/rest/v1/customer/register")]
         public IActionResult RegisterCustomer([FromBody]RegisterDto registerDto)
         {
@@ -340,8 +340,8 @@ namespace CarRentalAPIGateway.Controllers
                 if (registerDto == null)
                     return BadRequest(registerDto);
 
-                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(registerDto, _jsonSerializerSettings), "user.register", "test", "test");
-                var reply = _rabbitMQCommunication.ReceiveMessage("user.register");
+                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(registerDto), "customers.queue", "request.customers", "request.register.customer");
+                var reply = _rabbitMQCommunication.ReceiveMessage("customers.queue");
 
                 string jsonToReturn;
 
@@ -364,7 +364,7 @@ namespace CarRentalAPIGateway.Controllers
         }
 
         [HttpPost]
-        [Authorize(AuthenticationSchemes = AuthenticationConstants.AuthenticationScheme, Roles = "Customer")]
+        //[Authorize(AuthenticationSchemes = AuthenticationConstants.AuthenticationScheme, Roles = "Customer")]
         [Route("/services/rest/v1/customer/login")]
         public IActionResult Login([FromBody]LoginDto loginDto)
         {
@@ -395,104 +395,6 @@ namespace CarRentalAPIGateway.Controllers
             }
         }
 
-        [HttpPut]
-        [Authorize(AuthenticationSchemes = AuthenticationConstants.AuthenticationScheme, Roles = "Customer")]
-        [Route("/services/rest/v1/customer/update")]
-        public IActionResult Update([FromBody]CustomerDto customerDto)
-        {
-            try
-            {
-                if (customerDto == null) return BadRequest(customerDto);
-
-
-                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(customerDto, _jsonSerializerSettings), "user.update", "test", "test");
-                var reply = _rabbitMQCommunication.ReceiveMessage("user.register");
-
-                string jsonToReturn;
-
-                if (!string.IsNullOrEmpty(reply))
-                {
-                    jsonToReturn = JsonConvert.SerializeObject(reply, _jsonSerializerSettings);
-                    return new OkObjectResult(jsonToReturn);
-                }
-                else
-                {
-                    jsonToReturn = string.Empty;
-                    return BadRequest(jsonToReturn);
-                }
-            }
-            catch (Exception ex)
-            {
-                var content = StatusCode((int)HttpStatusCode.BadRequest, $"{ex.Message} : {ex.InnerException}");
-                return Content(JsonConvert.SerializeObject(content), MediaType.ApplicationJson);
-            }
-        }
-
-        [HttpPut]
-        [Authorize(AuthenticationSchemes = AuthenticationConstants.AuthenticationScheme, Roles = "Customer")]
-        [Route("/services/rest/v1/customer/password")]
-        public IActionResult UpdatePassword([FromBody]PasswordChangeDto passwordChangeDto)
-        {
-            try
-            {
-                if (passwordChangeDto == null) return BadRequest(passwordChangeDto);
-
-                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(passwordChangeDto, _jsonSerializerSettings), "user.change", "test", "test");
-                var reply = _rabbitMQCommunication.ReceiveMessage("user.register");
-
-                string jsonToReturn;
-
-                if (!string.IsNullOrEmpty(reply))
-                {
-                    jsonToReturn = JsonConvert.SerializeObject(reply, _jsonSerializerSettings);
-                    return new OkObjectResult(jsonToReturn);
-                }
-                else
-                {
-                    jsonToReturn = string.Empty;
-                    return BadRequest(jsonToReturn);
-                }
-            }
-            catch (Exception ex)
-            {
-                var content = StatusCode((int)HttpStatusCode.BadRequest, $"{ex.Message} : {ex.InnerException}");
-                return Content(JsonConvert.SerializeObject(content), MediaType.ApplicationJson);
-            }
-        }
-
-        [HttpGet]
-        [Authorize(AuthenticationSchemes = AuthenticationConstants.AuthenticationScheme, Roles = "Customer")]
-        [Route("/services/rest/v1/customer/profile/{customerID}")]
-        public IActionResult GetProfile(int customerID)
-        {
-            try
-            {
-                if (customerID == 0)
-                {
-                    return BadRequest(customerID);
-                }
-                var isSentMessage = _rabbitMQCommunication.SendMessage(JsonConvert.SerializeObject(customerID, _jsonSerializerSettings), "user.change", "test", "test");
-                var reply = _rabbitMQCommunication.ReceiveMessage("user.register");
-
-                string jsonToReturn;
-
-                if (!string.IsNullOrEmpty(reply))
-                {
-                    jsonToReturn = JsonConvert.SerializeObject(reply, _jsonSerializerSettings);
-                    return new OkObjectResult(jsonToReturn);
-                }
-                else
-                {
-                    jsonToReturn = string.Empty;
-                    return BadRequest(jsonToReturn);
-                }
-            }
-            catch (Exception ex)
-            {
-                var content = StatusCode((int)HttpStatusCode.InternalServerError, $"{ex.Message} : {ex.InnerException}");
-                return Content(JsonConvert.SerializeObject(content), MediaType.ApplicationJson);
-            }
-        }
 
         [HttpGet]
         //[Authorize(AuthenticationSchemes = AuthenticationConstants.AuthenticationScheme, Roles = "Customer")]
