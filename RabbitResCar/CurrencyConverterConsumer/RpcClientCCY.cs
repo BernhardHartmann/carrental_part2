@@ -21,13 +21,13 @@ namespace CurrencyConverterClient
 
         public RpcClientCCY()
         {
-            //var factory = new ConnectionFactory() { HostName = "localhost" };
+            var factory = new ConnectionFactory() { HostName = "localhost" };
 
             //Testing deployment
             //var factory = new ConnectionFactory() { HostName = "rabbitmq", DispatchConsumersAsync = true };
 
-            var factory = new ConnectionFactory() { HostName = "rabbitmq" };
-
+            //var factory = new ConnectionFactory() { HostName = "rabbitmq" };
+            //var factory = new ConnectionFactory() { HostName = "local" };
             connection = factory.CreateConnection();
             channel = connection.CreateModel();
             replyQueueName = channel.QueueDeclare().QueueName;

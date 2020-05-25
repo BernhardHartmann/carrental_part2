@@ -83,7 +83,17 @@ namespace CarManagement
                     }
                     byte[] messagebuffer = Encoding.Default.GetBytes(result);
                     model.BasicPublish(exchange, routingKey, connClass.getProperties(), messagebuffer);
-                    
+                    //model.BasicConsume("cars.queue", true);
+                    // rpc test
+                    //var replyQueueName = _channel.QueueDeclare("rpc_reply", true, false, false, null);
+                    //_consumer = new QueueingBasicConsumer(_channel);
+                    //_channel.BasicConsume(replyQueueName, true, _consumer);
+                    //var props = _channel.CreateBasicProperties();
+                    //props.ReplyTo = replyQueueName;
+                    //props.CorrelationId = Guid.NewGuid().ToString();
+
+                    //model.BasicPublish("", "rpc_reply", props, messagebuffer);
+
                     //var ea = _consumer.Queue.Dequeue();
                     //var props = ea.BasicProperties;
                     //var replyProps = _channel.CreateBasicProperties();

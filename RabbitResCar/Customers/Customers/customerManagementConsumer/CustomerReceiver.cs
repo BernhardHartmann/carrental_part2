@@ -66,8 +66,12 @@ namespace CustomersMangement
 
                     }
                     byte[] messagebuffer = Encoding.Default.GetBytes(result);
+
                     model.BasicPublish(exchange, routingKey, connClass.getProperties(), messagebuffer);
+
+
                     
+
                     //var ea = _consumer.Queue.Dequeue();
                     //var props = ea.BasicProperties;
                     //var replyProps = _channel.CreateBasicProperties();

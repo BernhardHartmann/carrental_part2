@@ -9,6 +9,8 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using ReservationConsumer.Data;
+using CurrencyConverterClient;
+using MongoDB.Driver.Builders;
 
 namespace ReservationConsumer
 {
@@ -23,6 +25,10 @@ namespace ReservationConsumer
         public override void HandleBasicDeliver(string consumerTag, ulong deliveryTag, bool redelivered, string exchange, string routingKey, IBasicProperties properties, byte[] body)
 
         {
+            var client = new MongoClient("mongodb://test:test@cluster0-shard-00-00-bj19b.azure.mongodb.net:27017,cluster0-shard-00-01-bj19b.azure.mongodb.net:27017,cluster0-shard-00-02-bj19b.azure.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority");
+            var db = client.GetDatabase("ReservationManagement");
+            var coll = db.GetCollection<BsonDocument>("Reservation");
+
             Console.WriteLine($"Consuming Message");
             Console.WriteLine(string.Concat("Message received from the exchange ", exchange));
             Console.WriteLine(string.Concat("Consumer tag: ", consumerTag));
@@ -34,9 +40,7 @@ namespace ReservationConsumer
             if (exchange.Equals("request.reservation"))
             {
                 //MongoConn
-                var client = new MongoClient("mongodb://test:test@cluster0-shard-00-00-bj19b.azure.mongodb.net:27017,cluster0-shard-00-01-bj19b.azure.mongodb.net:27017,cluster0-shard-00-02-bj19b.azure.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority");
-                var db = client.GetDatabase("ReservationManagement");
-                var coll = db.GetCollection<BsonDocument>("Reservation");
+                
 
                 if (routingKey.Equals("reservation.get.by.id"))
                 {
@@ -63,7 +67,14 @@ namespace ReservationConsumer
                     {
                         Reservation reservationConsumed = JsonConvert.DeserializeObject<Reservation>(Encoding.UTF8.GetString(body));
 
-                        
+                        //EXAMPLE exchange request
+                        //step 1 - create request
+                        RpcRequest request = new RpcRequest { fromCCY = "USD", toCCY = "EUR" };
+                        //step 2 - send request 
+                        RpcResponse testResponse = Task.Run(async () => await RpcCurrencyConverter.GetRpcResult(request)).Result;
+                        //step 3 - read response
+                        double exchangeRate = testResponse.exchangeRate;
+
                         //ReservationInsert
                         var insert = new BsonDocument
                         {
@@ -72,8 +83,8 @@ namespace ReservationConsumer
                             {"LocationID", reservationConsumed.LocationID },
                             {"CustomerID", reservationConsumed.CustomerID },
                             // TODO get CurrencyExchangeRate from PALOS Microservice
-
-                            {"CurrencyID", reservationConsumed.CurrencyID },
+                            {"Price" ,  reservationConsumed.Price * exchangeRate},
+                            { "CurrencyID", reservationConsumed.CurrencyID },
                             {"CurrencyExchangeRate", reservationConsumed.CurrencyExchangeRate },
                             {"StartDate", reservationConsumed.StartDate },
                             {"EndDate", reservationConsumed.EndDate }
@@ -86,8 +97,19 @@ namespace ReservationConsumer
                         ds.SendMessage(insert.ToString());
                         Console.WriteLine("inserted");
                     }
+                    else if (routingKey.Equals("reservation.delete"))
+                    {
+                        string reservationId = JsonConvert.DeserializeObject<string>(Encoding.UTF8.GetString(body));
+                        
+                        coll.DeleteOneAsync(reservationId);
+
+                        DirectMessageToGateway ds = new DirectMessageToGateway();
+                        ds.SendMessage("true");
+                        Console.WriteLine("deleted");
+                    }
                 }
             }
         }
+      
     }
 }
