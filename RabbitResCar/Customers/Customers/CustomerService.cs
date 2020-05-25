@@ -3,6 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using MongoDB.Driver.Linq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace CustomersMangement
             return Context.Customers.AsQueryable().OrderByDescending(r => r.CustomerId).FirstOrDefault().CustomerId;
 
         }
-        public async Task<bool> RegisterCustomer(string first_name, string last_name, string password, string email, string driving_licence_number, string mobile, string state, string city, string country, string zipcode, string phone, DateTime registrationDate)
+        public string RegisterCustomer(string first_name, string last_name, string password, string email, string driving_licence_number, string mobile, string state, string city, string country, string zipcode, string phone, DateTime registrationDate)
         {
             try
             {
@@ -65,14 +66,42 @@ namespace CustomersMangement
             catch (Exception ex)
             {
                 var errorMessage = $"{ex.Message} : {ex.InnerException}";
-                return (false);
+                return (JsonConvert.SerializeObject(false));
                 //return new CustomerResponseDto(new Exception(errorMessage), false);
             }
 
-            return (true);
+            return (JsonConvert.SerializeObject(true));
         }
 
-        public async Task<bool> DeleteByDocumentID(string id)
+
+        public string CustomerLogin(string email, string password)
+        {
+            bool isLogin = false;
+            try
+            {
+                byte[] passwordHash, passwordSalt;
+
+                Utilities.Utilities.GeneratePasswordHash(password, out passwordHash, out passwordSalt);
+
+                var customers = Context.Customers.AsQueryable().ToList();
+                isLogin = customers.Where(s => s.Password == password && s.Email == email).Count() > 0 ? true : false;
+                //Context.Customers.Insert(customerToCreate);
+
+                //    await _CustomerRepository.Create(customerToCreate);
+
+                //    return RegisterCustomerToResponseConverter.EntityToResponse(customerToCreate);
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = $"{ex.Message} : {ex.InnerException}";
+                return (JsonConvert.SerializeObject(isLogin));
+                
+            }
+
+            return (JsonConvert.SerializeObject(isLogin));
+        }
+
+        public string DeleteUserByDocumentID(string id)
         {
             try
             {
@@ -81,12 +110,12 @@ namespace CustomersMangement
             }
             catch (Exception ex)
             {
-                return (false);
+                return (JsonConvert.SerializeObject(false));
             }
-            return (true);
+            return (JsonConvert.SerializeObject(true));
         }
 
-        public async Task<bool> DeleteByCustomerID(int customerId)
+        public string DeleteUserByCustomerID(int customerId)
         {
             try
             {
@@ -95,9 +124,9 @@ namespace CustomersMangement
             }
             catch (Exception ex)
             {
-                return (false);
+                return (JsonConvert.SerializeObject(false));
             }
-            return (true);
+            return (JsonConvert.SerializeObject(true));
         }
 
     }

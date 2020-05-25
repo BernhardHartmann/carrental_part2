@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarManagement.Data
+namespace Customers.Data
 {                                           
     
     public class ConnectionClass

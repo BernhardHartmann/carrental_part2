@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using Microsoft.Extensions.Configuration;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,10 +13,17 @@ namespace Customers
         {
             //MongoClient client = new MongoClient("mongodb://localhost");
             //var server = client.GetServer();
-            //Database = server.GetDatabase("CustomerManagement");
-            var client = new MongoClient("mongodb://test:test@cluster0-shard-00-00-bj19b.azure.mongodb.net:27017,cluster0-shard-00-01-bj19b.azure.mongodb.net:27017,cluster0-shard-00-02-bj19b.azure.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority");
-            var server = client.GetServer(); 
-            Database = server.GetDatabase("CustomerManagement");
+            //Database = server.GetDatabase("xxx");
+            //var client = new MongoClient("xxx");
+            //var server = client.GetServer(); 
+            //Database = server.GetDatabase("xxx");
+
+            string con = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("DB_Mongo")["DB_ConnectionString"];
+            var client = new MongoClient(con);
+            var server = client.GetServer();
+            //replace server with client if not worked
+            Database = server.GetDatabase(new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("DB_Mongo")["DB_Name"]);
+
         }
 
         public MongoCollection<Customer> Customers

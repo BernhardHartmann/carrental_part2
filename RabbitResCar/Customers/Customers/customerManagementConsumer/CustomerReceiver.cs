@@ -10,29 +10,32 @@ using MongoDB.Bson;
 
 using System.Threading;
 using CarManagement.Data;
+using Customers.Data;
+using Customers;
 
-namespace CarManagement
+namespace CustomersMangement
 {
-    public class CarReceiver : DefaultBasicConsumer
+    public class CustomerReceiver : DefaultBasicConsumer
     {
         private readonly IModel _channel;
-        private CarService carservice;
+        private CustomerService carservice;
         private ConnectionClass connClass;
         private static QueueingBasicConsumer _consumer;
-        public CarReceiver(IModel channel)
+        public CustomerReceiver(IModel channel)
         {
             _channel = channel;
         }
 
         public override void HandleBasicDeliver(string consumerTag, ulong deliveryTag, bool redelivered, string exchange, string routingKey, IBasicProperties properties, byte[] body)
         {
-            RabbitDataHandler rabbitDataHandler = new RabbitDataHandler();
-            CarService carService = new CarService();
+            //RabbitDataHandler rabbitDataHandler = new RabbitDataHandler();
+            CustomerService carService = new CustomerService();
             string result = "";
             string documentID = "";
+            Customer customer;
             try
             {
-                if (exchange.Equals("request.cars"))
+                if (exchange.Equals("request.customers"))
                 {
                     connClass = new ConnectionClass();
                     ConnectionFactory connectionFactory = connClass.getConnectionFactored();
@@ -41,44 +44,25 @@ namespace CarManagement
                     switch (routingKey)
                     {
                         // update is Available
-                        case "request.reservecar":
-                            documentID = JsonConvert.DeserializeObject<string>(Encoding.UTF8.GetString(body));
-                            result= carService.markCarAsReserved(documentID);
+                        case "request.register.customer":
+                            customer = JsonConvert.DeserializeObject<Customer>(Encoding.UTF8.GetString(body));
+                            result = carService.RegisterCustomer(customer.FirstName, customer.LastName, customer.Password, customer.Email, customer.DrivingLicenseNumber, customer.Mobile, customer.State, customer.City, customer.Country, customer.Zipcode, customer.Phone, customer.RegistrationDate);
                             break;
 
                         // get available Cars Count By Category & Location
-                        case "request.get.car.counter":
-                            var getcarcounter_locationAndCat = JsonConvert.DeserializeObject<Object>(Encoding.UTF8.GetString(body));
-                            var getcarcounter_Location = ((Newtonsoft.Json.Linq.JContainer)getcarcounter_locationAndCat).First;
-                            var getcarcounter_LocationID = ((Newtonsoft.Json.Linq.JProperty)getcarcounter_Location).Value;
-                            var getcarcounter_category = ((Newtonsoft.Json.Linq.JContainer)getcarcounter_locationAndCat).Last;
-                            var getcarcounter_categoryID = ((Newtonsoft.Json.Linq.JProperty)getcarcounter_Location).Value;
+                        case "request.get.customer.login":
+                            var emailAndPassword = JsonConvert.DeserializeObject<Object>(Encoding.UTF8.GetString(body));
+                            var email = ((Newtonsoft.Json.Linq.JContainer)emailAndPassword).First;
+                            var emailID = ((Newtonsoft.Json.Linq.JProperty)email).Value;
+                            var password = ((Newtonsoft.Json.Linq.JContainer)emailAndPassword).Last;
+                            var passwordID = ((Newtonsoft.Json.Linq.JProperty)password).Value;
+                            result = carService.CustomerLogin((string)emailID, (string)passwordID);
+                            break;                                   
 
-                            result = carService.get_CarCount_CategoryCount_PerLocation((int)getcarcounter_LocationID, (int)getcarcounter_categoryID);
-                            break;
-                        // Get random car
-                        case "request.get.random.car":
-                            var locationAndCat = JsonConvert.DeserializeObject<Object>(Encoding.UTF8.GetString(body));
-                            var Location = ((Newtonsoft.Json.Linq.JContainer)locationAndCat).First;
-                            var LocationID = ((Newtonsoft.Json.Linq.JProperty)Location).Value;
-                            var category = ((Newtonsoft.Json.Linq.JContainer)locationAndCat).Last;
-                            var categoryID = ((Newtonsoft.Json.Linq.JProperty)Location).Value;
-
-                            result = carService.get_RandomCarBy_Category_And_Location((int)LocationID, (int)categoryID);
-                            break;                            
-
-                        case "request.car.delete":
+                        case "request.customer.delete":
                             documentID = JsonConvert.DeserializeObject<string>(Encoding.UTF8.GetString(body));
-                            result =  carService.DeleteCarByDocumentID(documentID);
-                            break;
-                        case "request.get.categories.by.locationid":
-                            int LocID = JsonConvert.DeserializeObject<int>(Encoding.UTF8.GetString(body));
-                            result = carService.getCategoriesListPerLocation(LocID);
-                            break;
-
-                        case "request.get.locationlist":                           
-                            result = carService.getLocationList();
-                            break;
+                            result =  carService.DeleteUserByDocumentID(documentID);
+                            break;                      
 
                     }
                     byte[] messagebuffer = Encoding.Default.GetBytes(result);
